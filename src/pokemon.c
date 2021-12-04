@@ -4945,7 +4945,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         substruct2->spAttackEV = 0;  //EVs set to 0 
         break;
     case MON_DATA_SPDEF_EV:
-        substruct2->spDefenseEV) = 0;  //EVs set to 0 
+        substruct2->spDefenseEV = 0;  //EVs set to 0 
         break;
     case MON_DATA_COOL:
         SET8(substruct2->cool);
