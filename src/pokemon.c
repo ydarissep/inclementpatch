@@ -3344,33 +3344,12 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     }
     else
     {
-        u32 iv, i;
-        value = Random();
-
-        iv = value & MAX_IV_MASK;
-        SetBoxMonData(boxMon, MON_DATA_HP_IV, &iv);
-        iv = (value & (MAX_IV_MASK << 5)) >> 5;
-        SetBoxMonData(boxMon, MON_DATA_ATK_IV, &iv);
-        iv = (value & (MAX_IV_MASK << 10)) >> 10;
-        SetBoxMonData(boxMon, MON_DATA_DEF_IV, &iv);
-
-        value = Random();
-
-        iv = value & MAX_IV_MASK;
-        SetBoxMonData(boxMon, MON_DATA_SPEED_IV, &iv);
-        iv = (value & (MAX_IV_MASK << 5)) >> 5;
-        SetBoxMonData(boxMon, MON_DATA_SPATK_IV, &iv);
-        iv = (value & (MAX_IV_MASK << 10)) >> 10;
-        SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &iv);
-
-        // Set three random IVs to 31
-        ShuffleStatArray(statIDs);
-
-        for (i = 0; i < 6; i++)
-        {
-            SetBoxMonData(boxMon, MON_DATA_HP_IV + statIDs[i], &maxIV);
-        }
-
+        SetBoxMonData(boxMon, MON_DATA_HP_IV, &maxIV);
+        SetBoxMonData(boxMon, MON_DATA_ATK_IV, &maxIV);
+        SetBoxMonData(boxMon, MON_DATA_DEF_IV, &maxIV);
+        SetBoxMonData(boxMon, MON_DATA_SPEED_IV, &maxIV);
+        SetBoxMonData(boxMon, MON_DATA_SPATK_IV, &maxIV);
+        SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &maxIV);
     }
     nature = personality % 25;
     SetBoxMonData(boxMon, MON_DATA_NATURE, &nature);
