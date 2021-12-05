@@ -4895,7 +4895,12 @@ static void Task_LearnedMove(u8 taskId)
 
 static void Task_DoLearnedMoveFanfareAfterText(u8 taskId)
 {
-    if (IsPartyMenuTextPrinterActive() != TRUE)
+    if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
+    {
+        gItemUseCB = ItemUseCB_RareCandy;
+        CB2_ShowPartyMenuForItemUse;
+    }
+    else (IsPartyMenuTextPrinterActive() != TRUE)
     {
         PlayFanfare(MUS_LEVEL_UP);
         gTasks[taskId].func = Task_LearnNextMoveOrClosePartyMenu;
@@ -4995,10 +5000,6 @@ static void Task_PartyMenuReplaceMove(u8 taskId)
         RemoveMonPPBonus(mon, GetMoveSlotToReplace());
         move = gPartyMenu.data1;
         SetMonMoveSlot(mon, move, GetMoveSlotToReplace());
-        if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
-        {
-            ShowSelectMovePokemonSummaryScreen(gPlayerParty, gPartyMenu.slotId, gPlayerPartyCount - 1, CB2_ShowPartyMenuForItemUse, gPartyMenu.data1);
-        }
         Task_LearnedMove(taskId);
     }
 }
