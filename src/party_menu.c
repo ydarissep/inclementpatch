@@ -5095,7 +5095,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
         StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
         DisplayPartyMenuMessage(gStringVar4, TRUE);
         ScheduleBgCopyTilemapToVram(2);
-        gTasks[taskId].func = Task_DisplayLevelUpStatsPg1;
+        gTasks[taskId].func = Task_TryLearnNewMoves;
     }
 }
 
