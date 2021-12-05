@@ -4956,6 +4956,7 @@ static void CB2_ShowSummaryScreenToForgetMove(void)
 {
     if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
     {
+        SetMonMoveSlot(&gPlayerParty[gPartyMenu.slotId], gPartyMenu.data1, GetMoveSlotToReplace());
         ShowSelectMovePokemonSummaryScreen(gPlayerParty, gPartyMenu.slotId, gPlayerPartyCount - 1, CB2_ShowPartyMenuForItemUse, gPartyMenu.data1);
     }
     else
