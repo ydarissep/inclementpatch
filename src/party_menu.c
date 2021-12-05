@@ -4947,15 +4947,7 @@ static void Task_ShowSummaryScreenToForgetMove(u8 taskId)
 {
     if (IsPartyMenuTextPrinterActive() != TRUE)
     {
-        if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
-        {
-            gItemUseCB = ItemUseCB_RareCandy;
-            sPartyMenuInternal->exitCallback = CB2_ShowPartyMenuForItemUse;
-        }
-        else
-        {
-            sPartyMenuInternal->exitCallback = CB2_ShowSummaryScreenToForgetMove;
-        }
+        sPartyMenuInternal->exitCallback = CB2_ShowSummaryScreenToForgetMove;
         Task_ClosePartyMenu(taskId);
     }
 }
