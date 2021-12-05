@@ -4895,12 +4895,7 @@ static void Task_LearnedMove(u8 taskId)
 
 static void Task_DoLearnedMoveFanfareAfterText(u8 taskId)
 {
-    if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
-    {
-        gItemUseCB = ItemUseCB_RareCandy;
-        SetMainCallback2(CB2_ShowPartyMenuForItemUse);
-    }
-    else (IsPartyMenuTextPrinterActive() != TRUE)
+    if (IsPartyMenuTextPrinterActive() != TRUE && gSpecialVar_ItemId != ITEM_RARE_CANDY)
     {
         PlayFanfare(MUS_LEVEL_UP);
         gTasks[taskId].func = Task_LearnNextMoveOrClosePartyMenu;
