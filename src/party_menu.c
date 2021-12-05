@@ -4908,11 +4908,6 @@ static void Task_LearnNextMoveOrClosePartyMenu(u8 taskId)
     {
         if (gPartyMenu.learnMoveState == 1)
             Task_TryLearningNextMove(taskId);
-        else if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
-        {
-            gItemUseCB = ItemUseCB_RareCandy;
-            SetMainCallback2(CB2_ShowPartyMenuForItemUse);
-        }
         else
         {
             if (gPartyMenu.learnMoveState == 2) // never occurs
