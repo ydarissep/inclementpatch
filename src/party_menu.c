@@ -4912,10 +4912,10 @@ static void Task_LearnNextMoveOrClosePartyMenu(u8 taskId)
         {
             if (gPartyMenu.learnMoveState == 2) // never occurs
                 gSpecialVar_Result = TRUE;
+            //Task_ClosePartyMenu(taskId);
             if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
             {
                 gItemUseCB = ItemUseCB_RareCandy;
-                Task_ClosePartyMenu(taskId);
             }
         }
     }
