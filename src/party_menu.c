@@ -1164,14 +1164,18 @@ static void Task_ClosePartyMenuAndSetCB2(u8 taskId)
 		if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
 		{
 			gItemUseCB = ItemUseCB_RareCandy;
-			SetMainCallback2(CB2_ShowPartyMenuForItemUse)
+			SetMainCallback2(CB2_ShowPartyMenuForItemUse);
 		}
 		else
 		{
 			if (sPartyMenuInternal->exitCallback != NULL)
+			{
 				SetMainCallback2(sPartyMenuInternal->exitCallback);
+			}
 			else
+			{
 				SetMainCallback2(gPartyMenu.exitCallback);
+			}
 		}
 
         ResetSpriteData();
