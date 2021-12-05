@@ -4,6 +4,7 @@
 #include "main.h"
 #include "menu_specialized.h"
 #include "mon_markings.h"
+#include "palette.h"
 #include "pokenav.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
@@ -531,6 +532,7 @@ void ConditionGraphDrawMonPic(s16 index, u8 arg1)
     personality = GetBoxOrPartyMonData(boxId, monId, MON_DATA_PERSONALITY, NULL);
     LoadSpecialPokePic(&gMonFrontPicTable[species], structPtr->monPicGfx[arg1], species, personality, TRUE);
     LZ77UnCompWram(GetMonSpritePalFromSpeciesAndPersonality(species, tid, personality), structPtr->monPal[arg1]);
+    HueShiftMonPalette((u16*) structPtr->monPal[arg1], personality);
 }
 
 u16 GetMonListCount(void)
