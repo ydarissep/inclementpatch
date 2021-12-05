@@ -4954,7 +4954,14 @@ static void Task_ShowSummaryScreenToForgetMove(u8 taskId)
 
 static void CB2_ShowSummaryScreenToForgetMove(void)
 {
-    ShowSelectMovePokemonSummaryScreen(gPlayerParty, gPartyMenu.slotId, gPlayerPartyCount - 1, CB2_ReturnToPartyMenuWhileLearningMove, gPartyMenu.data1);
+    if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
+    {
+        ShowSelectMovePokemonSummaryScreen(gPlayerParty, gPartyMenu.slotId, gPlayerPartyCount - 1, CB2_ShowPartyMenuForItemUse, gPartyMenu.data1);
+    }
+    else
+    {
+        ShowSelectMovePokemonSummaryScreen(gPlayerParty, gPartyMenu.slotId, gPlayerPartyCount - 1, CB2_ReturnToPartyMenuWhileLearningMove, gPartyMenu.data1);
+    }
 }
 
 static void CB2_ReturnToPartyMenuWhileLearningMove(void)
