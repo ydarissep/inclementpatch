@@ -5161,11 +5161,6 @@ static void Task_TryLearnNewMoves(u8 taskId)
             break;
         case MON_HAS_MAX_MOVES:
             DisplayMonNeedsToReplaceMove(taskId);
-		if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
-		{
-			gItemUseCB = ItemUseCB_RareCandy;
-			SetMainCallback2(CB2_ShowPartyMenuForItemUse);
-		}
             break;
         case MON_ALREADY_KNOWS_MOVE:
             gTasks[taskId].func = Task_TryLearningNextMove;
@@ -5187,7 +5182,7 @@ static void Task_TryLearningNextMove(u8 taskId)
         PartyMenuTryEvolution(taskId);
         break;
     case MON_HAS_MAX_MOVES:
-        DisplayMonNeedsToReplaceMove(taskId);		    
+        DisplayMonNeedsToReplaceMove(taskId);
         break;
     case MON_ALREADY_KNOWS_MOVE:
         return;
