@@ -4895,7 +4895,7 @@ static void Task_LearnedMove(u8 taskId)
 
 static void Task_DoLearnedMoveFanfareAfterText(u8 taskId)
 {
-    if (IsPartyMenuTextPrinterActive() != TRUE && gSpecialVar_ItemId != ITEM_RARE_CANDY)
+    if (IsPartyMenuTextPrinterActive() != TRUE)
     {
         PlayFanfare(MUS_LEVEL_UP);
         gTasks[taskId].func = Task_LearnNextMoveOrClosePartyMenu;
@@ -4913,10 +4913,6 @@ static void Task_LearnNextMoveOrClosePartyMenu(u8 taskId)
             if (gPartyMenu.learnMoveState == 2) // never occurs
                 gSpecialVar_Result = TRUE;
             Task_ClosePartyMenu(taskId);
-            if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
-            {
-                gItemUseCB = ItemUseCB_RareCandy;
-            }
         }
     }
 }
@@ -5099,7 +5095,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
         StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
         DisplayPartyMenuMessage(gStringVar4, TRUE);
         ScheduleBgCopyTilemapToVram(2);
-        gTasks[taskId].func = Task_TryLearnNewMoves;
+        gTasks[taskId].func = Task_DisplayLevelUpStatsPg1;
     }
 }
 
