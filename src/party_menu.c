@@ -4912,11 +4912,7 @@ static void Task_LearnNextMoveOrClosePartyMenu(u8 taskId)
         {
             if (gPartyMenu.learnMoveState == 2) // never occurs
                 gSpecialVar_Result = TRUE;
-            //Task_ClosePartyMenu(taskId);
-            if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
-            {
-                gItemUseCB = ItemUseCB_RareCandy;
-            }
+            Task_ClosePartyMenu(taskId);
         }
     }
 }
@@ -4963,7 +4959,7 @@ static void CB2_ShowSummaryScreenToForgetMove(void)
 
 static void CB2_ReturnToPartyMenuWhileLearningMove(void)
 {
-    InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
+    InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_USE_ITEM, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
 }
 
 static void Task_ReturnToPartyMenuWhileLearningMove(u8 taskId)
