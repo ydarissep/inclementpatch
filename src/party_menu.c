@@ -1161,21 +1161,11 @@ static void Task_ClosePartyMenuAndSetCB2(u8 taskId)
     {
         if (gPartyMenu.menuType == PARTY_MENU_TYPE_IN_BATTLE)
             UpdatePartyToFieldOrder();
-	if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
-	{
-		gItemUseCB = ItemUseCB_RareCandy;
-		SetMainCallback2(CB2_ShowPartyMenuForItemUse);
-	}
+
+	if (sPartyMenuInternal->exitCallback != NULL)
+		SetMainCallback2(sPartyMenuInternal->exitCallback);
 	else
-	{
-		if (sPartyMenuInternal->exitCallback != NULL)
-		{
-			SetMainCallback2(sPartyMenuInternal->exitCallback);
-		}
-		else
-		{
-			SetMainCallback2(gPartyMenu.exitCallback);
-		}
+		SetMainCallback2(gPartyMenu.exitCallback);
 	}
 
         ResetSpriteData();
@@ -5171,6 +5161,11 @@ static void Task_TryLearnNewMoves(u8 taskId)
             break;
         case MON_HAS_MAX_MOVES:
             DisplayMonNeedsToReplaceMove(taskId);
+		if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
+		{
+			gItemUseCB = ItemUseCB_RareCandy;
+			SetMainCallback2(CB2_ShowPartyMenuForItemUse);
+		}
             break;
         case MON_ALREADY_KNOWS_MOVE:
             gTasks[taskId].func = Task_TryLearningNextMove;
@@ -5192,7 +5187,7 @@ static void Task_TryLearningNextMove(u8 taskId)
         PartyMenuTryEvolution(taskId);
         break;
     case MON_HAS_MAX_MOVES:
-        DisplayMonNeedsToReplaceMove(taskId);
+        DisplayMonNeedsToReplaceMove(taskId);		    
         break;
     case MON_ALREADY_KNOWS_MOVE:
         return;
