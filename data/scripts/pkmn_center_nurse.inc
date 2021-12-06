@@ -16,7 +16,9 @@ Common_EventScript_PkmnCenterNurse::
     end
 
 EventScript_PkmnCenterNurseHasVial::
-    removeitem ITEM_RARE_CANDY, 400
+    checkitem ITEM_RARE_CANDY, 400
+    compare VAR_RESULT, TRUE
+    IF_EQ additem ITEM_RARE_CANDY, 400
     removeitem ITEM_BIG_PEARL, 400
     additem ITEM_RARE_CANDY, 400
     additem ITEM_BIG_PEARL, 400
