@@ -520,7 +520,7 @@ bool8 ScrCmd_checkitem(struct ScriptContext *ctx)
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
     u32 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = CheckBagHasItem(itemId, (u8)quantity);
+    gSpecialVar_Result = CheckBagHasItem(itemId, (u16)quantity);
     return FALSE;
 }
 
