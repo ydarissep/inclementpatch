@@ -163,178 +163,25 @@ Movement_PkmnCenterNurse_Bow:
     step_end
 
 Give_Cut_Items_After_Roxanne:
-	checkitem ITEM_MIRACLE_SEED, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_MIRACLE_SEED
-	checkitem ITEM_CHARCOAL, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_CHARCOAL
-	checkitem ITEM_LEEK, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_LEEK
-	checkitem ITEM_BIG_ROOT, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_BIG_ROOT
-	checkitem ITEM_MENTAL_HERB, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_MENTAL_HERB
-	checkitem ITEM_POWER_HERB, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_POWER_HERB
-	checkitem ITEM_WHITE_HERB, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_WHITE_HERB
-	checkitem ITEM_ELECTRIC_SEED, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_ELECTRIC_SEED
-	checkitem ITEM_PSYCHIC_SEED, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_PSYCHIC_SEED
-	checkitem ITEM_GRASSY_SEED, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_GRASSY_SEED
-	checkitem ITEM_MISTY_SEED, 100 
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_MISTY_SEED
-	checkitem ITEM_CHERI_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_CHERI_BERRY
-	checkitem ITEM_CHESTO_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_CHESTO_BERRY
-	checkitem ITEM_PECHA_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_PECHA_BERRY
-	checkitem ITEM_RAWST_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_RAWST_BERRY
-	checkitem ITEM_PERSIM_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_PERSIM_BERRY
-	checkitem ITEM_OCCA_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_OCCA_BERRY
-	checkitem ITEM_PASSHO_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_PASSHO_BERRY
-	checkitem ITEM_WACAN_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_WACAN_BERRY
-	checkitem ITEM_RINDO_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_RINDO_BERRY
-	checkitem ITEM_YACHE_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_YACHE_BERRY
-	checkitem ITEM_CHOPLE_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_CHOPLE_BERRY
-	checkitem ITEM_KEBIA_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_KEBIA_BERRY
-	checkitem ITEM_SHUCA_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_SHUCA_BERRY
-	checkitem ITEM_COBA_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_COBA_BERRY
-	checkitem ITEM_PAYAPA_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_PAYAPA_BERRY
-	checkitem ITEM_TANGA_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_TANGA_BERRY
-	checkitem ITEM_CHARTI_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_CHARTI_BERRY
-	checkitem ITEM_KASIB_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_KASIB_BERRY
-	checkitem ITEM_HABAN_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_HABAN_BERRY
-	checkitem ITEM_COLBUR_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_COLBUR_BERRY
-	checkitem ITEM_BABIRI_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_BABIRI_BERRY
-	checkitem ITEM_CHILAN_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_CHILAN_BERRY
-	checkitem ITEM_ROSELI_BERRY, 100
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_ROSELI_BERRY
 	return
 	
 	
 Give_Thief_Items_After_Thief:
-	checkitem ITEM_SITRUS_BERRY, 400
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_SITRUS_BERRY
-	checkitem ITEM_LEFTOVERS, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_LEFTOVERS
-	checkitem ITEM_BRIGHT_POWDER, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_BRIGHT_POWDER
-	checkitem ITEM_HARD_STONE, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_HARD_STONE
-	checkitem ITEM_MYSTIC_WATER, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_MYSTIC_WATER
-	checkitem ITEM_SILVER_POWDER, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_SILVER_POWDER
-	checkitem ITEM_POISON_BARB, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_POISON_BARB
-	checkitem ITEM_SOFT_SAND, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_SOFT_SAND
-	checkitem ITEM_BLACK_BELT, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_BLACK_BELT
 	return
 
 
 Give_Thief_Items_After_Museum:
-	checkitem ITEM_SILK_SCARF, 400
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_SILK_SCARF
-	checkitem ITEM_SHARP_BEAK, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_SHARP_BEAK
-	checkitem ITEM_NEVER_MELT_ICE, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_NEVER_MELT_ICE
-	checkitem ITEM_TWISTED_SPOON, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_TWISTED_SPOON
 	return
 
 	
 Give_Thief_Items_After_Wattson:
-	checkitem ITEM_MAGNET, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_MAGNET
 	return
 
 
 Give_Thief_Items_After_Flannery:
-	checkitem ITEM_BLACK_GLASSES, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_BLACK_GLASSES
-	checkitem ITEM_SPELL_TAG, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_SPELL_TAG
 	return
 
 Give_Thief_Items_After_Norman:
-	checkitem ITEM_DRAGON_FANG, 10
-	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_DRAGON_FANG
 	return
 
 ADDITEM_RARE_CANDY:
