@@ -2,12 +2,7 @@ name: CI
 
 on:
   push:
-    branches:
-      - master
-      - battle_engine
-      - pokemon_expansion
-      - item_expansion
-  pull_request:
+
 
 jobs:
   build:
