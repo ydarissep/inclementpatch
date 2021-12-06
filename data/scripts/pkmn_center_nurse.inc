@@ -18,9 +18,8 @@ Common_EventScript_PkmnCenterNurse::
 EventScript_PkmnCenterNurseHasVial::
     checkitem ITEM_RARE_CANDY, 400
     compare VAR_RESULT, TRUE
-    IF_EQ additem ITEM_RARE_CANDY, 400
+    call_if_eq ADDITEM_ITEM_RARE_CANDY
     removeitem ITEM_BIG_PEARL, 400
-    additem ITEM_RARE_CANDY, 400
     additem ITEM_BIG_PEARL, 400
     call_if_set FLAG_BADGE01_GET, Give_Cut_Items_After_Roxanne
     call_if_set FLAG_RECEIVED_TM46, Give_Thief_Items_After_Thief
@@ -282,4 +281,8 @@ Give_Thief_Items_After_Flannery:
 Give_Thief_Items_After_Norman:
 	removeitem ITEM_DRAGON_FANG, 10
 	additem ITEM_DRAGON_FANG, 10
+	return
+	
+ADDITEM_ITEM_RARE_CANDY:
+	additem ITEM_RARE_CANDY, 400
 	return
