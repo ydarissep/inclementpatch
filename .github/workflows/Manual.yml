@@ -36,12 +36,6 @@ jobs:
       - name: Agbcc
         run: make -j${nproc} all
 
-      - name: Modern
-        env:
-          MODERN: 1
-          COMPARE: 0
-        run: make -j${nproc} all
-
       - name: Upload gba
         uses: actions/upload-artifact@v2
         with:
