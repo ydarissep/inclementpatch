@@ -17,8 +17,8 @@ Common_EventScript_PkmnCenterNurse::
 
 EventScript_PkmnCenterNurseHasVial::
     checkitem ITEM_RARE_CANDY, 400
-    compare VAR_RESULT, FALSE
-    call_if_eq ADDITEM_ITEM_RARE_CANDY
+    compare VAR_RESULT, TRUE
+    call_if_ne ADDITEM_ITEM_RARE_CANDY
     removeitem ITEM_BIG_PEARL, 400
     additem ITEM_BIG_PEARL, 400
     call_if_set FLAG_BADGE01_GET, Give_Cut_Items_After_Roxanne
