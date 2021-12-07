@@ -1608,7 +1608,7 @@ void DoBerryEncounter(void)
         berryStage = 3;
     }
 
-    BerryWildEncounter(berryStage);
+    BerryWildEncounter(random() % 4);
 }
 
 bool8 IsPlayerFacingEmptyBerryTreePatch(void)
