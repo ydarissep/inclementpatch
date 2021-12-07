@@ -39,11 +39,11 @@ jobs:
       - name: Upload gba
         uses: actions/upload-artifact@v2
         with:
-          name: Yda Patch 31 IVs-No EVs
+          name: Yda_Patch_31_IVs_No_EVs
           path: pokeemerald.gba
           
       - name: Upload map
         uses: actions/upload-artifact@v2
         with:
-          name: Yda Patch 31 IVs-No EVs
+          name: Yda_Patch_31_IVs_No_EVs
           path: pokeemerald.map
