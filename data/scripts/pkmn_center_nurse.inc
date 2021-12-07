@@ -16,12 +16,7 @@ Common_EventScript_PkmnCenterNurse::
     end
 
 EventScript_PkmnCenterNurseHasVial::
-    checkitem ITEM_RARE_CANDY, 400
-    compare VAR_RESULT, TRUE
-    call_if_ne ADDITEM_RARE_CANDY
-    checkitem ITEM_BIG_PEARL, 400
-    compare VAR_RESULT, TRUE
-    call_if_ne ADDITEM_BIG_PEARL, 400
+    call Give_Nuzlocke_Items
     call_if_set FLAG_BADGE01_GET, Give_Cut_Items_After_Roxanne
     call_if_set FLAG_RECEIVED_TM46, Give_Thief_Items_After_Thief
     call_if_set FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS, Give_Thief_Items_After_Museum
@@ -161,6 +156,14 @@ Movement_PkmnCenterNurse_Bow:
     nurse_joy_bow
     delay_4
     step_end
+
+Give_Nuzlocke_Items:
+	checkitem ITEM_RARE_CANDY, 400
+	compare VAR_RESULT, TRUE
+	call_if_ne ADDITEM_RARE_CANDY
+	checkitem ITEM_BIG_PEARL, 400
+	compare VAR_RESULT, TRUE
+	call_if_ne ADDITEM_BIG_PEARL, 400
 
 Give_Cut_Items_After_Roxanne:
 	checkitem ITEM_MIRACLE_SEED, 10
