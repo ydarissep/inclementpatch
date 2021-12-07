@@ -163,7 +163,8 @@ Give_Nuzlocke_Items:
 	call_if_ne ADDITEM_RARE_CANDY
 	checkitem ITEM_BIG_PEARL, 400
 	compare VAR_RESULT, TRUE
-	call_if_ne ADDITEM_BIG_PEARL, 400
+	call_if_ne ADDITEM_BIG_PEARL
+	return
 
 Give_Cut_Items_After_Roxanne:
 	checkitem ITEM_MIRACLE_SEED, 10
@@ -482,6 +483,42 @@ ADDITEM_CHILAN_BERRY:
 
 ADDITEM_ROSELI_BERRY:
 	additem ITEM_ROSELI_BERRY, 100
+	return
+
+ADDITEM_SITRUS_BERRY:
+	additem ITEM_SITRUS_BERRY, 400
+	return
+
+ADDITEM_LEFTOVERS:
+	additem ITEM_LEFTOVERS, 10
+	return
+
+ADDITEM_BRIGHT_POWDER:
+	additem ITEM_BRIGHT_POWDER, 10
+	return
+
+ADDITEM_HARD_STONE:
+	additem ITEM_HARD_STONE, 10
+	return
+
+ADDITEM_MYSTIC_WATER:
+	additem ITEM_MYSTIC_WATER, 10
+	return
+
+ADDITEM_SILVER_POWDER:
+	additem ITEM_SILVER_POWDER, 10
+	return
+
+ADDITEM_POISON_BARB:
+	additem ITEM_POISON_BARB, 10
+	return
+
+ADDITEM_SOFT_SAND:
+	additem ITEM_SOFT_SAND, 10
+	return
+
+ADDITEM_BLACK_BELT:
+	additem ITEM_BLACK_BELT, 10
 	return
 
 ADDITEM_SILK_SCARF:
