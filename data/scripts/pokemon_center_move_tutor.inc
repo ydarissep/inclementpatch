@@ -15,117 +15,6 @@ PKMN_Center_Move_Tutor::
 	case 6, PKMN_Center_Move_Tutor_General_Exit
 	case MULTI_B_PRESSED, PKMN_Center_Move_Tutor_General_Exit
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Move Reminder @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-PKMN_Center_MoveReminder_EventScript::
-	msgbox PKMN_Center_MoveReminder_Text_WantMeToTeachMove, MSGBOX_YESNO
-	switch VAR_RESULT
-	case NO, PKMN_Center_Move_Tutor_General_Exit
-	goto PKMN_Center_MoveReminder_EventScriptChooseMon
-	end
-
-PKMN_Center_MoveReminder_EventScriptChooseMon::
-	msgbox PKMN_Center_MoveReminder_Text_TutorWhichMon, MSGBOX_DEFAULT
-	special ChooseMonForMoveRelearner
-	waitstate
-	compare VAR_0x8004, 255
-	goto_if_eq PKMN_Center_Move_Tutor_General_Exit
-	special IsSelectedMonEgg
-	compare VAR_RESULT, TRUE
-	goto_if_eq PKMN_Center_MoveReminder_EventScriptCantTeachEgg
-	compare VAR_0x8005, 0
-	goto_if_eq PKMN_Center_MoveReminder_EventScriptNoMoveToTeachMon
-	goto PKMN_Center_MoveReminder_EventScriptChooseMove
-	end
-
-PKMN_Center_MoveReminder_EventScriptChooseMove::
-	msgbox PKMN_Center_MoveReminder_Text_TeachWhichMove, MSGBOX_DEFAULT
-	special TeachMoveRelearnerMove
-	waitstate
-	compare VAR_0x8004, 0
-	goto_if_eq PKMN_Center_MoveReminder_EventScriptChooseMon
-	goto PKMN_Center_MoveReminder_EventScriptRememberAnotherMove
-	end
-
-PKMN_Center_MoveReminder_EventScriptNoMoveToTeachMon::
-	msgbox PKMN_Center_MoveReminder_Text_DontHaveMoveToTeachPokemon, MSGBOX_DEFAULT
-	goto PKMN_Center_MoveReminder_EventScriptChooseMon
-	end
-
-PKMN_Center_MoveReminder_EventScriptCantTeachEgg::
-	msgbox PKMN_Center_MoveReminder_Text_CantTeachEgg, MSGBOX_DEFAULT
-	goto PKMN_Center_MoveReminder_EventScriptChooseMon
-	end
-	
-PKMN_Center_MoveReminder_EventScriptRememberAnotherMove::
-	msgbox PKMN_Center_MoveReminder_Text_RememberAnotherMove, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq PKMN_Center_Move_Tutor_General_Exit
-	goto PKMN_Center_MoveReminder_EventScriptChooseMon
-
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Move Deleter @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-PKMN_Center_MoveDeleter_EventScript::
-	msgbox PKMN_Center_MoveDeleter_Text_ICanMakeMonForgetMove, MSGBOX_YESNO
-	switch VAR_RESULT
-	case YES, PKMN_Center_MoveDeleter_EventScript_ChooseMonAndMoveToForget
-	case NO, PKMN_Center_Move_Tutor_General_Exit
-	releaseall
-	end
-
-PKMN_Center_MoveDeleter_EventScript_ChooseMonAndMoveToForget::
-	msgbox PKMN_Center_MoveDeleter_Text_WhichMonShouldForget, MSGBOX_DEFAULT
-	special ChoosePartyMon
-	waitstate
-	compare VAR_0x8004, 255
-	goto_if_eq PKMN_Center_Move_Tutor_General_Exit
-	special IsSelectedMonEgg
-	compare VAR_RESULT, TRUE
-	goto_if_eq PKMN_Center_MoveDeleter_EventScript_EggCantForgetMoves
-	special GetNumMovesSelectedMonHas
-	compare VAR_RESULT, 1
-	goto_if_eq PKMN_Center_MoveDeleter_EventScript_MonOnlyKnowsOneMove
-	msgbox PKMN_Center_MoveDeleter_Text_WhichMoveShouldBeForgotten, MSGBOX_DEFAULT
-	fadescreen FADE_TO_BLACK
-	special MoveDeleterChooseMoveToForget
-	fadescreen FADE_FROM_BLACK
-	compare VAR_0x8005, MAX_MON_MOVES
-	goto_if_eq PKMN_Center_MoveDeleter_EventScript_ChooseMonAndMoveToForget
-	special BufferMoveDeleterNicknameAndMove
-	msgbox PKMN_Center_MoveDeleter_Text_MonsMoveShouldBeForgotten, MSGBOX_YESNO
-	switch VAR_RESULT
-	case YES, PKMN_Center_MoveDeleter_EventScript_TryForgetMove
-	case NO, PKMN_Center_Move_Tutor_General_Exit
-	releaseall
-	end
-
-PKMN_Center_MoveDeleter_EventScript_TryForgetMove::
-	special IsLastMonThatKnowsSurf
-	compare VAR_RESULT, TRUE
-	goto_if_eq PKMN_Center_MoveDeleter_EventScript_LastMonWithSurf
-	special MoveDeleterForgetMove
-	playfanfare MUS_MOVE_DELETED
-	waitfanfare
-	msgbox PKMN_Center_MoveDeleter_Text_MonHasForgottenMove, MSGBOX_DEFAULT
-	releaseall
-	end
-
-PKMN_Center_MoveDeleter_EventScript_MonOnlyKnowsOneMove::
-	special BufferMoveDeleterNicknameAndMove
-	msgbox PKMN_Center_MoveDeleter_Text_MonOnlyKnowsOneMove, MSGBOX_DEFAULT
-	releaseall
-	end
-
-PKMN_Center_MoveDeleter_EventScript_EggCantForgetMoves::
-	msgbox PKMN_Center_MoveDeleter_Text_EggCantForgetMoves, MSGBOX_DEFAULT
-	releaseall
-	end
-
-PKMN_Center_MoveDeleter_EventScript_LastMonWithSurf::
-	special BufferMoveDeleterNicknameAndMove
-	msgbox PKMN_Center_MoveDeleter_Text_CantForgetSurf, MSGBOX_DEFAULT
-	releaseall
-	end
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Move Tutor @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -271,6 +160,120 @@ PKMN_Center_Move_Tutor_Exit::
     msgbox PKMN_Center_Move_Tutor_Text_SeeYou, MSGBOX_DEFAULT
 	releaseall
 	end
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Move Reminder @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+PKMN_Center_MoveReminder_EventScript::
+	msgbox PKMN_Center_MoveReminder_Text_WantMeToTeachMove, MSGBOX_YESNO
+	switch VAR_RESULT
+	case NO, PKMN_Center_Move_Tutor_General_Exit
+	goto PKMN_Center_MoveReminder_EventScriptChooseMon
+	end
+
+PKMN_Center_MoveReminder_EventScriptChooseMon::
+	msgbox PKMN_Center_MoveReminder_Text_TutorWhichMon, MSGBOX_DEFAULT
+	special ChooseMonForMoveRelearner
+	waitstate
+	compare VAR_0x8004, 255
+	goto_if_eq PKMN_Center_Move_Tutor_General_Exit
+	special IsSelectedMonEgg
+	compare VAR_RESULT, TRUE
+	goto_if_eq PKMN_Center_MoveReminder_EventScriptCantTeachEgg
+	compare VAR_0x8005, 0
+	goto_if_eq PKMN_Center_MoveReminder_EventScriptNoMoveToTeachMon
+	goto PKMN_Center_MoveReminder_EventScriptChooseMove
+	end
+
+PKMN_Center_MoveReminder_EventScriptChooseMove::
+	msgbox PKMN_Center_MoveReminder_Text_TeachWhichMove, MSGBOX_DEFAULT
+	special TeachMoveRelearnerMove
+	waitstate
+	compare VAR_0x8004, 0
+	goto_if_eq PKMN_Center_MoveReminder_EventScriptChooseMon
+	goto PKMN_Center_MoveReminder_EventScriptRememberAnotherMove
+	end
+
+PKMN_Center_MoveReminder_EventScriptNoMoveToTeachMon::
+	msgbox PKMN_Center_MoveReminder_Text_DontHaveMoveToTeachPokemon, MSGBOX_DEFAULT
+	goto PKMN_Center_MoveReminder_EventScriptChooseMon
+	end
+
+PKMN_Center_MoveReminder_EventScriptCantTeachEgg::
+	msgbox PKMN_Center_MoveReminder_Text_CantTeachEgg, MSGBOX_DEFAULT
+	goto PKMN_Center_MoveReminder_EventScriptChooseMon
+	end
+	
+PKMN_Center_MoveReminder_EventScriptRememberAnotherMove::
+	msgbox PKMN_Center_MoveReminder_Text_RememberAnotherMove, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq PKMN_Center_Move_Tutor_General_Exit
+	goto PKMN_Center_MoveReminder_EventScriptChooseMon
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Move Deleter @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+PKMN_Center_MoveDeleter_EventScript::
+	msgbox PKMN_Center_MoveDeleter_Text_ICanMakeMonForgetMove, MSGBOX_YESNO
+	switch VAR_RESULT
+	case YES, PKMN_Center_MoveDeleter_EventScript_ChooseMonAndMoveToForget
+	case NO, PKMN_Center_Move_Tutor_General_Exit
+	releaseall
+	end
+
+PKMN_Center_MoveDeleter_EventScript_ChooseMonAndMoveToForget::
+	msgbox PKMN_Center_MoveDeleter_Text_WhichMonShouldForget, MSGBOX_DEFAULT
+	special ChoosePartyMon
+	waitstate
+	compare VAR_0x8004, 255
+	goto_if_eq PKMN_Center_Move_Tutor_General_Exit
+	special IsSelectedMonEgg
+	compare VAR_RESULT, TRUE
+	goto_if_eq PKMN_Center_MoveDeleter_EventScript_EggCantForgetMoves
+	special GetNumMovesSelectedMonHas
+	compare VAR_RESULT, 1
+	goto_if_eq PKMN_Center_MoveDeleter_EventScript_MonOnlyKnowsOneMove
+	msgbox PKMN_Center_MoveDeleter_Text_WhichMoveShouldBeForgotten, MSGBOX_DEFAULT
+	fadescreen FADE_TO_BLACK
+	special MoveDeleterChooseMoveToForget
+	fadescreen FADE_FROM_BLACK
+	compare VAR_0x8005, MAX_MON_MOVES
+	goto_if_eq PKMN_Center_MoveDeleter_EventScript_ChooseMonAndMoveToForget
+	special BufferMoveDeleterNicknameAndMove
+	msgbox PKMN_Center_MoveDeleter_Text_MonsMoveShouldBeForgotten, MSGBOX_YESNO
+	switch VAR_RESULT
+	case YES, PKMN_Center_MoveDeleter_EventScript_TryForgetMove
+	case NO, PKMN_Center_Move_Tutor_General_Exit
+	releaseall
+	end
+
+PKMN_Center_MoveDeleter_EventScript_TryForgetMove::
+	special IsLastMonThatKnowsSurf
+	compare VAR_RESULT, TRUE
+	goto_if_eq PKMN_Center_MoveDeleter_EventScript_LastMonWithSurf
+	special MoveDeleterForgetMove
+	playfanfare MUS_MOVE_DELETED
+	waitfanfare
+	msgbox PKMN_Center_MoveDeleter_Text_MonHasForgottenMove, MSGBOX_DEFAULT
+	releaseall
+	end
+
+PKMN_Center_MoveDeleter_EventScript_MonOnlyKnowsOneMove::
+	special BufferMoveDeleterNicknameAndMove
+	msgbox PKMN_Center_MoveDeleter_Text_MonOnlyKnowsOneMove, MSGBOX_DEFAULT
+	releaseall
+	end
+
+PKMN_Center_MoveDeleter_EventScript_EggCantForgetMoves::
+	msgbox PKMN_Center_MoveDeleter_Text_EggCantForgetMoves, MSGBOX_DEFAULT
+	releaseall
+	end
+
+PKMN_Center_MoveDeleter_EventScript_LastMonWithSurf::
+	special BufferMoveDeleterNicknameAndMove
+	msgbox PKMN_Center_MoveDeleter_Text_CantForgetSurf, MSGBOX_DEFAULT
+	releaseall
+	end
+
 
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Name Rater @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
