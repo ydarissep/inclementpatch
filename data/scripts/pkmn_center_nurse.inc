@@ -164,6 +164,9 @@ Give_Nuzlocke_Items:
 	checkitem ITEM_BIG_PEARL, 400
 	compare VAR_RESULT, TRUE
 	call_if_ne ADDITEM_BIG_PEARL
+	checkitem ITEM_MAX_REPEL, 250
+	compare VAR_RESULT, TRUE
+	call_if_ne ADDITEM_MAX_REPEL
 	return
 
 Give_Cut_Items_After_Roxanne:
@@ -347,6 +350,10 @@ ADDITEM_RARE_CANDY:
 	
 ADDITEM_BIG_PEARL:
 	additem ITEM_BIG_PEARL, 400
+	return
+	
+ADDITEM_MAX_REPEL:
+	additem ITEM_MAX_REPEL, 250
 	return
 
 ADDITEM_MIRACLE_SEED:
