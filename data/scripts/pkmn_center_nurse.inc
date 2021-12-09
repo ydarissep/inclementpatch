@@ -23,6 +23,7 @@ EventScript_PkmnCenterNurseHasVial::
     call_if_set FLAG_BADGE03_GET, Give_Thief_Items_After_Wattson
     call_if_set FLAG_BADGE04_GET, Give_Thief_Items_After_Flannery
     call_if_set FLAG_BADGE05_GET, Give_Thief_Items_After_Norman
+    call_if_set FLAG_BADGE05_GET, Give_Thief_Items_After_Winoma
     setvar VAR_0x8004, 0
     specialvar VAR_RESULT, CountPlayerTrainerStars
     compare VAR_RESULT, 4
@@ -344,6 +345,12 @@ Give_Thief_Items_After_Norman:
 	call_if_ne ADDITEM_DRAGON_FANG
 	return
 
+Give_Thief_Items_After_Winoma:
+	checkitem ITEM_PP_MAX, 50
+	compare VAR_RESULT, TRUE
+	call_if_ne ADDITEM_PP_MAX
+	return
+
 ADDITEM_RARE_CANDY:
 	additem ITEM_RARE_CANDY, 400
 	return
@@ -558,4 +565,8 @@ ADDITEM_SPELL_TAG:
 
 ADDITEM_DRAGON_FANG:
 	additem ITEM_DRAGON_FANG, 10
+	return
+
+ADDITEM_PP_MAX:
+	additem ITEM_PP_MAX, 50
 	return
