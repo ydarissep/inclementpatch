@@ -1711,7 +1711,7 @@ void PlantBerryTree(u8 id, u8 berry, u8 stage, bool8 allowGrowth)
     *tree = gBlankBerryTree;
     tree->berry = berry;
     tree->minutesUntilNextStage = GetStageDurationByBerryType(berry);
-    tree->stage = BERRY_STAGE_BERRIES;
+    tree->stage = stage;
     if (stage == BERRY_STAGE_BERRIES)
     {
         tree->berryYield = CalcBerryYield(tree);
@@ -1831,15 +1831,23 @@ static u8 CalcBerryYieldInternal(u16 max, u16 min, u8 water)
 static u8 CalcBerryYield(struct BerryTree *tree)
 {
     const struct Berry *berry = GetBerryInfo(tree->berry);
-    u8 min = 100;
-    u8 max = 100;
+    u8 min = berry->minYield;
+    u8 max = berry->maxYield;
 
-    return 100;
+    return CalcBerryYieldInternal(max, min, BerryTreeGetNumStagesWatered(tree));
 }
 
 static u8 GetBerryCountByBerryTreeId(u8 id)
 {
-    return 100;
+    struct BerryTree *tree = GetBerryTreeInfo(id);
+    const struct Berry *berry = GetBerryInfo(tree->berry);
+    u16 currentMap = gMapHeader.regionMapSectionId;
+
+    // Berries on rainy maps don't need to be watered because that made no sense
+    if (currentMap == MAPSEC_ROUTE_119 || currentMap == MAPSEC_ROUTE_120 || currentMap == MAPSEC_ROUTE_123)
+        return berry->maxYield;
+    else
+        return gSaveBlock1Ptr->berryTrees[id].berryYield;
 }
 
 static u16 GetStageDurationByBerryType(u8 berry)
