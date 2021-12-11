@@ -1175,7 +1175,6 @@ void CreateEgg(struct Pokemon *mon, u16 species, bool8 setHotSpringsLocation)
     u8 language;
     u8 metLocation;
     u8 isEgg;
-    u32 value;
 
     CreateMon(mon, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
     metLevel = 0;
@@ -1183,8 +1182,7 @@ void CreateEgg(struct Pokemon *mon, u16 species, bool8 setHotSpringsLocation)
     language = LANGUAGE_JAPANESE;
     SetMonData(mon, MON_DATA_POKEBALL, &ball);
     SetMonData(mon, MON_DATA_NICKNAME, sJapaneseEggNickname);
-    value = 4;
-    SetMonData(mon, MON_DATA_FRIENDSHIP, &value);
+    SetMonData(mon, MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
     SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
     SetMonData(mon, MON_DATA_LANGUAGE, &language);
     if (setHotSpringsLocation)
@@ -1203,7 +1201,6 @@ static void SetInitialEggData(struct Pokemon *mon, u16 species, struct DayCare *
     u16 ball;
     u8 metLevel;
     u8 language;
-    u32 value;
 
     personality = daycare->offspringPersonality;
     CreateMon(mon, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS, TRUE, personality, OT_ID_PLAYER_ID, 0);
@@ -1212,8 +1209,7 @@ static void SetInitialEggData(struct Pokemon *mon, u16 species, struct DayCare *
     language = LANGUAGE_JAPANESE;
     SetMonData(mon, MON_DATA_POKEBALL, &ball);
     SetMonData(mon, MON_DATA_NICKNAME, sJapaneseEggNickname);
-    value = 4;
-    SetMonData(mon, MON_DATA_FRIENDSHIP, &value);
+    SetMonData(mon, MON_DATA_FRIENDSHIP, &gBaseStats[species].eggCycles);
     SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
     SetMonData(mon, MON_DATA_LANGUAGE, &language);
 }
