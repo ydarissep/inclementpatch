@@ -40,6 +40,7 @@ Route117_PokemonDayCare_EventScript_TryGiveTogepiEgg::
 	end
 
 Route117_PokemonDayCare_EventScript_ReceivedTogepi::
+	goto_if_set FLAG_DAILY_RECEIVED_DAYCARE_EGG, Route117_PokemonDayCare_EventScript_ReceivedEgg
 	goto Route117_PokemonDayCare_EventScript_TryGiveEgg
 
 Route117_PokemonDayCare_EventScript_ReceivedEgg::
