@@ -6,6 +6,7 @@ SlateportCity_NameRatersHouse_MapScripts::
 SlateportCity_NameRatersHouse_NatureChanger::
 	lockall
 	faceplayer
+	call_if_unset FLAG_MET_NATURE_CHANGER, SlateportCity_NameRatersHouse_NatureChangerIntro
 	msgbox NatureChanger_Text_ChoosePokemon, MSGBOX_DEFAULT
 	special ChoosePartyMon
 	waitstate
@@ -24,6 +25,7 @@ SlateportCity_NameRatersHouse_NatureChanger::
 	goto NatureChanger_2
 
 SlateportCity_NameRatersHouse_NatureChangerIntro::
+	msgbox NatureChanger_Text_Intro
 	setflag FLAG_MET_NATURE_CHANGER
 	return
 
@@ -39,7 +41,11 @@ NatureChanger_2::
 	goto_if_eq Nature_Changer_No
 
 Nature_Changer_Yes::
+	checkitem ITEM_ORAN_BERRY, NATURE_CHANGER_COST
+	compare VAR_RESULT, 1
 	goto_if_eq Nature_Changer_Stat_Up
+	compare VAR_RESULT, 0
+	goto_if_eq Nature_Changer_Berry_Poor
 
 Nature_Changer_No::
 	msgbox NatureChanger_Text_SomeOtherTime, MSGBOX_DEFAULT
@@ -121,6 +127,8 @@ Nature_Down_SPDEF::
 	goto Nature_Changer_Nature_Change
 
 Nature_Changer_Nature_Change::
+	removeitem ITEM_ORAN_BERRY, NATURE_CHANGER_COST
+	bufferpartymonnick 0, VAR_0x8004
 	msgbox NatureChanger_Text_SpecialPokeblock, MSGBOX_DEFAULT
 	fadescreen 1
 	special ChangePokemonNature
@@ -159,7 +167,8 @@ NatureChanger_Text_Intro:
 	.string "will change!$"
 
 NatureChanger_Text_ChoosePokemon:
-	.string "Which Pokémon needs my help?$"
+	.string "Which Pokémon needs the help of my\n"
+	.string "special {POKEBLOCK}s?$"
 
 NatureChanger_Text_MonHasNature:
 	.string "Ohohoho! I see your {STR_VAR_1} has\n"
@@ -168,7 +177,8 @@ NatureChanger_Text_MonHasNature:
 NatureChanger_Text_BadTaste:
 	.string "That means it likes {STR_VAR_1}s.\n"
 	.string "This simply will not do!\p"
-	.string "I shall create a {POKEBLOCK} that\l"
+	.string "You will bring me five Oran Berries,\n"
+	.string "and I shall create a {POKEBLOCK} that\l"
 	.string "will fix this travesty!$"
 
 NatureChanger_Text_HowAboutIt:
@@ -190,7 +200,8 @@ NatureChanger_Text_NeedMoreBerries:
 NatureChanger_Text_BoringTaste:
 	.string "That means it will eat any {POKEBLOCK}!\n"
 	.string "This simply will not do!\p"
-	.string "I shall create a {POKEBLOCK} that\l"
+	.string "You will bring me five Oran Berries,\n"
+	.string "and I shall create a {POKEBLOCK} that\l"
 	.string "will fix this travesty!$"
 
 NatureChanger_Text_WhichColorPrefer:
@@ -203,13 +214,26 @@ NatureChanger_Text_WhichColorDislike:
 	.string "it dislike?$"
 
 NatureChanger_Text_SpecialPokeblock:
+	.string "Ohohoho! I will make a special\n"
+	.string "{POKEBLOCK} from your Oran Berries.\p"
+	.string "Your {STR_VAR_1}'s taste in {POKEBLOCK}s\n"
+	.string "shall be much improved!\p"
 	.string "Wait just a moment…$"
 
 NatureChanger_Text_Pause:
+	.string "… … … … … …\n"
+	.string "… … … … … …\p"
+	.string "… … … … … …\n"
+	.string "… … … … … …\p"
+	.string "… … … … … …\n"
 	.string "… … … … … …$"
 
 NatureChanger_Text_ItIsDone:
 	.string "Oho! It is done!\p"
+	.string "Your {STR_VAR_1} has much better\n"
+	.string "taste in {POKEBLOCK}s than before!$"
 
 NatureChanger_Text_MonHasNature1:
+	.string "{STR_VAR_1} ate the strange {POKEBLOCK}.\p"
+	.string "It seems {STR_VAR_1} really liked it!\n"
 	.string "{STR_VAR_1}'s Nature became {STR_VAR_2}!$"
