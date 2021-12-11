@@ -8,8 +8,41 @@ FallarborTown_MoveRelearnersHouse_MapScripts::
 FallarborTown_MoveRelearnersHouse_OnFrame:
 	map_script_2 VAR_IVY_EVIE_HOUSE_STATE, 0, FallarborTown_EventScript_IvyEvieIntro
 	.2byte 0
-		
+
 FallarborTown_EventScript_IvyEvieIntro::
+	lockall
+	applymovement LOCALID_EVIE, Common_Movement_WalkInPlaceFastestDown
+	applymovement LOCALID_IVY, Common_Movement_WalkInPlaceFastestDown
+	waitmovement 0
+	playse SE_PIN
+	applymovement LOCALID_EVIE, Common_Movement_ExclamationMark
+	applymovement LOCALID_IVY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_EVIE, Common_Movement_Delay48
+	applymovement LOCALID_IVY, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_EVIE, FallarborTown_Movement_MoveEvieDown
+	applymovement LOCALID_IVY, FallarborTown_Movement_MoveIvyDown
+	waitmovement 0	
+	msgbox FallarborTown_Text_AnnoyingIntroPart1, MSGBOX_DEFAULT
+	applymovement LOCALID_IVY, Common_Movement_WalkInPlaceFastestDown
+	msgbox FallarborTown_Text_AnnoyingIntroPart2, MSGBOX_DEFAULT
+	applymovement LOCALID_EVIE, Common_Movement_WalkInPlaceFastestDown
+	msgbox FallarborTown_Text_AnnoyingIntroPart3, MSGBOX_DEFAULT
+	applymovement LOCALID_IVY, Common_Movement_WalkInPlaceFastestDown
+	msgbox FallarborTown_Text_AnnoyingIntroPart4, MSGBOX_DEFAULT
+	applymovement LOCALID_EVIE, Common_Movement_WalkInPlaceFastestDown
+	msgbox FallarborTown_Text_AnnoyingIntroPart5, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	call_if_eq FallarborTown_Explain_EVs
+	applymovement LOCALID_IVY, Common_Movement_WalkInPlaceFastestDown
+	msgbox FallarborTown_Text_AnnoyingIntroPart6, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq HyperTraining_EventScript_Explain_IVs
+	applymovement LOCALID_EVIE, Common_Movement_WalkInPlaceFastestDown
+	msgbox FallarborTown_Text_AnnoyingIntroPart7, MSGBOX_DEFAULT
+	applymovement LOCALID_IVY, Common_Movement_WalkInPlaceFastestDown
+	msgbox FallarborTown_Text_AnnoyingIntroPart8, MSGBOX_DEFAULT
 	setvar VAR_IVY_EVIE_HOUSE_STATE, 1
 	releaseall
 	end
@@ -38,45 +71,43 @@ FallarborTown_Text_AnnoyingIntroPart1:
 	.string "I'm Evie, and this is my sister, Ivy.$"
 
 FallarborTown_Text_AnnoyingIntroPart2:
-	.string "We offer special training\n"
+	.string "Ivy: We offer special training\n"
 	.string "programs that will seriously beef up\l"
 	.string "your team!$"
 
 FallarborTown_Text_AnnoyingIntroPart3:
-	.string "But our services don't come cheap.\n"
+	.string "Evie: But our services don't come cheap.\n"
 	.string "Well, mine don't, at least.\p"
 	.string "You can pay Ivy with junk-$"
 
 FallarborTown_Text_AnnoyingIntroPart4:
-	.string "Hey!\n"
+	.string "Ivy: Hey!\n"
 	.string "Those Bottle Caps aren't junk!\p"
 	.string "They're highly collectable, thank\n"
 	.string "you very much!$"
 
 FallarborTown_Text_AnnoyingIntroPart5:
-	.string "Yeah, yeah, if you say so…\p"
+	.string "Evie: Yeah, yeah, if you say so…\p"
 	.string "Anyway, do you know about your Pokémon's\n"
 	.string "Effort Values, or EVs for short?$"
 
 FallarborTown_Text_AnnoyingIntroPart6:
-	.string "OK! now, how about Individual\n"
+	.string "Ivy: OK! now, how about Individual\n"
 	.string "Values, or IVs?\p"
 	.string "Do you want me to explain them?$"
 
 FallarborTown_Text_AnnoyingIntroPart7:
-	.string "Right, here's the deal. For ¥100,\n"
+	.string "Evie: Right, here's the deal. For ¥100,\n"
 	.string "I'll increase a Pokémon's EVs by one.$"
 
 FallarborTown_Text_AnnoyingIntroPart8:
-	.string "And for one Bottle Cap, I'll change\n"
+	.string "Ivy: And for one Bottle Cap, I'll change\n"
 	.string "one of a Pokémon's IVs to whatever\l"
 	.string "you want.\p"
 	.string "Also, for three Caps, I'll change all\n"
 	.string "of a Pokémon's IVs to give them a new\l"
 	.string "Hidden Power type.$"
 
-		
-		
 @@@@@@@@@@@@@@@@ Super Training Script @@@@@@@@@@@@@@@@
 
 FallarborTown_SuperTrainer::
@@ -255,10 +286,21 @@ FallarborTown_DoSuperTraining::
 	special CheckChosenMonCanGainEVs
 	compare VAR_RESULT, 0
 	goto_if_eq FallarborTown_CantExceedEVLimit
+	showmoneybox 15, 0, 0
+	buffernumberstring 2, VAR_0x8009
+	msgbox SuperTraining_ShowPrice, MSGBOX_YESNO
+	compare VAR_RESULT, 0
+	goto_if_eq FallarborTown_WontPay
+	checkmoney VAR_0x8009, 0
+	compare VAR_RESULT, 0
+	goto_if_eq FallarborTown_CantAfford
+	removemoney VAR_0x8009, 0
+	updatemoneybox 0, 0
 	special IncreaseChosenMonEVs
 	bufferpartymonnick 0, VAR_0x8004
 	buffernumberstring 1, VAR_0x8007
 	msgbox SuperTraining_Text_EVsHaveIncreased
+	hidemoneybox
 	goto FallarborTown_ChangeEV
 
 FallarborTown_CantExceedEVLimit::
@@ -290,7 +332,7 @@ SuperTraining_Refuse::
 	end
 
 SuperTraining_Text_ChoosePokemon:
-	.string "Which Pokémon would you like me\n"
+	.string "Evie: Which Pokémon would you like me\n"
 	.string "to train?$"
 
 FallarborTown_Text_CantTrainEgg:
@@ -305,7 +347,7 @@ SuperTraining_Text_RememberEvs:
 	.string "And you remember how EVs work, right?$"
 
 FallarborTown_Text_ExplainEvs:
-	.string "EVs are part of every stat a\n"
+	.string "Evie: EVs are part of every stat a\n"
 	.string "a Pokémon has.\p"
 	.string "They can have HP EVs, Attack EVs,\n"
 	.string "Defense EVs… you get the idea.\p"
@@ -324,7 +366,9 @@ FallarborTown_Text_ExplainEvs:
 	.string "but you can get creative with EVs too!$"
 
 SuperTraining_Text_TakeALookatEVs:
-	.string "Let's take a look at your {STR_VAR_1}'s EVs.$"
+	.string "OK! Again, I charge ¥100 per EV\n"
+	.string "added. Now let's take a look at your\l"
+	.string "{STR_VAR_1}'s EVs.$"
 
 SuperTraining_Text_ThisIsMonsCurrentSpread:
 	.string "This is {STR_VAR_1}'s current EV\n"
@@ -530,7 +574,12 @@ HyperTraining_EventScript_ChangeIV31::
 	goto HyperTraining_EventScript_ChangeOneIV
 
 HyperTraining_EventScript_ChangeOneIV::
+	checkitem ITEM_BOTTLE_CAP, 1
+	compare VAR_RESULT, FALSE
+	goto_if_eq HyperTraining_EventScript_NotEnoughCaps
 	special ChangeChosenMonIVs
+	msgbox HyperTraining_Text_PayOneCap, MSGBOX_DEFAULT
+	removeitem ITEM_BOTTLE_CAP
 	goto HyperTraining_EventScript_DoHyperTraining
 
 HyperTraining_EventScript_ChangeHiddenPower::
@@ -626,7 +675,12 @@ HyperTraining_EventScript_ChangeHPDark::
 	goto HyperTraining_EventScript_ChangeAllIVs
 
 HyperTraining_EventScript_ChangeAllIVs::
+	checkitem ITEM_BOTTLE_CAP, 3
+	compare VAR_RESULT, FALSE
+	goto_if_eq HyperTraining_EventScript_NotEnoughCaps
 	special ChangeChosenMonHiddenPower
+	msgbox HyperTraining_Text_PayThreeCaps, MSGBOX_DEFAULT
+	removeitem ITEM_BOTTLE_CAP, 3
 	goto HyperTraining_EventScript_DoHyperTraining
 
 HyperTraining_EventScript_DoHyperTraining::
@@ -651,14 +705,14 @@ HyperTraining_EventScript_RebufferChosenMon::
 	goto FallarborTown_HyperMainMenu
 
 HyperTraining_Text_ChoosePokemon:
-	.string "Which Pokémon needs some\n"
+	.string "Ivy: Which Pokémon needs some\n"
 	.string "Hyper Training?$"
 
 HyperTraining_Text_WantMeExplainIVs:
 	.string "Would you like me to explain IVs again?$"
 
 HyperTraining_Text_ExplainIVs:
-	.string "IVs are a hidden part of your\n"
+	.string "Ivy: IVs are a hidden part of your\n"
 	.string "Pokémon's stats that can only be\l"
 	.string "changed with special training,\l"
 	.string "or raised by giving them Vitamins.\p"
@@ -720,7 +774,13 @@ HyperTraining_Text_HowCanIHelp:
 	.string "How can I help {STR_VAR_1} today?$"
 
 HyperTraining_Text_StartHyperTraining:
-	.string "Got it! Let's do some Hyper Training!$"
+	.string "Got it! Let's do some Hyper Training!\p"
+	.string "… … … … … …\n"
+	.string "… … … … … …\p"
+	.string "… … … … … …\n"
+	.string "… … … … … …\p"
+	.string "… … … … … …\n"
+	.string "… … … … … …$"
 
 HyperTraining_Text_NotEnoughCaps:
 	.string "You don't have enough Bottle Caps.$"
