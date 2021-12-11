@@ -3323,8 +3323,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     SetBoxMonData(boxMon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
     SetBoxMonData(boxMon, MON_DATA_SPECIES, &species);
     SetBoxMonData(boxMon, MON_DATA_EXP, &gExperienceTables[gBaseStats[species].growthRate][level]);
-    value = 4;
-    SetBoxMonData(boxMon, MON_DATA_FRIENDSHIP, &value);
+    SetBoxMonData(boxMon, MON_DATA_FRIENDSHIP, &gBaseStats[species].friendship);
     value = GetCurrentRegionMapSectionId();
     SetBoxMonData(boxMon, MON_DATA_MET_LOCATION, &value);
     SetBoxMonData(boxMon, MON_DATA_MET_LEVEL, &level);
@@ -3366,7 +3365,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         // Set three random IVs to 31
         ShuffleStatArray(statIDs);
 
-        for (i = 0; i < 6; i++)
+        for (i = 0; i < 3; i++)
         {
             SetBoxMonData(boxMon, MON_DATA_HP_IV + statIDs[i], &maxIV);
         }
@@ -4930,22 +4929,22 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         SET8(substruct1->pp[field - MON_DATA_PP1]);
         break;
     case MON_DATA_HP_EV:
-        substruct2->hpEV = 0;  //EVs set to 0 
+        SET8(substruct2->hpEV);
         break;
     case MON_DATA_ATK_EV:
-        substruct2->attackEV = 0;  //EVs set to 0 
+        SET8(substruct2->attackEV);
         break;
     case MON_DATA_DEF_EV:
-        substruct2->defenseEV = 0;  //EVs set to 0 
+        SET8(substruct2->defenseEV);
         break;
     case MON_DATA_SPEED_EV:
-        substruct2->speedEV = 0;  //EVs set to 0 
+        SET8(substruct2->speedEV);
         break;
     case MON_DATA_SPATK_EV:
-        substruct2->spAttackEV = 0;  //EVs set to 0 
+        SET8(substruct2->spAttackEV);
         break;
     case MON_DATA_SPDEF_EV:
-        substruct2->spDefenseEV = 0;  //EVs set to 0 
+        SET8(substruct2->spDefenseEV);
         break;
     case MON_DATA_COOL:
         SET8(substruct2->cool);
