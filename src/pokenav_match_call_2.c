@@ -317,6 +317,7 @@ static bool32 GetCurrentLoopedTaskActive(void)
 
 static u32 LoopedTask_OpenMatchCall(s32 taskState)
 {
+    /*
     struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
@@ -386,6 +387,8 @@ static u32 LoopedTask_OpenMatchCall(s32 taskState)
     default:
         return LT_FINISH;
     }
+    */
+    return LT_FINISH;
 }
 
 u32 MatchCallListCursorDown(s32 taskState)
