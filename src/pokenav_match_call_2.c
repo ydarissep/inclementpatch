@@ -160,8 +160,8 @@ static const LoopedTask sMatchCallLoopTaskFuncs[] =
     [POKENAV_MC_FUNC_SELECT]              = SelectMatchCallEntry,
     [POKENAV_MC_FUNC_MOVE_OPTIONS_CURSOR] = MoveMatchCallOptionsCursor,
     [POKENAV_MC_FUNC_CANCEL]              = CancelMatchCallSelection,
-    [POKENAV_MC_FUNC_CALL_MSG]            = NULL,//DoMatchCallMessage,
-    [POKENAV_MC_FUNC_NEARBY_MSG]          = NULL,//DoTrainerCloseByMessage,
+    [POKENAV_MC_FUNC_CALL_MSG]            = DoMatchCallMessage,
+    [POKENAV_MC_FUNC_NEARBY_MSG]          = DoTrainerCloseByMessage,
     [POKENAV_MC_FUNC_10]                  = sub_81CB888,
     [POKENAV_MC_FUNC_SHOW_CHECK_PAGE]     = ShowCheckPage,
     [POKENAV_MC_FUNC_CHECK_PAGE_UP]       = ShowCheckPageUp,
@@ -279,10 +279,10 @@ bool32 OpenMatchCall(void)
     if (!state)
         return FALSE;
 
-    //state->unused19 = 0;
-    //state->loopTaskId = CreateLoopedTask(LoopedTask_OpenMatchCall, 1);
-    //state->isTaskActiveCB = GetCurrentLoopedTaskActive;
-    return FALSE;
+    state->unused19 = 0;
+    state->loopTaskId = CreateLoopedTask(LoopedTask_OpenMatchCall, 1);
+    state->isTaskActiveCB = GetCurrentLoopedTaskActive;
+    return TRUE;
 }
 
 void CreateMatchCallLoopedTask(s32 index)
