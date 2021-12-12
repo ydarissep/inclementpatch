@@ -603,7 +603,7 @@ static const match_call_t sMatchCallHeaders[] = {
 
 static bool32 (*const sMatchCallGetEnabledFuncs[])(match_call_t) = {
     MatchCall_GetEnabled_NPC,
-    MatchCall_GetEnabled_Trainer,
+    //MatchCall_GetEnabled_Trainer,
     MatchCall_GetEnabled_Wally,
     MatchCall_GetEnabled_Rival,
     MatchCall_GetEnabled_Birch
@@ -611,7 +611,7 @@ static bool32 (*const sMatchCallGetEnabledFuncs[])(match_call_t) = {
 
 static u8 (*const sMatchCallGetMapSecFuncs[])(match_call_t) = {
     MatchCall_GetMapSec_NPC,
-    MatchCall_GetMapSec_Trainer,
+    //MatchCall_GetMapSec_Trainer,
     MatchCall_GetMapSec_Wally,
     MatchCall_GetMapSec_Rival,
     MatchCall_GetMapSec_Birch
@@ -619,7 +619,7 @@ static u8 (*const sMatchCallGetMapSecFuncs[])(match_call_t) = {
 
 static bool32 (*const sMatchCall_IsRematchableFunctions[])(match_call_t) = {
     MatchCall_IsRematchable_NPC,
-    MatchCall_IsRematchable_Trainer,
+    //MatchCall_IsRematchable_Trainer,
     MatchCall_IsRematchable_Wally,
     MatchCall_IsRematchable_Rival,
     MatchCall_IsRematchable_Birch
