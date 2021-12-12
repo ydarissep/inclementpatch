@@ -620,7 +620,6 @@ u32 DoMatchCallMessage(s32 taskState)
 
 u32 DoTrainerCloseByMessage(s32 taskState)
 {
-    /*
     struct Pokenav4Struct *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_OPEN);
     switch (taskState)
     {
@@ -641,7 +640,6 @@ u32 DoTrainerCloseByMessage(s32 taskState)
             return LT_PAUSE;
         break;
     }
-    */
     return LT_FINISH;
 }
 
