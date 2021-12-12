@@ -495,7 +495,7 @@ static bool32 sub_81CB1D0(void)
         if (GetMatchCallMapSec(selection) == gMapHeader.regionMapSectionId)
         {
             if (!gSaveBlock1Ptr->trainerRematches[state->matchCallEntries[selection].headerId])
-                return FALSE;
+                return TRUE;
         }
     }
     else
