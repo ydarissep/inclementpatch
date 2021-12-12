@@ -259,8 +259,7 @@ static u32 sub_81CAD20(s32 taskState)
 bool32 IsRematchEntryRegistered(int rematchIndex)
 {
     if (rematchIndex < REMATCH_TABLE_ENTRIES)
-        //return FlagGet(FLAG_MATCH_CALL_REGISTERED + rematchIndex);
-        return FALSE;
+        return FlagGet(FLAG_MATCH_CALL_REGISTERED + rematchIndex);
 
     return FALSE;
 }
