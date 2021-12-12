@@ -279,10 +279,10 @@ bool32 OpenMatchCall(void)
     if (!state)
         return FALSE;
 
-    state->unused19 = 0;
-    state->loopTaskId = CreateLoopedTask(LoopedTask_OpenMatchCall, 1);
-    state->isTaskActiveCB = GetCurrentLoopedTaskActive;
-    return TRUE;
+    //state->unused19 = 0;
+    //state->loopTaskId = CreateLoopedTask(LoopedTask_OpenMatchCall, 1);
+    //state->isTaskActiveCB = GetCurrentLoopedTaskActive;
+    return FALSE;
 }
 
 void CreateMatchCallLoopedTask(s32 index)
