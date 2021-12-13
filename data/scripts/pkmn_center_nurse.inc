@@ -16,14 +16,6 @@ Common_EventScript_PkmnCenterNurse::
     end
 
 EventScript_PkmnCenterNurseHasVial::
-    call Give_Nuzlocke_Items
-    call_if_set FLAG_BADGE01_GET, Give_Cut_Items_After_Roxanne
-    call_if_set FLAG_RECEIVED_TM46, Give_Thief_Items_After_Thief
-    call_if_set FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS, Give_Thief_Items_After_Museum
-    call_if_set FLAG_BADGE03_GET, Give_Thief_Items_After_Wattson
-    call_if_set FLAG_BADGE04_GET, Give_Thief_Items_After_Flannery
-    call_if_set FLAG_BADGE05_GET, Give_Thief_Items_After_Norman
-    call_if_set FLAG_BADGE06_GET, Give_Thief_Items_After_Winoma
     goto EventScript_PkmnCenterNurse_HealPkmn
     end
 
