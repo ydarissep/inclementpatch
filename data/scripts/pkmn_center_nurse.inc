@@ -16,6 +16,7 @@ Common_EventScript_PkmnCenterNurse::
     end
 
 EventScript_PkmnCenterNurseHasVial::
+    releaseall
     end
 
 EventScript_PkmnCenterNurse_Goodbye::
