@@ -17,6 +17,7 @@ Common_EventScript_PkmnCenterNurse::
 
 EventScript_PkmnCenterNurseHasVial::
     goto EventScript_PkmnCenterNurse_HealPkmn
+    releaseall
     end
 
 EventScript_PkmnCenterNurse_Goodbye::
