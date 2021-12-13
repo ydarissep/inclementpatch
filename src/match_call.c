@@ -1155,8 +1155,7 @@ bool32 TryStartMatchCall(void)
         && MapAllowsMatchCall()
         && SelectMatchCallTrainer())
     {
-        StartMatchCall();
-        return TRUE;
+        return FALSE;
     }
 
     return FALSE;
