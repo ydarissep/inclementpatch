@@ -74,11 +74,6 @@ EventScript_PkmnCenterNurse_ReturnPkmn::
     return
 
 EventScript_PkmnCenterNurse_ReturnPkmn2::
-    message gText_ThankYouForWaiting
-    waitmessage
-    applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
-    waitmovement 0
-    message gText_WeHopeToSeeYouAgain2
     return
 
 EventScript_PkmnCenterNurse_PlayerWaitingInUnionRoom::
