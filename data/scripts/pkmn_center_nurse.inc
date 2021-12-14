@@ -16,8 +16,15 @@ Common_EventScript_PkmnCenterNurse::
     end
 
 EventScript_PkmnCenterNurseHasVial::
+    call Give_Nuzlocke_Items
+    call_if_set FLAG_BADGE01_GET, Give_Cut_Items_After_Roxanne
+    call_if_set FLAG_RECEIVED_TM46, Give_Thief_Items_After_Thief
+    call_if_set FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS, Give_Thief_Items_After_Museum
+    call_if_set FLAG_BADGE03_GET, Give_Thief_Items_After_Wattson
+    call_if_set FLAG_BADGE04_GET, Give_Thief_Items_After_Flannery
+    call_if_set FLAG_BADGE05_GET, Give_Thief_Items_After_Norman
+    call_if_set FLAG_BADGE06_GET, Give_Thief_Items_After_Winoma
     call EventScript_PkmnCenterNurse_HealPkmn
-    releaseall
     end
 
 EventScript_PkmnCenterNurse_Goodbye::
@@ -30,6 +37,7 @@ EventScript_PkmnCenterNurse_HealPkmn::
     incrementgamestat GAME_STAT_USED_POKECENTER
     call EventScript_PkmnCenterNurse_TakeAndHealPkmn
     goto_if_unset FLAG_POKERUS_EXPLAINED, EventScript_PkmnCenterNurse_CheckPokerus
+    goto EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom
     end
 
 EventScript_PkmnCenterNurse_IllTakeYourPkmn::
@@ -41,6 +49,12 @@ EventScript_PkmnCenterNurse_IllTakeYourPkmn2::
     return
 
 EventScript_PkmnCenterNurse_TakeAndHealPkmn::
+    applymovement VAR_0x800B, Common_Movement_FaceLeft
+    waitmovement 0
+    dofieldeffect FLDEFF_POKECENTER_HEAL
+    waitfieldeffect FLDEFF_POKECENTER_HEAL
+    applymovement VAR_0x800B, Common_Movement_FaceDown
+    waitmovement 0
     special HealPlayerParty
     return
 
@@ -58,9 +72,21 @@ EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom::
 
 @ VAR_0x8004 is 1 when player has Gold Card
 EventScript_PkmnCenterNurse_ReturnPkmn::
+    compare VAR_0x8004, 1
+    goto_if_eq EventScript_PkmnCenterNurse_ReturnPkmn2
+    message gText_RestoredPkmnToFullHealth
+    waitmessage
+    applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
+    waitmovement 0
+    message gText_WeHopeToSeeYouAgain
     return
 
 EventScript_PkmnCenterNurse_ReturnPkmn2::
+    message gText_ThankYouForWaiting
+    waitmessage
+    applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
+    waitmovement 0
+    message gText_WeHopeToSeeYouAgain2
     return
 
 EventScript_PkmnCenterNurse_PlayerWaitingInUnionRoom::
