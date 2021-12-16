@@ -310,7 +310,8 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        OpenPartyMenuToChooseMon();
+        gBattlerControllerFuncs[gActiveBattler] = OpenPartyMenuToChooseMon;
+        gBattlerInMenuId = gActiveBattler;
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
