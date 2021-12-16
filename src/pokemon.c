@@ -3366,7 +3366,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         // Set three random IVs to 31
         ShuffleStatArray(statIDs);
 
-        for (i = 0; i < 3; i++)
+        for (i = 0; i < 6; i++)
         {
             SetBoxMonData(boxMon, MON_DATA_HP_IV + statIDs[i], &maxIV);
         }
@@ -4930,22 +4930,22 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         SET8(substruct1->pp[field - MON_DATA_PP1]);
         break;
     case MON_DATA_HP_EV:
-        SET8(substruct2->hpEV);
+        substruct2->hpEV = 0;
         break;
     case MON_DATA_ATK_EV:
-        SET8(substruct2->attackEV);
+        substruct2->attackEV = 0;
         break;
     case MON_DATA_DEF_EV:
-        SET8(substruct2->defenseEV);
+        substruct2->defenseEV = 0;
         break;
     case MON_DATA_SPEED_EV:
-        SET8(substruct2->speedEV);
+        substruct2->speedEV = 0;
         break;
     case MON_DATA_SPATK_EV:
-        SET8(substruct2->spAttackEV);
+        substruct2->spAttackEV = 0;
         break;
     case MON_DATA_SPDEF_EV:
-        SET8(substruct2->spDefenseEV);
+        substruct2->spDefenseEV = 0;
         break;
     case MON_DATA_COOL:
         SET8(substruct2->cool);
