@@ -365,6 +365,7 @@ static void InitContestMonPixels(u16 species, u8 whichSprite)
 {
     const void *pal = GetMonSpritePalFromSpeciesAndPersonality(species, gContestPaintingWinner->trainerId, gContestPaintingWinner->personality);
     LZDecompressVram(pal, gContestPaintingMonPalette);
+    HueShiftMonPalette(gContestPaintingMonPalette, gContestPaintingWinner->personality);
     if (whichSprite == 0)
     {
         HandleLoadSpecialPokePic(
