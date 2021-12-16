@@ -1533,20 +1533,6 @@ static void OpenPartyMenuToChooseMon(void)
     }
 }
 
-static void OpenSummaryScreenFromBattle(void)
-{
-    if (!gPaletteFade.active)
-    {
-        u8 caseId;
-
-        gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
-        caseId = gTasks[gBattleControllerData[gActiveBattler]].data[0];
-        DestroyTask(gBattleControllerData[gActiveBattler]);
-        FreeAllWindowBuffers();
-        ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gPlayerParty, 1, gPlayerPartyCount - 1, CB2_ReturnToPartyMenuFromSummaryScreen);
-    }
-}
-
 static void WaitForMonSelection(void)
 {
     if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
