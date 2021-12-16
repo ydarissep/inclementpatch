@@ -310,7 +310,7 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        PlayerHandleChoosePokemon();
+        OpenPartyMenuToChooseMon();
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
