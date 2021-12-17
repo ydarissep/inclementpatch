@@ -2766,7 +2766,6 @@ static void CB2_ReturnToPartyMenuFromSummaryScreen(void)
     gPartyMenu.slotId = gLastViewedMonIndex;
     //InitPartyMenu(gPartyMenu.menuType, KEEP_PARTY_LAYOUT, gPartyMenu.action, TRUE, PARTY_MSG_DO_WHAT_WITH_MON, Task_TryCreateSelectionWindow, gPartyMenu.exitCallback);
     InitPartyMenu(gPartyMenu.menuType, KEEP_PARTY_LAYOUT, gPartyMenu.action, TRUE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, gPartyMenu.exitCallback);
-    Task_ClosePartyMenu();
 }
 
 static void CursorCb_Switch(u8 taskId)
