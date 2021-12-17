@@ -2765,6 +2765,7 @@ static void CB2_ReturnToPartyMenuFromSummaryScreen(void)
     gPaletteFade.bufferTransferDisabled = TRUE;
     gPartyMenu.slotId = gLastViewedMonIndex;
     InitPartyMenu(gPartyMenu.menuType, KEEP_PARTY_LAYOUT, gPartyMenu.action, TRUE, PARTY_MSG_DO_WHAT_WITH_MON, Task_TryCreateSelectionWindow, gPartyMenu.exitCallback);
+    ExitPartyMenu();
 }
 
 static void CursorCb_Switch(u8 taskId)
@@ -6088,7 +6089,6 @@ void OpenPartyMenuInBattle(u8 partyAction)
     ReshowBattleScreenDummy();
     UpdatePartyToBattleOrder();
     ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, gPartyMenu.slotId, gEnemyPartyCount - 1, CB2_ReturnToPartyMenuFromSummaryScreen);
-    ExitPartyMenu();
 }
 
 void ChooseMonForInBattleItem(void)
