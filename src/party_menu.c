@@ -610,7 +610,7 @@ static bool8 ShowPartyMenu(void)
 
 static void ExitPartyMenu(void)
 {
-    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+    //BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     CreateTask(Task_ExitPartyMenu, 0);
     SetVBlankCallback(VBlankCB_PartyMenu);
     SetMainCallback2(CB2_UpdatePartyMenu);
