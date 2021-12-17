@@ -6432,6 +6432,7 @@ static void SwitchAliveMonIntoLeadSlot(void)
 
 static void CB2_SetUpExitToBattleScreen(void)
 {
+    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     SetMainCallback2(CB2_SetUpReshowBattleScreenAfterMenu);
 }
 
