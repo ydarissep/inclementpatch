@@ -265,7 +265,7 @@ static void HandleInputChooseAction(void)
     if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
-        TryHideLastUsedBall();
+        //TryHideLastUsedBall();
         
         switch (gActionSelectionCursor[gActiveBattler])
         {
