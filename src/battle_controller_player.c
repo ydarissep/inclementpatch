@@ -228,6 +228,20 @@ static void PlayerBufferRunCommand(void)
     }
 }
 
+static void OpenPartyMenuToChooseMon(void)
+{
+    if (!gPaletteFade.active)
+    {
+        u8 caseId;
+
+        gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
+        caseId = gTasks[gBattleControllerData[gActiveBattler]].data[0];
+        DestroyTask(gBattleControllerData[gActiveBattler]);
+        FreeAllWindowBuffers();
+        OpenPartyMenuInBattle(caseId);
+    }
+}
+
 static void CompleteOnBankSpritePosX_0(void)
 {
     if (gSprites[gBattlerSpriteIds[gActiveBattler]].x2 == 0)
@@ -1523,20 +1537,6 @@ static void CompleteOnInactiveTextPrinter2(void)
 {
     if (!IsTextPrinterActive(0))
         PlayerBufferExecCompleted();
-}
-
-static void OpenPartyMenuToChooseMon(void)
-{
-    if (!gPaletteFade.active)
-    {
-        u8 caseId;
-
-        gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
-        caseId = gTasks[gBattleControllerData[gActiveBattler]].data[0];
-        DestroyTask(gBattleControllerData[gActiveBattler]);
-        FreeAllWindowBuffers();
-        OpenPartyMenuInBattle(caseId);
-    }
 }
 
 static void WaitForMonSelection(void)
