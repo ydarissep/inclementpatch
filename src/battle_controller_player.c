@@ -324,7 +324,12 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
+        switch (gActionSelectionCursor[gActiveBattler])
+        {
+        case default:
+            BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
+            break;
+        }
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
