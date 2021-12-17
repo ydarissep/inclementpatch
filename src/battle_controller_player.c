@@ -286,7 +286,7 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        OpenPartyMenuToChooseMon();
+        PlayerHandleChoosePokemon();
         PlayerBufferExecCompleted();
     }
     else if (JOY_NEW(DPAD_LEFT))
