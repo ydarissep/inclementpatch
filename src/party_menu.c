@@ -6089,6 +6089,8 @@ void OpenPartyMenuInBattle(u8 partyAction)
     ReshowBattleScreenDummy();
     UpdatePartyToBattleOrder();
     ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, gPartyMenu.slotId, gEnemyPartyCount - 1, CB2_SetUpReshowBattleScreenAfterMenu);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
 }
 
 void ChooseMonForInBattleItem(void)
