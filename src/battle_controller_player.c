@@ -357,6 +357,7 @@ static void HandleInputChooseAction(void)
         BtlController_EmitTwoReturnValues(1, B_ACTION_DEBUG, 0);
         PlayerBufferExecCompleted();
     }
+    /*
     #if B_LAST_USED_BALL == TRUE
     else if (JOY_NEW(B_LAST_USED_BALL_BUTTON) && CanThrowLastUsedBall())
     {
@@ -366,6 +367,7 @@ static void HandleInputChooseAction(void)
         PlayerBufferExecCompleted();
     }
     #endif
+    */
 }
 
 static void UnusedEndBounceEffect(void)
