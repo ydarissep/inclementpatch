@@ -311,7 +311,7 @@ static void HandleInputChooseAction(void)
     else if (JOY_NEW(R_BUTTON))
     {
         PlayerHandleChoosePokemon();
-        break;
+        return;
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
