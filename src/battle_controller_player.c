@@ -287,7 +287,7 @@ static void HandleInputChooseAction(void)
     else if (JOY_NEW(R_BUTTON))
     {
         PlayerHandleChoosePokemon();
-        return 0;
+        return;
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
