@@ -282,6 +282,16 @@ static void HandleInputChooseAction(void)
         }
         PlayerBufferExecCompleted();
     }
+    else if (JOY_NEW(R_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        switch (gActionSelectionCursor[gActiveBattler])
+        {
+        default:
+            BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
+            break;
+        }
+    }
     else if (JOY_NEW(DPAD_LEFT))
     {
         if (gActionSelectionCursor[gActiveBattler] & 1) // if is B_ACTION_USE_ITEM or B_ACTION_RUN
@@ -320,15 +330,6 @@ static void HandleInputChooseAction(void)
             ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
             gActionSelectionCursor[gActiveBattler] ^= 2;
             ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
-        }
-    }
-    else if (JOY_NEW(R_BUTTON))
-    {
-        switch (gActionSelectionCursor[gActiveBattler])
-        {
-        default:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
-            break;
         }
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
