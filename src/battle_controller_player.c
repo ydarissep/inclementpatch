@@ -310,8 +310,9 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        PlayerHandleChoosePokemon();
-        return;
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+        gBattlerControllerFuncs[gActiveBattler] = OpenPartyMenuToChooseMon;
+        gBattlerInMenuId = gActiveBattler;
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
