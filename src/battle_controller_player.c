@@ -284,13 +284,7 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        PlaySE(SE_SELECT);
-        switch (gActionSelectionCursor[gActiveBattler])
-        {
-        default:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
-            break;
-        }
+        OpenPartyMenuToChooseMon();
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
