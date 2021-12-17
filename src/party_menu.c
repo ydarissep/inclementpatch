@@ -6097,6 +6097,7 @@ void ChooseMonForInBattleItem(void)
     InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), PARTY_ACTION_USE_ITEM, FALSE, PARTY_MSG_USE_ON_WHICH_MON, Task_HandleChooseMonInput, CB2_ReturnToBagMenu);
     ReshowBattleScreenDummy();
     UpdatePartyToBattleOrder();
+    ExitPartyMenu();
 }
 
 static u8 GetPartyMenuActionsTypeInBattle(struct Pokemon *mon)
