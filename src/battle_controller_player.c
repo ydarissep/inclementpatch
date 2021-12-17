@@ -326,7 +326,7 @@ static void HandleInputChooseAction(void)
     {
         switch (gActionSelectionCursor[gActiveBattler])
         {
-        case default:
+        default:
             BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
             break;
         }
