@@ -284,8 +284,13 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        OpenPartyMenuToChooseMon();
-        return;
+        switch (gActionSelectionCursor[gActiveBattler])
+        {
+        default:
+            BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
+            break;
+        }
+        PlayerBufferExecCompleted();
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
