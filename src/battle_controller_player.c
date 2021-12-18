@@ -298,7 +298,7 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        OpenPartyMenuToShowEnemySummaryScreen();
+        //OpenPartyMenuToShowEnemySummaryScreen();
         /*
         switch (gActionSelectionCursor[gActiveBattler])
         {
