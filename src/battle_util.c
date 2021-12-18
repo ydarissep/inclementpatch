@@ -541,6 +541,7 @@ void HandleAction_Switch(void)
 }
 void HandleAction_Summary(void)
 {
+    /*
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
     gBattle_BG0_X = 0;
     gBattle_BG0_Y = 0;
@@ -557,6 +558,7 @@ void HandleAction_Summary(void)
         gBattleResults.playerSwitchesCounter++;
 
     UndoFormChange(gBattlerPartyIndexes[gBattlerAttacker], GetBattlerSide(gBattlerAttacker), TRUE);
+    */
 }
 
 void HandleAction_UseItem(void)
