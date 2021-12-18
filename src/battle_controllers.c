@@ -1200,6 +1200,19 @@ void BtlController_EmitChoosePokemon(u8 bufferId, u8 caseId, u8 slotId, u16 abil
         sBattleBuffersTransferData[4 + i] = arg4[i];
     PrepareBufferDataTransfer(bufferId, sBattleBuffersTransferData, 8);  // Only 7 bytes were written.
 }
+void BtlController_EmitShowEnemySummaryScreen(u8 bufferId, u8 caseId, u8 slotId, u16 abilityId, u8 *arg4)
+{
+    s32 i;
+
+    sBattleBuffersTransferData[0] = CONTROLLER_SHOWENEMYSUMMARYSCREEN;
+    sBattleBuffersTransferData[1] = caseId;
+    sBattleBuffersTransferData[2] = slotId;
+    sBattleBuffersTransferData[3] = abilityId & 0xFF;
+    sBattleBuffersTransferData[7] = (abilityId >> 8) & 0xFF;
+    for (i = 0; i < 3; i++)
+        sBattleBuffersTransferData[4 + i] = arg4[i];
+    PrepareBufferDataTransfer(bufferId, sBattleBuffersTransferData, 8);  // Only 7 bytes were written.
+}
 
 void BtlController_EmitCmd23(u8 bufferId)
 {
