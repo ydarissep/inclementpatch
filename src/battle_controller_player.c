@@ -298,7 +298,19 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
+        switch (gActionSelectionCursor[gActiveBattler])
+        {
+        default:
+            BtlController_EmitTwoReturnValues(1, B_ACTION_NONE, 0);
+            break;
+        }
         PlayerHandleShowEnemySummaryScreen();
+        switch (gActionSelectionCursor[gActiveBattler])
+        {
+        default:
+            BtlController_EmitTwoReturnValues(1, B_ACTION_NONE, 0);
+            break;
+        }
         /*
         switch (gActionSelectionCursor[gActiveBattler])
         {
@@ -306,8 +318,8 @@ static void HandleInputChooseAction(void)
             BtlController_EmitTwoReturnValues(1, B_ACTION_SUMMARY, 0);
             break;
         }
-        PlayerBufferExecCompleted();
         */
+        PlayerBufferExecCompleted();
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
