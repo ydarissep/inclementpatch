@@ -2914,7 +2914,6 @@ static void PlayerHandleChoosePokemon(void)
 }
 static void PlayerHandleShowEnemySummaryScreen(void)
 {
-    /*
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(gBattlePartyCurrentOrder); i++)
@@ -2925,7 +2924,6 @@ static void PlayerHandleShowEnemySummaryScreen(void)
     *(&gBattleStruct->battlerPreventingSwitchout) = gBattleResources->bufferA[gActiveBattler][1] >> 4;
     *(&gBattleStruct->prevSelectedPartySlot) = gBattleResources->bufferA[gActiveBattler][2];
     *(&gBattleStruct->abilityPreventingSwitchout) = (gBattleResources->bufferA[gActiveBattler][3] & 0xFF) | (gBattleResources->bufferA[gActiveBattler][7] << 8);
-    */
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gBattlerControllerFuncs[gActiveBattler] = OpenPartyMenuToShowEnemySummaryScreen;
     gBattlerInMenuId = gActiveBattler;
