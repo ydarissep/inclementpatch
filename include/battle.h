@@ -37,7 +37,7 @@
 #define B_ACTION_CANCEL_PARTNER         12 // when choosing an action
 #define B_ACTION_NOTHING_FAINTED        13 // when choosing an action
 
-#define B_ACTION_SWITCH                 14
+#define B_ACTION_SUMMARY                14
 
 #define B_ACTION_DEBUG                  20
 #define B_ACTION_THROW_BALL             21 // R to throw last used ball
