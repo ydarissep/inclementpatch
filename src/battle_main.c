@@ -471,6 +471,7 @@ static void (* const sTurnActionsFuncsTable[])(void) =
     [B_ACTION_USE_MOVE] = HandleAction_UseMove,
     [B_ACTION_USE_ITEM] = HandleAction_UseItem,
     [B_ACTION_SWITCH] = HandleAction_Switch,
+    [B_ACTION_SUMMARY] = HandleAction_Summary,
     [B_ACTION_RUN] = HandleAction_Run,
     [B_ACTION_SAFARI_WATCH_CAREFULLY] = HandleAction_WatchesCarefully,
     [B_ACTION_SAFARI_BALL] = HandleAction_SafariZoneBallThrow,
@@ -4241,6 +4242,18 @@ static void HandleTurnActionSelectionState(void)
                     }
                     break;
                 case B_ACTION_SWITCH:
+                    if (gBattleResources->bufferB[gActiveBattler][1] == PARTY_SIZE)
+                    {
+                        gBattleCommunication[gActiveBattler] = STATE_BEFORE_ACTION_CHOSEN;
+                        RecordedBattle_ClearBattlerAction(gActiveBattler, 1);
+                    }
+                    else
+                    {
+                        sub_803CDF8();
+                        gBattleCommunication[gActiveBattler]++;
+                    }
+                    break;
+		case B_ACTION_SUMMARY:
                     if (gBattleResources->bufferB[gActiveBattler][1] == PARTY_SIZE)
                     {
                         gBattleCommunication[gActiveBattler] = STATE_BEFORE_ACTION_CHOSEN;
