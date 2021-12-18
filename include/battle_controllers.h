@@ -214,6 +214,7 @@ void BtlController_EmitYesNoBox(u8 bufferId);
 void BtlController_EmitChooseMove(u8 bufferId, bool8 isDoubleBattle, bool8 NoPpNumber, struct ChooseMoveStruct *movePpData);
 void BtlController_EmitChooseItem(u8 bufferId, u8* arg1);
 void BtlController_EmitChoosePokemon(u8 bufferId, u8 caseId, u8 arg2, u16 abilityId, u8* arg4);
+void BtlController_EmitShowEnemySummaryScreen(u8 bufferId, u8 caseId, u8 arg2, u16 abilityId, u8* arg4);
 void BtlController_EmitCmd23(u8 bufferId); // unused
 void BtlController_EmitHealthBarUpdate(u8 bufferId, u16 hpValue);
 void BtlController_EmitExpUpdate(u8 bufferId, u8 partyId, s32 expPoints);
