@@ -6089,7 +6089,7 @@ void OpenPartyMenuInBattle(u8 partyAction)
     ReshowBattleScreenDummy();
     UpdatePartyToBattleOrder();
 }
-void OpenEnemySummaryScreenMenuInBattle(u8 partyAction)
+void OpenEnemySummaryScreenMenuInBattle(void)
 {
     InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), partyAction, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_SetUpExitToBattleScreen);
     ReshowBattleScreenDummy();
