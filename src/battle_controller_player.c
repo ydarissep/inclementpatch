@@ -305,7 +305,7 @@ static void HandleInputChooseAction(void)
             break;
         }
         PlayerBufferExecCompleted();
-        PlayerHandleShowEnemySummaryScreen();
+        OpenPartyMenuToShowEnemySummaryScreen();
         /*
         switch (gActionSelectionCursor[gActiveBattler])
         {
