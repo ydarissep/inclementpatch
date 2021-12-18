@@ -252,7 +252,7 @@ static void OpenPartyMenuToShowEnemySummaryScreen(void)
         caseId = gTasks[gBattleControllerData[gActiveBattler]].data[0];
         DestroyTask(gBattleControllerData[gActiveBattler]);
         FreeAllWindowBuffers();
-        OpenEnemySummaryScreenMenuInBattle(caseId);
+        OpenEnemySummaryScreenMenuInBattle();
     }
 }
 
