@@ -298,8 +298,7 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        OpenPartyMenuToShowEnemySummaryScreen();
-        /*
+        //OpenPartyMenuToShowEnemySummaryScreen();
         switch (gActionSelectionCursor[gActiveBattler])
         {
         default:
@@ -307,7 +306,6 @@ static void HandleInputChooseAction(void)
             break;
         }
         PlayerBufferExecCompleted();
-        */
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
