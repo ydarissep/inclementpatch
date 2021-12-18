@@ -62,6 +62,7 @@ static void PlayerHandleYesNoBox(void);
 static void PlayerHandleChooseMove(void);
 static void PlayerHandleChooseItem(void);
 static void PlayerHandleChoosePokemon(void);
+static void PlayerHandleShowEnemySummaryScreen(void);
 static void PlayerHandleCmd23(void);
 static void PlayerHandleHealthBarUpdate(void);
 static void PlayerHandleExpUpdate(void);
@@ -150,6 +151,7 @@ static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
     [CONTROLLER_CHOOSEMOVE]               = PlayerHandleChooseMove,
     [CONTROLLER_OPENBAG]                  = PlayerHandleChooseItem,
     [CONTROLLER_CHOOSEPOKEMON]            = PlayerHandleChoosePokemon,
+    [CONTROLLER_SHOWENEMYSUMMARYSCREEN]   = PlayerHandleShowEnemySummaryScreen,
     [CONTROLLER_23]                       = PlayerHandleCmd23,
     [CONTROLLER_HEALTHBARUPDATE]          = PlayerHandleHealthBarUpdate,
     [CONTROLLER_EXPUPDATE]                = PlayerHandleExpUpdate,
@@ -2892,6 +2894,22 @@ static void PlayerHandleChoosePokemon(void)
         gBattlerControllerFuncs[gActiveBattler] = OpenPartyMenuToChooseMon;
         gBattlerInMenuId = gActiveBattler;
     }
+}
+static void PlayerHandleShowEnemySummaryScreen(void)
+{
+    s32 i;
+
+    for (i = 0; i < ARRAY_COUNT(gBattlePartyCurrentOrder); i++)
+        gBattlePartyCurrentOrder[i] = gBattleResources->bufferA[gActiveBattler][4 + i];
+
+    gBattleControllerData[gActiveBattler] = CreateTask(TaskDummy, 0xFF);
+    gTasks[gBattleControllerData[gActiveBattler]].data[0] = gBattleResources->bufferA[gActiveBattler][1] & 0xF;
+    *(&gBattleStruct->battlerPreventingSwitchout) = gBattleResources->bufferA[gActiveBattler][1] >> 4;
+    *(&gBattleStruct->prevSelectedPartySlot) = gBattleResources->bufferA[gActiveBattler][2];
+    *(&gBattleStruct->abilityPreventingSwitchout) = (gBattleResources->bufferA[gActiveBattler][3] & 0xFF) | (gBattleResources->bufferA[gActiveBattler][7] << 8);
+    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+    gBattlerControllerFuncs[gActiveBattler] = OpenPartyMenuToShowEnemySummaryScreen;
+    gBattlerInMenuId = gActiveBattler;
 }
 
 static void PlayerHandleCmd23(void)
