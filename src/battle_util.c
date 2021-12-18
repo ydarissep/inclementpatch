@@ -546,9 +546,8 @@ void HandleAction_Summary(void)
     gBattle_BG0_Y = 0;
     gActionSelectionCursor[gBattlerAttacker] = 0;
     gMoveSelectionCursor[gBattlerAttacker] = 0;
-    /*
     PREPARE_MON_NICK_BUFFER(gBattleTextBuff1, gBattlerAttacker, *(gBattleStruct->field_58 + gBattlerAttacker))
-
+    /*
     gBattleScripting.battler = gBattlerAttacker;
     gBattlescriptCurrInstr = BattleScript_ActionSwitch;
     gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
