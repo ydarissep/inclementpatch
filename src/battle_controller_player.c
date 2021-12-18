@@ -243,6 +243,19 @@ static void OpenPartyMenuToChooseMon(void)
         OpenPartyMenuInBattle(caseId);
     }
 }
+static void OpenPartyMenuToShowEnemySummaryScreen(void)
+{
+    if (!gPaletteFade.active)
+    {
+        u8 caseId;
+
+        gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
+        caseId = gTasks[gBattleControllerData[gActiveBattler]].data[0];
+        DestroyTask(gBattleControllerData[gActiveBattler]);
+        FreeAllWindowBuffers();
+        OpenPartyMenuInBattle(caseId);
+    }
+}
 
 static void CompleteOnBankSpritePosX_0(void)
 {
