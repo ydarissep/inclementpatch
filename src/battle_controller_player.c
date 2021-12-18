@@ -256,6 +256,7 @@ static void OpenPartyMenuToShowEnemySummaryScreen(void)
         OpenEnemySummaryScreenMenuInBattle();
     }
     */
+    DestroyTask(gBattleControllerData[gActiveBattler]);
     FreeAllWindowBuffers();
     OpenEnemySummaryScreenMenuInBattle();
 }
