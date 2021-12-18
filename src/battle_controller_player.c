@@ -305,7 +305,6 @@ static void HandleInputChooseAction(void)
             break;
         }
         OpenPartyMenuToShowEnemySummaryScreen();
-        PlayerBufferExecCompleted();
         /*
         switch (gActionSelectionCursor[gActiveBattler])
         {
@@ -313,6 +312,7 @@ static void HandleInputChooseAction(void)
             BtlController_EmitTwoReturnValues(1, B_ACTION_SUMMARY, 0);
             break;
         }
+        PlayerBufferExecCompleted();
         */
     }
     else if (JOY_NEW(DPAD_LEFT))
