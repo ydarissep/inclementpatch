@@ -247,13 +247,14 @@ static void OpenPartyMenuToShowEnemySummaryScreen(void)
 {
     if (!gPaletteFade.active)
     {
+        /*
         u8 caseId;
-
         gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         caseId = gTasks[gBattleControllerData[gActiveBattler]].data[0];
         DestroyTask(gBattleControllerData[gActiveBattler]);
+        */
         FreeAllWindowBuffers();
-        OpenEnemySummaryScreenMenuInBattle(caseId);
+        OpenEnemySummaryScreenMenuInBattle();
     }
 }
 
