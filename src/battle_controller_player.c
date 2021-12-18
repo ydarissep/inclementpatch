@@ -376,6 +376,7 @@ static void HandleInputChooseAction(void)
     else if (JOY_NEW(L_BUTTON))
     {
         PlayerHandleShowEnemySummaryScreen();
+        HandleInputChooseAction();
         /*
         switch (gActionSelectionCursor[gActiveBattler])
         {
