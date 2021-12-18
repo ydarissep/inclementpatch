@@ -245,6 +245,7 @@ static void OpenPartyMenuToChooseMon(void)
 }
 static void OpenPartyMenuToShowEnemySummaryScreen(void)
 {
+    /*
     if (!gPaletteFade.active)
     {
         u8 caseId;
@@ -254,6 +255,9 @@ static void OpenPartyMenuToShowEnemySummaryScreen(void)
         FreeAllWindowBuffers();
         OpenEnemySummaryScreenMenuInBattle();
     }
+    */
+    FreeAllWindowBuffers();
+    OpenEnemySummaryScreenMenuInBattle();
 }
 
 static void CompleteOnBankSpritePosX_0(void)
