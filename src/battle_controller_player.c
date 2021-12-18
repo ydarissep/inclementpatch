@@ -298,20 +298,6 @@ static void HandleInputChooseAction(void)
         }
         PlayerBufferExecCompleted();
     }
-    else if (JOY_NEW(R_BUTTON))
-    {
-        PlayerHandleShowEnemySummaryScreen();
-        return;
-        /*
-        switch (gActionSelectionCursor[gActiveBattler])
-        {
-        default:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_SUMMARY, 0);
-            break;
-        }
-        PlayerBufferExecCompleted();
-        */
-    }
     else if (JOY_NEW(DPAD_LEFT))
     {
         if (gActionSelectionCursor[gActiveBattler] & 1) // if is B_ACTION_USE_ITEM or B_ACTION_RUN
@@ -388,6 +374,19 @@ static void HandleInputChooseAction(void)
         TryHideLastUsedBall();
         BtlController_EmitTwoReturnValues(1, B_ACTION_THROW_BALL, 0);
         PlayerBufferExecCompleted();
+    }
+    else if (JOY_NEW(R_BUTTON))
+    {
+        PlayerHandleShowEnemySummaryScreen();
+        /*
+        switch (gActionSelectionCursor[gActiveBattler])
+        {
+        default:
+            BtlController_EmitTwoReturnValues(1, B_ACTION_SUMMARY, 0);
+            break;
+        }
+        PlayerBufferExecCompleted();
+        */
     }
     #endif
 }
