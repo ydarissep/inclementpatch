@@ -299,12 +299,8 @@ static void HandleInputChooseAction(void)
     else if (JOY_NEW(R_BUTTON))
     {
         OpenPartyMenuToShowEnemySummaryScreen();
-        switch (gActionSelectionCursor[gActiveBattler])
-        {
-        default:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_NONE, 0);
-            break;
-        }
+        gActionSelectionCursor[gActiveBattler]=0;
+        //BtlController_EmitTwoReturnValues(1, B_ACTION_NONE, 0);
         /*
         switch (gActionSelectionCursor[gActiveBattler])
         {
