@@ -375,7 +375,7 @@ static void HandleInputChooseAction(void)
         BtlController_EmitTwoReturnValues(1, B_ACTION_THROW_BALL, 0);
         PlayerBufferExecCompleted();
     }
-    else if (JOY_NEW(R_BUTTON))
+    else if (JOY_NEW(L_BUTTON))
     {
         PlayerHandleShowEnemySummaryScreen();
         /*
