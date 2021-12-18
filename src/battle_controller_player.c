@@ -304,8 +304,8 @@ static void HandleInputChooseAction(void)
             BtlController_EmitTwoReturnValues(1, B_ACTION_NONE, 0);
             break;
         }
-        PlayerBufferExecCompleted();
         OpenPartyMenuToShowEnemySummaryScreen();
+        PlayerBufferExecCompleted();
         /*
         switch (gActionSelectionCursor[gActiveBattler])
         {
