@@ -304,13 +304,8 @@ static void HandleInputChooseAction(void)
             BtlController_EmitTwoReturnValues(1, B_ACTION_NONE, 0);
             break;
         }
+        PlayerBufferExecCompleted();
         PlayerHandleShowEnemySummaryScreen();
-        switch (gActionSelectionCursor[gActiveBattler])
-        {
-        default:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_NONE, 0);
-            break;
-        }
         /*
         switch (gActionSelectionCursor[gActiveBattler])
         {
@@ -319,7 +314,6 @@ static void HandleInputChooseAction(void)
             break;
         }
         */
-        PlayerBufferExecCompleted();
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
