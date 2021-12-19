@@ -274,6 +274,7 @@ static void HandleInputChooseAction(void)
     else
         gPlayerDpadHoldFrames = 0;
 
+    gActionSelectionCursor[gActiveBattler]=-1;
     if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
