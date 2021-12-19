@@ -305,6 +305,7 @@ static void HandleInputChooseAction(void)
         DestroyTask(gBattleControllerData[gActiveBattler]);
         FreeAllWindowBuffers();
         OpenEnemySummaryScreenMenuInBattle();
+        gBattleCommunication[gActiveBattler] = STATE_BEFORE_ACTION_CHOSEN;
         //PlayerHandleShowEnemySummaryScreen();
         /*
         switch (gActionSelectionCursor[gActiveBattler])
