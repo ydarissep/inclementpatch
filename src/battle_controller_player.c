@@ -298,7 +298,7 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        //BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         gBattlerInMenuId = gActiveBattler;
         gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         DestroyTask(gBattleControllerData[gActiveBattler]);
@@ -306,7 +306,7 @@ static void HandleInputChooseAction(void)
         BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
         PlayerBufferExecCompleted();
         ExitPartyMenu();
-        //BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         gBattlerInMenuId = gActiveBattler;
         gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         DestroyTask(gBattleControllerData[gActiveBattler]);
