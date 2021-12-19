@@ -6097,7 +6097,7 @@ void OpenEnemySummaryScreenMenuInBattle(void)
     ReshowBattleScreenDummy();
     UpdatePartyToBattleOrder();
     */
-    ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, CB2_SetUpExitToBattleScreen);
+    ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, ExitPartyMenu);
 }
 
 void ChooseMonForInBattleItem(void)
