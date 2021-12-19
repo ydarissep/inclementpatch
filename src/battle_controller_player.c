@@ -125,6 +125,7 @@ static void DoSwitchOutAnimation(void);
 static void PlayerDoMoveAnimation(void);
 static void Task_StartSendOutAnim(u8 taskId);
 static void EndDrawPartyStatusSummary(void);
+static void ExitPartyMenu(void);
 
 static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
 {
@@ -298,11 +299,6 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
-        gBattlerInMenuId = gActiveBattler;
-        gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
-        DestroyTask(gBattleControllerData[gActiveBattler]);
-        FreeAllWindowBuffers();
         BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
         PlayerBufferExecCompleted();
         ExitPartyMenu();
