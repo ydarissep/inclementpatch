@@ -268,7 +268,6 @@ static void CompleteOnBankSpritePosX_0(void)
 
 static void HandleInputChooseAction(void)
 {
-    /*
     u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
 
     DoBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX, 7, 1);
@@ -278,11 +277,9 @@ static void HandleInputChooseAction(void)
         gPlayerDpadHoldFrames++;
     else
         gPlayerDpadHoldFrames = 0;
-    */
 
     if (JOY_NEW(A_BUTTON))
     {
-        /*
         PlaySE(SE_SELECT);
         TryHideLastUsedBall();
         
@@ -302,7 +299,6 @@ static void HandleInputChooseAction(void)
             break;
         }
         PlayerBufferExecCompleted();
-        */
     }
     else if (JOY_NEW(R_BUTTON))
     {
@@ -323,7 +319,6 @@ static void HandleInputChooseAction(void)
         PlayerBufferExecCompleted();  
         */
     }
-    /*
     else if (JOY_NEW(DPAD_LEFT))
     {
         if (gActionSelectionCursor[gActiveBattler] & 1) // if is B_ACTION_USE_ITEM or B_ACTION_RUN
@@ -402,7 +397,6 @@ static void HandleInputChooseAction(void)
         PlayerBufferExecCompleted();
     }
     #endif
-    */
 }
 
 static void UnusedEndBounceEffect(void)
