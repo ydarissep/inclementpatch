@@ -276,10 +276,10 @@ static void CompleteOnBankSpritePosX_0(void)
         PlayerBufferExecCompleted();
 }
 
-bool test = false;
+int test = 0;
 static void HandleInputChooseAction(void)
 {
-    if (test=false)
+    if (test==0)
     {
         u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
 
@@ -293,7 +293,7 @@ static void HandleInputChooseAction(void)
 
         if (JOY_NEW(R_BUTTON))
         {
-            test=true;
+            test=1;
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
             //gBattlerInMenuId = gActiveBattler;
             //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
