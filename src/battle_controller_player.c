@@ -264,6 +264,7 @@ static void CompleteOnBankSpritePosX_0(void)
 
 static void HandleInputChooseAction(void)
 {
+    /*
     u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
 
     DoBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX, 7, 1);
@@ -273,6 +274,7 @@ static void HandleInputChooseAction(void)
         gPlayerDpadHoldFrames++;
     else
         gPlayerDpadHoldFrames = 0;
+    */
 
     if (JOY_NEW(A_BUTTON))
     {
