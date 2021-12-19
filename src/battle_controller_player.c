@@ -315,6 +315,7 @@ static void HandleInputChooseAction(void)
             break;
         }
         PlayerBufferExecCompleted();
+        OpenPartyMenuToShowEnemySummaryScreen();
         
         
     }
