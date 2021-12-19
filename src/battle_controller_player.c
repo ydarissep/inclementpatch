@@ -313,7 +313,6 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        gPaletteFade.bufferTransferDisabled = TRUE;
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         gBattlerInMenuId = gActiveBattler;
         gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
