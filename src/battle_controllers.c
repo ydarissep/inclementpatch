@@ -1179,14 +1179,12 @@ void BtlController_EmitChooseMove(u8 bufferId, bool8 isDoubleBattle, bool8 NoPpN
 
 void BtlController_EmitChooseItem(u8 bufferId, u8 *arg1)
 {
-	/*
     s32 i;
 
     sBattleBuffersTransferData[0] = CONTROLLER_OPENBAG;
     for (i = 0; i < 3; i++)
         sBattleBuffersTransferData[1 + i] = arg1[i];
     PrepareBufferDataTransfer(bufferId, sBattleBuffersTransferData, 4);
-    */
 }
 
 void BtlController_EmitChoosePokemon(u8 bufferId, u8 caseId, u8 slotId, u16 abilityId, u8 *arg4)
