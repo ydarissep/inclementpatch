@@ -4253,6 +4253,7 @@ static void HandleTurnActionSelectionState(void)
                         gBattleCommunication[gActiveBattler]++;
                     }
                     break;
+		/*
 		case B_ACTION_SUMMARY:
                     if (gBattleResources->bufferB[gActiveBattler][1] == PARTY_SIZE)
                     {
@@ -4265,6 +4266,7 @@ static void HandleTurnActionSelectionState(void)
                         gBattleCommunication[gActiveBattler]++;
                     }
                     break;
+		*/
                 case B_ACTION_RUN:
                     gHitMarker |= HITMARKER_RUN;
                     gBattleCommunication[gActiveBattler]++;
