@@ -1146,11 +1146,13 @@ void BtlController_EmitPrintSelectionString(u8 bufferId, u16 stringID)
 
 void BtlController_EmitChooseAction(u8 bufferId, u8 arg1, u16 arg2)
 {
+    /*
     sBattleBuffersTransferData[0] = CONTROLLER_CHOOSEACTION;
     sBattleBuffersTransferData[1] = arg1;
     sBattleBuffersTransferData[2] = arg2;
     sBattleBuffersTransferData[3] = (arg2 & 0xFF00) >> 8;
     PrepareBufferDataTransfer(bufferId, sBattleBuffersTransferData, 4);
+    */
 }
 
 // Only used by the forfeit prompt in the Battle Frontier
