@@ -313,14 +313,14 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        BtlController_EmitTwoReturnValues(1, B_ACTION_USE_MOVE, 0);
-        PlayerBufferExecCompleted();
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         FreeAllWindowBuffers();
-        OpenEnemySummaryScreenMenuInBattle();
+        BtlController_EmitTwoReturnValues(1, B_ACTION_USE_SWITCH, 0);
         gBattlerInMenuId = gActiveBattler;
-        gBattlerControllerFuncs[gActiveBattler] = WaitForDebug;
+        gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         DestroyTask(gBattleControllerData[gActiveBattler]);
+        PlayerBufferExecCompleted();
+        OpenEnemySummaryScreenMenuInBattle();
         //PlayerHandleShowEnemySummaryScreen();
         /*
         switch (gActionSelectionCursor[gActiveBattler])
