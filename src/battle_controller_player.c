@@ -298,24 +298,20 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
-        BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
-        PlayerBufferExecCompleted();
         //BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         //gBattlerInMenuId = gActiveBattler;
         //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         //DestroyTask(gBattleControllerData[gActiveBattler]);
         //FreeAllWindowBuffers();
-        OpenEnemySummaryScreenMenuInBattle();
+        //OpenEnemySummaryScreenMenuInBattle();
         //OpenPartyMenuToShowEnemySummaryScreen();
-        /*
         switch (gActionSelectionCursor[gActiveBattler])
         {
         default:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
+            BtlController_EmitTwoReturnValues(1, B_ACTION_SUMMARY, 0);
             break;
         }
         PlayerBufferExecCompleted();  
-        */
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
