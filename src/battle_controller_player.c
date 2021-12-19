@@ -303,7 +303,7 @@ static void HandleInputChooseAction(void)
         FreeAllWindowBuffers();
         OpenEnemySummaryScreenMenuInBattle();
         gBattlerInMenuId = gActiveBattler;
-        gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
+        gBattlerControllerFuncs[gActiveBattler] = WaitForDebug;
         DestroyTask(gBattleControllerData[gActiveBattler]);
         //PlayerHandleShowEnemySummaryScreen();
         /*
