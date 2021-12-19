@@ -303,7 +303,7 @@ static void HandleInputChooseAction(void)
         gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         DestroyTask(gBattleControllerData[gActiveBattler]);
         FreeAllWindowBuffers();
-        OpenEnemySummaryScreenMenuInBattle();
+        //OpenEnemySummaryScreenMenuInBattle();
         //OpenPartyMenuToShowEnemySummaryScreen();
         switch (gActionSelectionCursor[gActiveBattler])
         {
