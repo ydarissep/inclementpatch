@@ -317,6 +317,7 @@ static void HandleInputChooseAction(void)
         gBattlerInMenuId = gActiveBattler;
         gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         DestroyTask(gBattleControllerData[gActiveBattler]);
+        FreeAllWindowBuffers();
         OpenEnemySummaryScreenMenuInBattle();
         //PlayerHandleShowEnemySummaryScreen();
         /*
