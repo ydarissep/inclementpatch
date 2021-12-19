@@ -298,7 +298,6 @@ static void HandleInputChooseAction(void)
         DestroyTask(gBattleControllerData[gActiveBattler]);
         FreeAllWindowBuffers();
         OpenEnemySummaryScreenMenuInBattle();
-        gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
     }
     else if (JOY_NEW(A_BUTTON) && test == 0)
     {
