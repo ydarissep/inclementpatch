@@ -2807,8 +2807,8 @@ static void PlayerHandleChooseAction(void)
     for (i = 0; i < 4; i++)
         ActionSelectionDestroyCursorAt(i);
 
-    //TryRestoreLastUsedBall();
-    //ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+    TryRestoreLastUsedBall();
+    ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
     BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillPkmnDo);
     BattlePutTextOnWindow(gDisplayedStringBattle, 1);
 }
