@@ -205,6 +205,7 @@ void SetControllerToPlayer(void)
 
 static void PlayerBufferExecCompleted(void)
 {
+    /*
     gBattlerControllerFuncs[gActiveBattler] = PlayerBufferRunCommand;
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
     {
@@ -217,10 +218,12 @@ static void PlayerBufferExecCompleted(void)
     {
         gBattleControllerExecFlags &= ~gBitTable[gActiveBattler];
     }
+    */
 }
 
 static void PlayerBufferRunCommand(void)
 {
+    /*
     if (gBattleControllerExecFlags & gBitTable[gActiveBattler])
     {
         if (gBattleResources->bufferA[gActiveBattler][0] < ARRAY_COUNT(sPlayerBufferCommands))
@@ -228,6 +231,7 @@ static void PlayerBufferRunCommand(void)
         else
             PlayerBufferExecCompleted();
     }
+    */
 }
 
 static void OpenPartyMenuToChooseMon(void)
