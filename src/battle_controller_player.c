@@ -243,6 +243,20 @@ static void OpenPartyMenuToChooseMon(void)
         OpenPartyMenuInBattle(caseId);
     }
 }
+static void WaitForDebug(void)
+{
+    if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
+    {
+        PlayerBufferExecCompleted();
+    }
+}
+
+static void PlayerHandleBattleDebug(void)
+{
+    BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
+    SetMainCallback2(CB2_BattleDebugMenu);
+    gBattlerControllerFuncs[gActiveBattler] = WaitForDebug;
+}
 static void OpenPartyMenuToShowEnemySummaryScreen(void)
 {
     if (!gPaletteFade.active)
@@ -3387,21 +3401,6 @@ static void PlayerHandleEndLinkBattle(void)
     BeginFastPaletteFade(3);
     PlayerBufferExecCompleted();
     gBattlerControllerFuncs[gActiveBattler] = SetBattleEndCallbacks;
-}
-
-static void WaitForDebug(void)
-{
-    if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
-    {
-        PlayerBufferExecCompleted();
-    }
-}
-
-static void PlayerHandleBattleDebug(void)
-{
-    BeginNormalPaletteFade(-1, 0, 0, 0x10, 0);
-    SetMainCallback2(CB2_BattleDebugMenu);
-    gBattlerControllerFuncs[gActiveBattler] = WaitForDebug;
 }
 
 static void PlayerCmdEnd(void)
