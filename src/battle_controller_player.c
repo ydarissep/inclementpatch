@@ -278,7 +278,6 @@ static void CompleteOnBankSpritePosX_0(void)
 
 static void HandleInputChooseAction(void)
 {
-    int test = 0;
     u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
 
     DoBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX, 7, 1);
@@ -292,15 +291,14 @@ static void HandleInputChooseAction(void)
     test=1;
     if (JOY_NEW(R_BUTTON))
     {
-        test=1;
         //BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
-        //gBattlerInMenuId = gActiveBattler;
-        //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
-        //DestroyTask(gBattleControllerData[gActiveBattler]);
+        gBattlerInMenuId = gActiveBattler;
+        gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
+        DestroyTask(gBattleControllerData[gActiveBattler]);
         FreeAllWindowBuffers();
         OpenEnemySummaryScreenMenuInBattle();
     }
-    else if (JOY_NEW(A_BUTTON) && test == 0)
+    else if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
         TryHideLastUsedBall();
@@ -321,7 +319,7 @@ static void HandleInputChooseAction(void)
         }
     PlayerBufferExecCompleted();
     }
-    else if (JOY_NEW(DPAD_LEFT) && test == 0)
+    else if (JOY_NEW(DPAD_LEFT))
     {
         if (gActionSelectionCursor[gActiveBattler] & 1) // if is B_ACTION_USE_ITEM or B_ACTION_RUN
         {
@@ -331,7 +329,7 @@ static void HandleInputChooseAction(void)
             ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
         }
     }
-    else if (JOY_NEW(DPAD_RIGHT) && test == 0)
+    else if (JOY_NEW(DPAD_RIGHT))
     {
         if (!(gActionSelectionCursor[gActiveBattler] & 1)) // if is B_ACTION_USE_MOVE or B_ACTION_SWITCH
         {
@@ -341,7 +339,7 @@ static void HandleInputChooseAction(void)
             ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
         }
     }
-    else if (JOY_NEW(DPAD_UP) && test == 0)
+    else if (JOY_NEW(DPAD_UP))
     {
         if (gActionSelectionCursor[gActiveBattler] & 2) // if is B_ACTION_SWITCH or B_ACTION_RUN
         {
@@ -351,7 +349,7 @@ static void HandleInputChooseAction(void)
             ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
         }
     }
-    else if (JOY_NEW(DPAD_DOWN) && test == 0)
+    else if (JOY_NEW(DPAD_DOWN))
     {
         if (!(gActionSelectionCursor[gActiveBattler] & 2)) // if is B_ACTION_USE_MOVE or B_ACTION_USE_ITEM
         {
@@ -361,7 +359,7 @@ static void HandleInputChooseAction(void)
             ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
         }
     }
-    else if ((JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59) && test == 0)
+    else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
         if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
         && GetBattlerPosition(gActiveBattler) == B_POSITION_PLAYER_RIGHT
@@ -383,16 +381,15 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(START_BUTTON))
     {
-        test=0;
         SwapHpBarsWithHpText();
     }
-    else if (B_ENABLE_DEBUG && gMain.newKeys & SELECT_BUTTON && test == 0)
+    else if (B_ENABLE_DEBUG && gMain.newKeys & SELECT_BUTTON)
     {
         BtlController_EmitTwoReturnValues(1, B_ACTION_DEBUG, 0);
         PlayerBufferExecCompleted();
     }
     #if B_LAST_USED_BALL == TRUE
-    else if (JOY_NEW(B_LAST_USED_BALL_BUTTON) && CanThrowLastUsedBall() && test == 0)
+    else if (JOY_NEW(B_LAST_USED_BALL_BUTTON) && CanThrowLastUsedBall())
     {
         PlaySE(SE_SELECT);
         TryHideLastUsedBall();
