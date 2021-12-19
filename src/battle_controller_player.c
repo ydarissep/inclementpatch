@@ -360,7 +360,7 @@ static void HandleInputChooseAction(void)
             ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
         }
     }
-    else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59 && test == 0)
+    else if ((JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59) && test == 0)
     {
         if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
         && GetBattlerPosition(gActiveBattler) == B_POSITION_PLAYER_RIGHT
