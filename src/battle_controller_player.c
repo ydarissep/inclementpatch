@@ -311,7 +311,7 @@ static void HandleInputChooseAction(void)
         switch (gActionSelectionCursor[gActiveBattler])
         {
         default:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_SUMMARY, 0);
+            BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
             break;
         }
         PlayerBufferExecCompleted();
