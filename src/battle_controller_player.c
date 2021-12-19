@@ -291,6 +291,7 @@ static void HandleInputChooseAction(void)
     
     if (JOY_NEW(A_BUTTON))
     {
+        /*
         PlaySE(SE_SELECT);
         TryHideLastUsedBall();
         
@@ -310,6 +311,7 @@ static void HandleInputChooseAction(void)
             break;
         }
         PlayerBufferExecCompleted();
+        */
     }
     else if (JOY_NEW(R_BUTTON))
     {
