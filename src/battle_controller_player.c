@@ -307,7 +307,7 @@ static void HandleInputChooseAction(void)
         OpenEnemySummaryScreenMenuInBattle();
         //OpenPartyMenuToShowEnemySummaryScreen();
         */
-        
+        FreeAllWindowBuffers();
         switch (gActionSelectionCursor[gActiveBattler])
         {
         default:
