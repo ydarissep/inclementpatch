@@ -292,6 +292,7 @@ static void HandleInputChooseAction(void)
     test=1;
     if (JOY_NEW(R_BUTTON))
     {
+        test=1;
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         //gBattlerInMenuId = gActiveBattler;
         //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
@@ -380,8 +381,9 @@ static void HandleInputChooseAction(void)
             PlayerBufferExecCompleted();
         }
     }
-    else if (JOY_NEW(START_BUTTON) && test == 0)
+    else if (JOY_NEW(START_BUTTON))
     {
+        test=0;
         SwapHpBarsWithHpText();
     }
     else if (B_ENABLE_DEBUG && gMain.newKeys & SELECT_BUTTON && test == 0)
