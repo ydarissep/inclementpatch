@@ -301,6 +301,8 @@ static void HandleInputChooseAction(void)
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         //gBattlerInMenuId = gActiveBattler;
         //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
+        BtlController_EmitTwoReturnValues(1, B_ACTION_NONE, 0);
+        PlayerBufferExecCompleted();
         DestroyTask(gBattleControllerData[gActiveBattler]);
         FreeAllWindowBuffers();
         OpenEnemySummaryScreenMenuInBattle();
