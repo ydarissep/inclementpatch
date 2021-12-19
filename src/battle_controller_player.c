@@ -298,8 +298,15 @@ static void HandleInputChooseAction(void)
     }
     else if (JOY_NEW(R_BUTTON))
     {
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+        OpenPartyMenuToShowEnemySummaryScreen();
+        gBattlerInMenuId = gActiveBattler;
+        gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
+        DestroyTask(gBattleControllerData[gActiveBattler]);
+        FreeAllWindowBuffers();
+        OpenEnemySummaryScreenMenuInBattle();
         //OpenPartyMenuToShowEnemySummaryScreen();
-       
+        /*
         switch (gActionSelectionCursor[gActiveBattler])
         {
         default:
@@ -307,6 +314,7 @@ static void HandleInputChooseAction(void)
             break;
         }
         PlayerBufferExecCompleted();
+        */
         
     }
     else if (JOY_NEW(DPAD_LEFT))
@@ -1564,11 +1572,14 @@ static void WaitForMonSelection(void)
 {
     if (gMain.callback2 == BattleMainCB2 && !gPaletteFade.active)
     {
+        /*
         if (gPartyMenuUseExitCallback == TRUE)
             BtlController_EmitChosenMonReturnValue(1, gSelectedMonPartyId, gBattlePartyCurrentOrder);
         else
             BtlController_EmitChosenMonReturnValue(1, PARTY_SIZE, NULL);
-
+        */
+           
+        BtlController_EmitChosenMonReturnValue(1, PARTY_SIZE, NULL);
         if ((gBattleResources->bufferA[gActiveBattler][1] & 0xF) == 1)
             PrintLinkStandbyMsg();
 
