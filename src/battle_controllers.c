@@ -1146,13 +1146,11 @@ void BtlController_EmitPrintSelectionString(u8 bufferId, u16 stringID)
 
 void BtlController_EmitChooseAction(u8 bufferId, u8 arg1, u16 arg2)
 {
-    /*
     sBattleBuffersTransferData[0] = CONTROLLER_CHOOSEACTION;
     sBattleBuffersTransferData[1] = arg1;
     sBattleBuffersTransferData[2] = arg2;
     sBattleBuffersTransferData[3] = (arg2 & 0xFF00) >> 8;
     PrepareBufferDataTransfer(bufferId, sBattleBuffersTransferData, 4);
-    */
 }
 
 // Only used by the forfeit prompt in the Battle Frontier
@@ -1181,12 +1179,14 @@ void BtlController_EmitChooseMove(u8 bufferId, bool8 isDoubleBattle, bool8 NoPpN
 
 void BtlController_EmitChooseItem(u8 bufferId, u8 *arg1)
 {
+	/*
     s32 i;
 
     sBattleBuffersTransferData[0] = CONTROLLER_OPENBAG;
     for (i = 0; i < 3; i++)
         sBattleBuffersTransferData[1 + i] = arg1[i];
     PrepareBufferDataTransfer(bufferId, sBattleBuffersTransferData, 4);
+    */
 }
 
 void BtlController_EmitChoosePokemon(u8 bufferId, u8 caseId, u8 slotId, u16 abilityId, u8 *arg4)
