@@ -289,9 +289,9 @@ static void HandleInputChooseAction(void)
     else
         gPlayerDpadHoldFrames = 0;
     
-    if (JOY_NEW(R_BUTTON) && test == 0)
+    test=1;
+    if (JOY_NEW(R_BUTTON))
     {
-        test=1;
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         //gBattlerInMenuId = gActiveBattler;
         //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
