@@ -315,7 +315,7 @@ static void HandleInputChooseAction(void)
     {
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         FreeAllWindowBuffers();
-        BtlController_EmitTwoReturnValues(1, B_ACTION_USE_SWITCH, 0);
+        BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
         gBattlerInMenuId = gActiveBattler;
         gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         DestroyTask(gBattleControllerData[gActiveBattler]);
