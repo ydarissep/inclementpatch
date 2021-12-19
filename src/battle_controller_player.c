@@ -276,139 +276,142 @@ static void CompleteOnBankSpritePosX_0(void)
         PlayerBufferExecCompleted();
 }
 
+bool test = false;
 static void HandleInputChooseAction(void)
 {
-    u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
+    if (test=false)
+    {
+        u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
 
-    DoBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX, 7, 1);
-    DoBounceEffect(gActiveBattler, BOUNCE_MON, 7, 1);
-    
-    if (JOY_REPEAT(DPAD_ANY) && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
-        gPlayerDpadHoldFrames++;
-    else
-        gPlayerDpadHoldFrames = 0;
-    
-    if (JOY_NEW(R_BUTTON))
-    {
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
-        //gBattlerInMenuId = gActiveBattler;
-        //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
-        DestroyTask(gBattleControllerData[gActiveBattler]);
-        FreeAllWindowBuffers();
-        OpenEnemySummaryScreenMenuInBattle();
-        //PlayerHandleShowEnemySummaryScreen();
-        /*
-        switch (gActionSelectionCursor[gActiveBattler])
+        DoBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX, 7, 1);
+        DoBounceEffect(gActiveBattler, BOUNCE_MON, 7, 1);
+
+        if (JOY_REPEAT(DPAD_ANY) && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
+            gPlayerDpadHoldFrames++;
+        else
+            gPlayerDpadHoldFrames = 0;
+
+        if (JOY_NEW(R_BUTTON))
         {
-        default:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_SUMMARY, 0);
-            break;
-        }
-        PlayerBufferExecCompleted();  
-        */
-    }
-    /*
-    else if (JOY_NEW(A_BUTTON))
-    {
-        PlaySE(SE_SELECT);
-        TryHideLastUsedBall();
-        
-        switch (gActionSelectionCursor[gActiveBattler])
-        {
-        case 0:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_USE_MOVE, 0);
-            break;
-        case 1:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_USE_ITEM, 0);
-            break;
-        case 2:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
-            break;
-        case 3:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_RUN, 0);
-            break;
-        }
-        PlayerBufferExecCompleted();
-    }
-    else if (JOY_NEW(DPAD_LEFT))
-    {
-        if (gActionSelectionCursor[gActiveBattler] & 1) // if is B_ACTION_USE_ITEM or B_ACTION_RUN
-        {
-            PlaySE(SE_SELECT);
-            ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
-            gActionSelectionCursor[gActiveBattler] ^= 1;
-            ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
-        }
-    }
-    else if (JOY_NEW(DPAD_RIGHT))
-    {
-        if (!(gActionSelectionCursor[gActiveBattler] & 1)) // if is B_ACTION_USE_MOVE or B_ACTION_SWITCH
-        {
-            PlaySE(SE_SELECT);
-            ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
-            gActionSelectionCursor[gActiveBattler] ^= 1;
-            ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
-        }
-    }
-    else if (JOY_NEW(DPAD_UP))
-    {
-        if (gActionSelectionCursor[gActiveBattler] & 2) // if is B_ACTION_SWITCH or B_ACTION_RUN
-        {
-            PlaySE(SE_SELECT);
-            ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
-            gActionSelectionCursor[gActiveBattler] ^= 2;
-            ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
-        }
-    }
-    else if (JOY_NEW(DPAD_DOWN))
-    {
-        if (!(gActionSelectionCursor[gActiveBattler] & 2)) // if is B_ACTION_USE_MOVE or B_ACTION_USE_ITEM
-        {
-            PlaySE(SE_SELECT);
-            ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
-            gActionSelectionCursor[gActiveBattler] ^= 2;
-            ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
-        }
-    }
-    else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
-    {
-        if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-         && GetBattlerPosition(gActiveBattler) == B_POSITION_PLAYER_RIGHT
-         && !(gAbsentBattlerFlags & gBitTable[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)])
-         && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
-        {
-            if (gBattleResources->bufferA[gActiveBattler][1] == B_ACTION_USE_ITEM)
+            test=true;
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+            //gBattlerInMenuId = gActiveBattler;
+            //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
+            DestroyTask(gBattleControllerData[gActiveBattler]);
+            FreeAllWindowBuffers();
+            OpenEnemySummaryScreenMenuInBattle();
+            //PlayerHandleShowEnemySummaryScreen();
+            /*
+            switch (gActionSelectionCursor[gActiveBattler])
             {
-                // Add item to bag if it is a ball
-                if (itemId <= LAST_BALL_INDEX)
-                    AddBagItem(itemId, 1);
-                else
-                    return;
+            default:
+                BtlController_EmitTwoReturnValues(1, B_ACTION_SUMMARY, 0);
+                break;
             }
+            PlayerBufferExecCompleted();  
+            */
+        }
+        else if (JOY_NEW(A_BUTTON))
+        {
             PlaySE(SE_SELECT);
-            BtlController_EmitTwoReturnValues(1, B_ACTION_CANCEL_PARTNER, 0);
+            TryHideLastUsedBall();
+
+            switch (gActionSelectionCursor[gActiveBattler])
+            {
+            case 0:
+                BtlController_EmitTwoReturnValues(1, B_ACTION_USE_MOVE, 0);
+                break;
+            case 1:
+                BtlController_EmitTwoReturnValues(1, B_ACTION_USE_ITEM, 0);
+                break;
+            case 2:
+                BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
+                break;
+            case 3:
+                BtlController_EmitTwoReturnValues(1, B_ACTION_RUN, 0);
+                break;
+            }
             PlayerBufferExecCompleted();
         }
+        else if (JOY_NEW(DPAD_LEFT))
+        {
+            if (gActionSelectionCursor[gActiveBattler] & 1) // if is B_ACTION_USE_ITEM or B_ACTION_RUN
+            {
+                PlaySE(SE_SELECT);
+                ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
+                gActionSelectionCursor[gActiveBattler] ^= 1;
+                ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+            }
+        }
+        else if (JOY_NEW(DPAD_RIGHT))
+        {
+            if (!(gActionSelectionCursor[gActiveBattler] & 1)) // if is B_ACTION_USE_MOVE or B_ACTION_SWITCH
+            {
+                PlaySE(SE_SELECT);
+                ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
+                gActionSelectionCursor[gActiveBattler] ^= 1;
+                ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+            }
+        }
+        else if (JOY_NEW(DPAD_UP))
+        {
+            if (gActionSelectionCursor[gActiveBattler] & 2) // if is B_ACTION_SWITCH or B_ACTION_RUN
+            {
+                PlaySE(SE_SELECT);
+                ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
+                gActionSelectionCursor[gActiveBattler] ^= 2;
+                ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+            }
+        }
+        else if (JOY_NEW(DPAD_DOWN))
+        {
+            if (!(gActionSelectionCursor[gActiveBattler] & 2)) // if is B_ACTION_USE_MOVE or B_ACTION_USE_ITEM
+            {
+                PlaySE(SE_SELECT);
+                ActionSelectionDestroyCursorAt(gActionSelectionCursor[gActiveBattler]);
+                gActionSelectionCursor[gActiveBattler] ^= 2;
+                ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
+            }
+        }
+        else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
+        {
+            if ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+             && GetBattlerPosition(gActiveBattler) == B_POSITION_PLAYER_RIGHT
+             && !(gAbsentBattlerFlags & gBitTable[GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)])
+             && !(gBattleTypeFlags & BATTLE_TYPE_MULTI))
+            {
+                if (gBattleResources->bufferA[gActiveBattler][1] == B_ACTION_USE_ITEM)
+                {
+                    // Add item to bag if it is a ball
+                    if (itemId <= LAST_BALL_INDEX)
+                        AddBagItem(itemId, 1);
+                    else
+                        return;
+                }
+                PlaySE(SE_SELECT);
+                BtlController_EmitTwoReturnValues(1, B_ACTION_CANCEL_PARTNER, 0);
+                PlayerBufferExecCompleted();
+            }
+        }
+        else if (JOY_NEW(START_BUTTON))
+        {
+            SwapHpBarsWithHpText();
+        }
+        else if (B_ENABLE_DEBUG && gMain.newKeys & SELECT_BUTTON)
+        {
+            BtlController_EmitTwoReturnValues(1, B_ACTION_DEBUG, 0);
+            PlayerBufferExecCompleted();
+        }
+        #if B_LAST_USED_BALL == TRUE
+        else if (JOY_NEW(B_LAST_USED_BALL_BUTTON) && CanThrowLastUsedBall())
+        {
+            PlaySE(SE_SELECT);
+            TryHideLastUsedBall();
+            BtlController_EmitTwoReturnValues(1, B_ACTION_THROW_BALL, 0);
+            PlayerBufferExecCompleted();
+        }
+        #endif
     }
-    else if (JOY_NEW(START_BUTTON))
-    {
-        SwapHpBarsWithHpText();
-    }
-    else if (B_ENABLE_DEBUG && gMain.newKeys & SELECT_BUTTON)
-    {
-        BtlController_EmitTwoReturnValues(1, B_ACTION_DEBUG, 0);
-        PlayerBufferExecCompleted();
-    }
-    #if B_LAST_USED_BALL == TRUE
-    else if (JOY_NEW(B_LAST_USED_BALL_BUTTON) && CanThrowLastUsedBall())
-    {
-        PlaySE(SE_SELECT);
-        TryHideLastUsedBall();
-        BtlController_EmitTwoReturnValues(1, B_ACTION_THROW_BALL, 0);
-        PlayerBufferExecCompleted();
-    }
-    #endif
-    */
 }
 
 static void UnusedEndBounceEffect(void)
