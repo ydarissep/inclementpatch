@@ -288,8 +288,27 @@ static void HandleInputChooseAction(void)
     else
         gPlayerDpadHoldFrames = 0;
     
-    
-    if (JOY_NEW(A_BUTTON))
+    if (JOY_NEW(R_BUTTON))
+    {
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+        //gBattlerInMenuId = gActiveBattler;
+        //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
+        //DestroyTask(gBattleControllerData[gActiveBattler]);
+        FreeAllWindowBuffers();
+        OpenEnemySummaryScreenMenuInBattle();
+        //PlayerHandleShowEnemySummaryScreen();
+        /*
+        switch (gActionSelectionCursor[gActiveBattler])
+        {
+        default:
+            BtlController_EmitTwoReturnValues(1, B_ACTION_SUMMARY, 0);
+            break;
+        }
+        PlayerBufferExecCompleted();  
+        */
+    }
+    /*
+    else if (JOY_NEW(A_BUTTON))
     {
         PlaySE(SE_SELECT);
         TryHideLastUsedBall();
@@ -311,26 +330,6 @@ static void HandleInputChooseAction(void)
         }
         PlayerBufferExecCompleted();
     }
-    else if (JOY_NEW(R_BUTTON))
-    {
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
-        gBattlerInMenuId = gActiveBattler;
-        gBattlerControllerFuncs[gActiveBattler] = Task_ExitPartyMenu;
-        DestroyTask(gBattleControllerData[gActiveBattler]);
-        FreeAllWindowBuffers();
-        OpenEnemySummaryScreenMenuInBattle();
-        //PlayerHandleShowEnemySummaryScreen();
-        /*
-        switch (gActionSelectionCursor[gActiveBattler])
-        {
-        default:
-            BtlController_EmitTwoReturnValues(1, B_ACTION_SUMMARY, 0);
-            break;
-        }
-        PlayerBufferExecCompleted();  
-        */
-    }
-    /*
     else if (JOY_NEW(DPAD_LEFT))
     {
         if (gActionSelectionCursor[gActiveBattler] & 1) // if is B_ACTION_USE_ITEM or B_ACTION_RUN
