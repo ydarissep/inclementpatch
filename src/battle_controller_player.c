@@ -299,7 +299,7 @@ static void HandleInputChooseAction(void)
     else if (JOY_NEW(R_BUTTON))
     {
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
-        gBattlerInMenuId = gActiveBattler;
+        //gBattlerInMenuId = gActiveBattler;
         gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         DestroyTask(gBattleControllerData[gActiveBattler]);
         FreeAllWindowBuffers();
