@@ -34,6 +34,17 @@ void LoadCompressedSpriteSheetOverrideBuffer(const struct CompressedSpriteSheet 
     struct SpriteSheet dest;
 
     LZ77UnCompWram(src->data, buffer);
+    dest.data = buffer;
+    dest.size = src->size;
+    dest.tag = src->tag;
+    LoadSpriteSheet(&dest);
+}
+
+void LoadCompressedSpritePalette(const struct CompressedSpritePalette *src)
+{
+    struct SpritePalette dest;
+
+    LZ77UnCompWram(src->data, gDecompressionBuffer);
     
     dest.data = (void*) gDecompressionBuffer;
     dest.tag = src->tag;
@@ -47,17 +58,6 @@ void LoadHueShiftedMonSpritePalette(const struct CompressedSpritePalette *src, u
     LZ77UnCompWram(src->data, gDecompressionBuffer);
 
     HueShiftMonPalette((u16*) gDecompressionBuffer, personality);
-    dest.data = buffer;
-    dest.size = src->size;
-    dest.tag = src->tag;
-    LoadSpriteSheet(&dest);
-}
-
-void LoadCompressedSpritePalette(const struct CompressedSpritePalette *src)
-{
-    struct SpritePalette dest;
-
-    LZ77UnCompWram(src->data, gDecompressionBuffer);
     dest.data = (void*) gDecompressionBuffer;
     dest.tag = src->tag;
     LoadSpritePalette(&dest);
