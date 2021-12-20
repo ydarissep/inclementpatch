@@ -610,10 +610,11 @@ static bool8 ShowPartyMenu(void)
 
 static void ExitPartyMenu(void)
 {
-    //BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     CreateTask(Task_ExitPartyMenu, 0);
     SetVBlankCallback(VBlankCB_PartyMenu);
     SetMainCallback2(CB2_UpdatePartyMenu);
+    gBattlerControllerFuncs[gActiveBattler] = HandleInputChooseAction;
 }
 
 static void Task_ExitPartyMenu(u8 taskId)
@@ -2765,7 +2766,6 @@ static void CB2_ReturnToPartyMenuFromSummaryScreen(void)
     gPaletteFade.bufferTransferDisabled = TRUE;
     gPartyMenu.slotId = gLastViewedMonIndex;
     InitPartyMenu(gPartyMenu.menuType, KEEP_PARTY_LAYOUT, gPartyMenu.action, TRUE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, gPartyMenu.exitCallback);
-    ExitPartyMenu();
 }
 
 static void CursorCb_Switch(u8 taskId)
@@ -6091,11 +6091,11 @@ void OpenPartyMenuInBattle(u8 partyAction)
 }
 void OpenEnemySummaryScreenMenuInBattle(void)
 {
-    //InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_SetUpReshowBattleScreenAfterMenu);
+    InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_SetUpReshowBattleScreenAfterMenu);
     //InitPartyMenu(gPartyMenu.menuType, GetPartyLayoutFromBattleType(), gPartyMenu.action, FALSE, PARTY_MSG_CHOOSE_MON, Task_GiveHoldItem, CB2_SetUpExitToBattleScreen);
     ReshowBattleScreenDummy();
-    UpdatePartyToBattleOrder();
-    ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, CB2_ReturnToPartyMenuFromSummaryScreen);
+    //UpdatePartyToBattleOrder();
+    ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, ExitPartyMenu);
 }
 
 void ChooseMonForInBattleItem(void)
