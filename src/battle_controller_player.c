@@ -290,12 +290,12 @@ static void HandleInputChooseAction(void)
     
     if (JOY_NEW(R_BUTTON))
     {
-        //BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
-        FreeAllWindowBuffers();
-        OpenEnemySummaryScreenMenuInBattle();
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         //gBattlerInMenuId = gActiveBattler;
         //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         DestroyTask(gBattleControllerData[gActiveBattler]);
+        FreeAllWindowBuffers();
+        OpenEnemySummaryScreenMenuInBattle();
     }
     else if (JOY_NEW(A_BUTTON))
     {
