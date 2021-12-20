@@ -1331,7 +1331,6 @@ void BtlController_EmitCmd32(u8 bufferId, u16 size, void *data)
 
 void BtlController_EmitTwoReturnValues(u8 bufferId, u8 arg1, u32 arg2)
 {
-	/*
     sBattleBuffersTransferData[0] = CONTROLLER_TWORETURNVALUES;
     sBattleBuffersTransferData[1] = arg1;
     sBattleBuffersTransferData[2] = arg2;
@@ -1339,7 +1338,6 @@ void BtlController_EmitTwoReturnValues(u8 bufferId, u8 arg1, u32 arg2)
     sBattleBuffersTransferData[4] = (arg2 & 0x00FF0000) >> 16;
     sBattleBuffersTransferData[5] = (arg2 & 0xFF000000) >> 24;
     PrepareBufferDataTransfer(bufferId, sBattleBuffersTransferData, 6);
-    */
 }
 
 void BtlController_EmitChosenMonReturnValue(u8 bufferId, u8 partyId, u8 *battlePartyOrder)
