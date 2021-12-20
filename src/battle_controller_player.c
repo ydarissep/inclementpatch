@@ -1581,7 +1581,7 @@ static void WaitForMonSelection(void)
         if ((gBattleResources->bufferA[gActiveBattler][1] & 0xF) == 1)
             PrintLinkStandbyMsg();
 
-        //PlayerBufferExecCompleted();
+        PlayerBufferExecCompleted();
     }
 }
 
