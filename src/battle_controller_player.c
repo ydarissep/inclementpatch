@@ -236,7 +236,7 @@ static void OpenPartyMenuToChooseMon(void)
     {
         u8 caseId;
 
-        gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
+        //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         caseId = gTasks[gBattleControllerData[gActiveBattler]].data[0];
         DestroyTask(gBattleControllerData[gActiveBattler]);
         FreeAllWindowBuffers();
@@ -290,11 +290,13 @@ static void HandleInputChooseAction(void)
     
     if (JOY_NEW(R_BUTTON))
     {
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+        //BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         //gBattlerInMenuId = gActiveBattler;
         //gBattlerControllerFuncs[gActiveBattler] = WaitForMonSelection;
         //DestroyTask(gBattleControllerData[gActiveBattler]);
-        FreeAllWindowBuffers();
+        //FreeAllWindowBuffers();
+        BtlController_EmitTwoReturnValues(1, B_ACTION_SWITCH, 0);
+        PlayerBufferExecCompleted();
         OpenEnemySummaryScreenMenuInBattle();
     }
     else if (JOY_NEW(A_BUTTON))
