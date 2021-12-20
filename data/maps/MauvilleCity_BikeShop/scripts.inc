@@ -221,7 +221,7 @@ MauvilleCity_BikeShop_Text_ExplainBikesChooseWhichOne: @ 820EF32
 	.string "You're Norman's offspring!\n"
 	.string "Forget about choosing one.\p"
 	.string "I'll give you both!\n"
-	.string "In exchange, be sure to\p" o
+	.string "In exchange, be sure to\p"
 	.string "show off our bikes!$"
 
 MauvilleCity_BikeShop_Text_ChoseMachBike: @ 820F18D
