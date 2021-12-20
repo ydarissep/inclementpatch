@@ -26,6 +26,7 @@ MauvilleCity_BikeShop_EventScript_ChooseBike:: @ 820EC16
 	msgbox MauvilleCity_BikeShop_Text_ExplainBikesChooseWhichOne, MSGBOX_DEFAULT
 	giveitem ITEM_ACRO_BIKE
 	giveitem ITEM_MACH_BIKE
+	release
 	end
 
 MauvilleCity_BikeShop_EventScript_NotFar:: @ 820EC3D
@@ -247,7 +248,7 @@ MauvilleCity_BikeShop_Text_ExchangedMachForAcro: @ 820F263
 
 MauvilleCity_BikeShop_Text_ExchangedAcroForMach: @ 820F294
 	.string "Rydel: Oh! You're back! Perfect!\n"
-	.string "Last time i think i forgot to give you this.$"
+	.string "I forgot to give you this last time.$"
 
 MauvilleCity_BikeShop_Text_HappyYouLikeIt: @ 820F2C4
 	.string "Rydel: Good, good!\n"
