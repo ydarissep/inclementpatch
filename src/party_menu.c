@@ -2766,6 +2766,7 @@ static void CB2_ReturnToPartyMenuFromSummaryScreen(void)
     gPartyMenu.slotId = gLastViewedMonIndex;
     InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_SetUpReshowBattleScreenAfterMenu);
     //InitPartyMenu(gPartyMenu.menuType, KEEP_PARTY_LAYOUT, gPartyMenu.action, TRUE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, gPartyMenu.exitCallback);
+    ExitPartyMenu();
 }
 
 static void CursorCb_Switch(u8 taskId)
