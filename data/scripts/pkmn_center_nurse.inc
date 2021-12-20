@@ -16,6 +16,8 @@ Common_EventScript_PkmnCenterNurse::
     end
 
 EventScript_PkmnCenterNurseHasVial::
+    clearflag FLAG_RECEIVED_BIKE
+    clearflag FLAG_DECLINED_BIKE
     call Give_Nuzlocke_Items
     call_if_set FLAG_BADGE01_GET, Give_Cut_Items_After_Roxanne
     call_if_set FLAG_RECEIVED_TM46, Give_Thief_Items_After_Thief
