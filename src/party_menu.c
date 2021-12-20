@@ -6091,7 +6091,7 @@ void OpenPartyMenuInBattle(u8 partyAction)
 }
 void OpenEnemySummaryScreenMenuInBattle(void)
 {
-    InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_SetUpReshowBattleScreenAfterMenu);
+    //InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_SetUpReshowBattleScreenAfterMenu);
     //InitPartyMenu(gPartyMenu.menuType, GetPartyLayoutFromBattleType(), gPartyMenu.action, FALSE, PARTY_MSG_CHOOSE_MON, Task_GiveHoldItem, CB2_SetUpExitToBattleScreen);
     ReshowBattleScreenDummy();
     UpdatePartyToBattleOrder();
