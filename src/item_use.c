@@ -979,7 +979,7 @@ static void ItemUseOnFieldCB_PokeVial(u8 taskId)
 {
     PlaySE(SE_USE_ITEM);
     HealPlayerParty();
-    VarSet(VAR_POKE_VIAL_CHARGES, VarGet(VAR_POKE_VIAL_CHARGES) - 1);
+    //VarSet(VAR_POKE_VIAL_CHARGES, VarGet(VAR_POKE_VIAL_CHARGES) - 1);
     DisplayItemMessageOnField(taskId, gText_UsedPokeVial, Task_CloseCantUseKeyItemMessage);
 }
 
