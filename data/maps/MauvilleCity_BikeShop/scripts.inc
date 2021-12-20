@@ -65,6 +65,7 @@ MauvilleCity_BikeShop_EventScript_AskSwitchBikes:: @ 820EC94
 	compare VAR_RESULT, TRUE
 	call_if_ne MauvilleCity_BikeShop_EventScript_SwitchAcroForMach
 	msgbox MauvilleCity_BikeShop_Text_WantToSwitchBikes, MSGBOX_DEFAULT
+	release
 	end
 
 @ If the player does not have a bike on them Rydel assumes its stored in the PC
@@ -217,10 +218,11 @@ MauvilleCity_BikeShop_Text_ExplainBikesChooseWhichOne: @ 820EF32
 	.string "have whichever one you like!\p"
 	.string "Which one will you cho...\n"
 	.string "Wait, i recognize you!\p"
-	.string "You're Norman's son!\n"
+	.string "You're Norman's offspring!\n"
 	.string "Forget about choosing one.\p"
 	.string "I'll give you both!\n"
-	.string "In exchange, be sure to show off our bikes!$"
+	.string "In exchange, be sure to\p" o
+	.string "show off our bikes!$"
 
 MauvilleCity_BikeShop_Text_ChoseMachBike: @ 820F18D
 	.string "{PLAYER} chose the Mach Bike.$"
