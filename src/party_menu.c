@@ -6094,7 +6094,7 @@ void OpenEnemySummaryScreenMenuInBattle(void)
     //InitPartyMenu(gPartyMenu.menuType, GetPartyLayoutFromBattleType(), gPartyMenu.action, FALSE, PARTY_MSG_CHOOSE_MON, Task_GiveHoldItem, CB2_SetUpExitToBattleScreen);
     ReshowBattleScreenDummy();
     //UpdatePartyToBattleOrder();
-    ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, CB2_ReturnToPartyMenuFromSummaryScreen);
+    ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, ExitPartyMenu);
 }
 
 void ChooseMonForInBattleItem(void)
