@@ -239,6 +239,7 @@ void LoadHueShiftedMonPalette(const u32 *src, u16 offset, u16 size, u32 personal
     CpuCopy16(gPaletteDecompressionBuffer, gPlttBufferFaded + offset, size);
 }
 
+
 void LoadPalette(const void *src, u16 offset, u16 size)
 {
     CpuCopy16(src, gPlttBufferUnfaded + offset, size);
