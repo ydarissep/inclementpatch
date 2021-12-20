@@ -614,7 +614,6 @@ static void ExitPartyMenu(void)
     CreateTask(Task_ExitPartyMenu, 0);
     SetVBlankCallback(VBlankCB_PartyMenu);
     SetMainCallback2(CB2_UpdatePartyMenu);
-    gBattlerControllerFuncs[gActiveBattler] = HandleInputChooseAction;
 }
 
 static void Task_ExitPartyMenu(u8 taskId)
