@@ -23,12 +23,10 @@ MauvilleCity_BikeShop_EventScript_SkipGreeting:: @ 820EBF7
 	end
 
 MauvilleCity_BikeShop_EventScript_ChooseBike:: @ 820EC16
-	message MauvilleCity_BikeShop_Text_ExplainBikesChooseWhichOne
-	waitmessage
-	multichoice 21, 8, MULTI_BIKE, TRUE
-	switch VAR_RESULT
-	case 0, MauvilleCity_BikeShop_EventScript_GetMachBike
-	case 1, MauvilleCity_BikeShop_EventScript_GetAcroBike
+	msgbox MauvilleCity_BikeShop_Text_ExplainBikesChooseWhichOne, MSGBOX_DEFAULT
+	giveitem ITEM_ACRO_BIKE
+	giveitem ITEM_MACH_BIKE
+	release
 	end
 
 MauvilleCity_BikeShop_EventScript_NotFar:: @ 820EC3D
@@ -61,11 +59,14 @@ MauvilleCity_BikeShop_EventScript_ComeBackToSwitchBikes:: @ 820EC87
 	end
 
 MauvilleCity_BikeShop_EventScript_AskSwitchBikes:: @ 820EC94
-	msgbox MauvilleCity_BikeShop_Text_WantToSwitchBikes, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq MauvilleCity_BikeShop_EventScript_SwitchBikes
-	compare VAR_RESULT, NO
-	goto_if_eq MauvilleCity_BikeShop_EventScript_KeepBike
+	checkitem ITEM_ACRO_BIKE, 1
+	compare VAR_RESULT, TRUE
+	call_if_ne MauvilleCity_BikeShop_EventScript_SwitchMachForAcro
+	checkitem ITEM_MACH_BIKE, 1
+	compare VAR_RESULT, TRUE
+	call_if_ne MauvilleCity_BikeShop_EventScript_SwitchAcroForMach
+	msgbox MauvilleCity_BikeShop_Text_WantToSwitchBikes, MSGBOX_DEFAULT
+	release
 	end
 
 @ If the player does not have a bike on them Rydel assumes its stored in the PC
@@ -89,18 +90,14 @@ MauvilleCity_BikeShop_EventScript_KeepBike:: @ 820ECE5
 MauvilleCity_BikeShop_EventScript_SwitchAcroForMach:: @ 820ECEF
 	incrementgamestat GAME_STAT_TRADED_BIKES
 	msgbox MauvilleCity_BikeShop_Text_ExchangedAcroForMach, MSGBOX_DEFAULT
-	removeitem ITEM_ACRO_BIKE
 	giveitem ITEM_MACH_BIKE
-	goto MauvilleCity_BikeShop_EventScript_ComeBackToSwitchBikes
-	end
+	return
 
 MauvilleCity_BikeShop_EventScript_SwitchMachForAcro:: @ 820ED10
 	incrementgamestat GAME_STAT_TRADED_BIKES
 	msgbox MauvilleCity_BikeShop_Text_ExchangedMachForAcro, MSGBOX_DEFAULT
-	removeitem ITEM_MACH_BIKE
 	giveitem ITEM_ACRO_BIKE
-	goto MauvilleCity_BikeShop_EventScript_ComeBackToSwitchBikes
-	end
+	return
 
 MauvilleCity_BikeShop_EventScript_Assistant:: @ 820ED31
 	msgbox MauvilleCity_BikeShop_Text_HandbooksAreInBack, MSGBOX_NPC
@@ -220,7 +217,13 @@ MauvilleCity_BikeShop_Text_ExplainBikesChooseWhichOne: @ 820EF32
 	.string "prefer technical rides!\p"
 	.string "I'm a real sweetheart, so you can\n"
 	.string "have whichever one you like!\p"
-	.string "Which one will you choose?$"
+	.string "Which one will you cho...\n"
+	.string "Wait, i recognize you!\p"
+	.string "You're Norman's offspring!\n"
+	.string "Forget about choosing one.\p"
+	.string "I'll give you both!\n"
+	.string "In exchange, be sure to\p"
+	.string "show off our bikes!$"
 
 MauvilleCity_BikeShop_Text_ChoseMachBike: @ 820F18D
 	.string "{PLAYER} chose the Mach Bike.$"
@@ -233,20 +236,19 @@ MauvilleCity_BikeShop_Text_ComeBackToSwitchBikes: @ 820F1BD
 	.string "Bikes, just come see me!$"
 
 MauvilleCity_BikeShop_Text_WantToSwitchBikes: @ 820F1FB
-	.string "Rydel: Oh? Were you thinking about\n"
-	.string "switching Bikes?$"
+	.string "Rydel: Be sure to show off our bikes!$"
 
 MauvilleCity_BikeShop_Text_IllSwitchBikes: @ 820F22F
 	.string "Rydel: Okay, no problem!\n"
 	.string "I'll switch Bikes for you!$"
 
 MauvilleCity_BikeShop_Text_ExchangedMachForAcro: @ 820F263
-	.string "{PLAYER} got the Mach Bike exchanged\n"
-	.string "for an Acro Bike.$"
+	.string "Rydel: Oh! You're back! Perfect!\n"
+	.string "Last time i think i forgot to give you this.$"
 
 MauvilleCity_BikeShop_Text_ExchangedAcroForMach: @ 820F294
-	.string "{PLAYER} got the Acro Bike exchanged\n"
-	.string "for a Mach Bike.$"
+	.string "Rydel: Oh! You're back! Perfect!\n"
+	.string "I forgot to give you this last time.$"
 
 MauvilleCity_BikeShop_Text_HappyYouLikeIt: @ 820F2C4
 	.string "Rydel: Good, good!\n"
@@ -325,4 +327,3 @@ MauvilleCity_BikeShop_Text_Jumps: @ 820F898
 	.string "Press it backwards to make the Bike\n"
 	.string "change directions while jumping.\p"
 	.string "Want to read a different page?$"
-
