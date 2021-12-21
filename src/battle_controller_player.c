@@ -317,7 +317,7 @@ static void HandleInputChooseAction(void)
         DestroyTask(gBattleControllerData[gActiveBattler]);
         FreeAllWindowBuffers();
         OpenEnemySummaryScreenMenuInBattle();
-        gBattlerControllerFuncs[gActiveBattler] = WaitForDebug;
+        gBattlerControllerFuncs[gActiveBattler] = ReshowBattleScreenAfterMenu;
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
