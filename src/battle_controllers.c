@@ -131,7 +131,7 @@ static void InitSinglePlayerBtlControllers(void)
         }
         else
         {
-            gBattlerControllerFuncs[0] = SetControllerToPlayer;
+            gBattlerControllerFuncs[0] = SetControllerToPlayerPartner;
             gBattlerPositions[0] = B_POSITION_PLAYER_LEFT;
 
             gBattlerControllerFuncs[1] = SetControllerToOpponent;
@@ -173,7 +173,12 @@ static void InitSinglePlayerBtlControllers(void)
         else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL)
             gBattlerControllerFuncs[0] = SetControllerToWally;
         else
-            gBattlerControllerFuncs[0] = SetControllerToPlayer;
+	{
+		if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+			gBattlerControllerFuncs[0] = SetControllerToPlayerPartner;
+		else
+			gBattlerControllerFuncs[0] = SetControllerToPlayer;
+	}
 
         gBattlerPositions[0] = B_POSITION_PLAYER_LEFT;
 
@@ -223,13 +228,19 @@ static void InitSinglePlayerBtlControllers(void)
     {
         gBattleMainFunc = BeginBattleIntro;
 
-        gBattlerControllerFuncs[0] = SetControllerToPlayer;
+        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+		gBattlerControllerFuncs[0] = SetControllerToPlayerPartner;
+	else
+		gBattlerControllerFuncs[0] = SetControllerToPlayer;
         gBattlerPositions[0] = B_POSITION_PLAYER_LEFT;
 
         gBattlerControllerFuncs[1] = SetControllerToOpponent;
         gBattlerPositions[1] = B_POSITION_OPPONENT_LEFT;
 
-        gBattlerControllerFuncs[2] = SetControllerToPlayer;
+        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+		gBattlerControllerFuncs[2] = SetControllerToPlayerPartner;
+	else
+		gBattlerControllerFuncs[2] = SetControllerToPlayer;
         gBattlerPositions[2] = B_POSITION_PLAYER_RIGHT;
 
         gBattlerControllerFuncs[3] = SetControllerToOpponent;
@@ -243,13 +254,13 @@ static void InitSinglePlayerBtlControllers(void)
             {
                 gBattleMainFunc = BeginBattleIntro;
 
-                gBattlerControllerFuncs[0] = SetControllerToRecordedPlayer;
+                gBattlerControllerFuncs[0] = SetControllerToPlayer;
                 gBattlerPositions[0] = B_POSITION_PLAYER_LEFT;
 
                 gBattlerControllerFuncs[1] = SetControllerToOpponent;
                 gBattlerPositions[1] = B_POSITION_OPPONENT_LEFT;
 
-                gBattlerControllerFuncs[2] = SetControllerToRecordedPlayer;
+                gBattlerControllerFuncs[2] = SetControllerToPlayer;
                 gBattlerPositions[2] = B_POSITION_PLAYER_RIGHT;
 
                 gBattlerControllerFuncs[3] = SetControllerToOpponent;
@@ -1192,6 +1203,19 @@ void BtlController_EmitChoosePokemon(u8 bufferId, u8 caseId, u8 slotId, u16 abil
     s32 i;
 
     sBattleBuffersTransferData[0] = CONTROLLER_CHOOSEPOKEMON;
+    sBattleBuffersTransferData[1] = caseId;
+    sBattleBuffersTransferData[2] = slotId;
+    sBattleBuffersTransferData[3] = abilityId & 0xFF;
+    sBattleBuffersTransferData[7] = (abilityId >> 8) & 0xFF;
+    for (i = 0; i < 3; i++)
+        sBattleBuffersTransferData[4 + i] = arg4[i];
+    PrepareBufferDataTransfer(bufferId, sBattleBuffersTransferData, 8);  // Only 7 bytes were written.
+}
+void BtlController_EmitShowEnemySummaryScreen(u8 bufferId, u8 caseId, u8 slotId, u16 abilityId, u8 *arg4)
+{
+    s32 i;
+
+    sBattleBuffersTransferData[0] = CONTROLLER_SHOWENEMYSUMMARYSCREEN;
     sBattleBuffersTransferData[1] = caseId;
     sBattleBuffersTransferData[2] = slotId;
     sBattleBuffersTransferData[3] = abilityId & 0xFF;
