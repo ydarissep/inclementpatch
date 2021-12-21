@@ -310,6 +310,7 @@ static void HandleInputChooseAction(void)
         }
     PlayerBufferExecCompleted();
     }
+    /*
     else if (JOY_NEW(R_BUTTON))
     {
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
@@ -319,6 +320,7 @@ static void HandleInputChooseAction(void)
         OpenEnemySummaryScreenMenuInBattle();
         gBattlerControllerFuncs[gActiveBattler] = ReshowBattleScreenAfterMenu;
     }
+    */
     else if (JOY_NEW(DPAD_LEFT))
     {
         if (gActionSelectionCursor[gActiveBattler] & 1) // if is B_ACTION_USE_ITEM or B_ACTION_RUN
