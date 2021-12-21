@@ -238,9 +238,9 @@ static void InitSinglePlayerBtlControllers(void)
         gBattlerPositions[1] = B_POSITION_OPPONENT_LEFT;
 
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
-		gBattlerControllerFuncs[0] = SetControllerToPlayerPartner;
+		gBattlerControllerFuncs[2] = SetControllerToPlayerPartner;
 	else
-		gBattlerControllerFuncs[0] = SetControllerToPlayer;
+		gBattlerControllerFuncs[2] = SetControllerToPlayer;
         gBattlerPositions[2] = B_POSITION_PLAYER_RIGHT;
 
         gBattlerControllerFuncs[3] = SetControllerToOpponent;
