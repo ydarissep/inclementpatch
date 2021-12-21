@@ -223,13 +223,13 @@ static void InitSinglePlayerBtlControllers(void)
     {
         gBattleMainFunc = BeginBattleIntro;
 
-        gBattlerControllerFuncs[0] = SetControllerToPlayerPartner;
+        gBattlerControllerFuncs[0] = SetControllerToPlayer;
         gBattlerPositions[0] = B_POSITION_PLAYER_LEFT;
 
         gBattlerControllerFuncs[1] = SetControllerToOpponent;
         gBattlerPositions[1] = B_POSITION_OPPONENT_LEFT;
 
-        gBattlerControllerFuncs[2] = SetControllerToPlayerPartner;
+        gBattlerControllerFuncs[2] = SetControllerToPlayer;
         gBattlerPositions[2] = B_POSITION_PLAYER_RIGHT;
 
         gBattlerControllerFuncs[3] = SetControllerToOpponent;
@@ -243,13 +243,13 @@ static void InitSinglePlayerBtlControllers(void)
             {
                 gBattleMainFunc = BeginBattleIntro;
 
-                gBattlerControllerFuncs[0] = SetControllerToOpponent;
+                gBattlerControllerFuncs[0] = SetControllerToPlayer;
                 gBattlerPositions[0] = B_POSITION_PLAYER_LEFT;
 
                 gBattlerControllerFuncs[1] = SetControllerToOpponent;
                 gBattlerPositions[1] = B_POSITION_OPPONENT_LEFT;
 
-                gBattlerControllerFuncs[2] = SetControllerToOpponent;
+                gBattlerControllerFuncs[2] = SetControllerToPlayer;
                 gBattlerPositions[2] = B_POSITION_PLAYER_RIGHT;
 
                 gBattlerControllerFuncs[3] = SetControllerToOpponent;
