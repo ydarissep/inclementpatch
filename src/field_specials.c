@@ -5630,16 +5630,15 @@ void SetSpeciesAndEggMove (void)
 	*/
 	{SPECIES_MEWTWO}
     };
-	/*
     u8 numEggSpecies = ARRAY_COUNT(eggMoves);
-    u8 randSpecies, randEggMove;
-
+    //u8 randSpecies, randEggMove;
+    u8 randSpecies;	
+	
     randSpecies = Random() % numEggSpecies;
-    randEggMove = (Random() % 3) + 1; // Random number between 1 and 3
+    //randEggMove = (Random() % 3) + 1; // Random number between 1 and 3
 
-    gSpecialVar_0x8004 = eggMoves[randSpecies][0];
-    gSpecialVar_0x8005 = eggMoves[randSpecies][randEggMove];
-    */
+    //gSpecialVar_0x8004 = eggMoves[randSpecies][0];
+    //gSpecialVar_0x8005 = eggMoves[randSpecies][randEggMove];
 }
 
 // Gives a mon in the party a move
