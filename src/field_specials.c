@@ -5950,8 +5950,8 @@ void SetSpeciesAndEggMove (void)
 	{SPECIES_DRAMPA},
 	{SPECIES_JANGMO-O}
     };
-    u8 numEggSpecies = ARRAY_COUNT(eggMoves);
-    u8 randSpecies, randEggMove;
+    u16 numEggSpecies = ARRAY_COUNT(eggMoves);
+    u16 randSpecies, randEggMove;
 	
     randSpecies = Random() % numEggSpecies;
     randEggMove = (Random() % 3) + 1; // Random number between 1 and 3
