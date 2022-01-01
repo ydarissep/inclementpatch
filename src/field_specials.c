@@ -5631,14 +5631,13 @@ void SetSpeciesAndEggMove (void)
 	{SPECIES_MEWTWO}
     };
     u8 numEggSpecies = ARRAY_COUNT(eggMoves);
-    //u8 randSpecies, randEggMove;
-    u8 randSpecies;	
+    u8 randSpecies, randEggMove;
 	
     randSpecies = Random() % numEggSpecies;
-    //randEggMove = (Random() % 3) + 1; // Random number between 1 and 3
+    randEggMove = (Random() % 3) + 1; // Random number between 1 and 3
 
-    //gSpecialVar_0x8004 = eggMoves[randSpecies][0];
-    //gSpecialVar_0x8005 = eggMoves[randSpecies][randEggMove];
+    gSpecialVar_0x8004 = eggMoves[randSpecies][0];
+    gSpecialVar_0x8005 = eggMoves[randSpecies][randEggMove];
 }
 
 // Gives a mon in the party a move
@@ -5646,6 +5645,7 @@ void SetSpeciesAndEggMove (void)
 // gSpecialVar_0x8006: Party slot
 void SetGiftEggMove (void)
 {
+	/*
     if (MonKnowsMove(&gPlayerParty[gSpecialVar_0x8006], MOVE_NONE))
     {
         GiveMoveToMon(&gPlayerParty[gSpecialVar_0x8006], gSpecialVar_0x8005);
@@ -5654,6 +5654,7 @@ void SetGiftEggMove (void)
     {
         SetMonMoveSlot(&gPlayerParty[gSpecialVar_0x8006], gSpecialVar_0x8005, 0);
     }
+    */
 }
 
 // Changes a chosen mon's Poke Ball to another one in the player's bag
