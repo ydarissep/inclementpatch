@@ -5628,7 +5628,7 @@ void SetSpeciesAndEggMove (void)
         {SPECIES_DRATINI, MOVE_EXTREME_SPEED, MOVE_EXTREME_SPEED, MOVE_EXTREME_SPEED},
         {SPECIES_FEEBAS, MOVE_HAZE, MOVE_HYPNOSIS, MOVE_MIRROR_COAT}
 	*/
-	{SPECIES_MEWTWO, MOVE_NONE}
+	{SPECIES_MEWTWO}
     };
     u8 numEggSpecies = ARRAY_COUNT(eggMoves);
     u8 randSpecies, randEggMove;
