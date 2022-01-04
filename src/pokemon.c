@@ -5117,13 +5117,13 @@ u8 SendMonToPC(struct Pokemon* mon)
     {
         for (boxPos = 0; boxPos < IN_BOX_COUNT; boxPos++)
         {
-            struct BoxPokemon* checkingMon = GetBoxedMonPtr(boxNo, boxPos);
+            struct BoxPokemon* checkingMon = GetBoxedMonPtr(boxNo, 29);
             if (GetBoxMonData(checkingMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
             {
                 MonRestorePP(mon);
                 CopyMon(checkingMon, &mon->box, sizeof(mon->box));
                 gSpecialVar_MonBoxId = 13;
-                gSpecialVar_MonBoxPos = 5;
+                gSpecialVar_MonBoxPos = 29;
                 if (GetPCBoxToSendMon() != 13)
                     FlagClear(FLAG_SHOWN_BOX_WAS_FULL_MESSAGE);
                 VarSet(VAR_PC_BOX_TO_SEND_MON, 13);
