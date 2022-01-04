@@ -5122,11 +5122,11 @@ u8 SendMonToPC(struct Pokemon* mon)
             {
                 MonRestorePP(mon);
                 CopyMon(checkingMon, &mon->box, sizeof(mon->box));
-                gSpecialVar_MonBoxId = boxNo;
-                gSpecialVar_MonBoxPos = boxPos;
-                if (GetPCBoxToSendMon() != boxNo)
+                gSpecialVar_MonBoxId = 13;
+                gSpecialVar_MonBoxPos = 29;
+                if (GetPCBoxToSendMon() != 13)
                     FlagClear(FLAG_SHOWN_BOX_WAS_FULL_MESSAGE);
-                VarSet(VAR_PC_BOX_TO_SEND_MON, boxNo);
+                VarSet(VAR_PC_BOX_TO_SEND_MON, 13);
                 return MON_GIVEN_TO_PC;
             }
         }
