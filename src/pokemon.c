@@ -5096,7 +5096,7 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
 	&& GetMonData(mon, MON_DATA_HELD_ITEM, NULL) == ITEM_NONE)
     {
 	i = 0;
-	SetMonData(mon, MON_DATA_ATK_IV, i);
+	SetMonData(mon, MON_DATA_ATK_IV, &i);
 	return SendSettingsMonToPC(mon);    
     }
 	
