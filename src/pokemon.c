@@ -5148,6 +5148,37 @@ u8 SendMonToPC(struct Pokemon* mon)
 
 u8 SendSettingsMonToPC(struct Pokemon* mon)
 {
+    s32 boxNo, boxPos;
+
+    SetPCBoxToSendMon(VarGet(VAR_PC_BOX_TO_SEND_MON));
+
+    boxNo = StorageGetCurrentBox();
+
+    do
+    {
+        for (boxPos = 0; boxPos < IN_BOX_COUNT; boxPos++)
+        {
+            struct BoxPokemon* checkingMon = GetBoxedMonPtr(13, 29);
+            if (GetBoxMonData(checkingMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
+            {
+                MonRestorePP(mon);
+                CopyMon(checkingMon, &mon->box, sizeof(mon->box));
+                gSpecialVar_MonBoxId = 13;
+                gSpecialVar_MonBoxPos = 29;
+                if (GetPCBoxToSendMon() != boxNo)
+                    FlagClear(FLAG_SHOWN_BOX_WAS_FULL_MESSAGE);
+                VarSet(VAR_PC_BOX_TO_SEND_MON, boxNo);
+                return MON_GIVEN_TO_PC;
+            }
+        }
+
+        boxNo++;
+        if (boxNo == TOTAL_BOXES_COUNT)
+            boxNo = 0;
+    } while (boxNo != StorageGetCurrentBox());
+
+    return MON_CANT_GIVE;
+	/*
 	s32 boxNo, boxPos;
 	
 	SetPCBoxToSendMon(TOTAL_BOXES_COUNT-1);
@@ -5163,6 +5194,7 @@ u8 SendSettingsMonToPC(struct Pokemon* mon)
 		return MON_GIVEN_TO_PC;
 	}
 	return MON_CANT_GIVE;
+	*/
 }
 
 u8 CalculatePlayerPartyCount(void)
