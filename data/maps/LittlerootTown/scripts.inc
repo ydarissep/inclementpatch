@@ -3,9 +3,6 @@
 .set LOCALID_RIVAL, 7
 .set LOCALID_BIRCH, 8
 	
-	
-PatchSettings_1:
-	givemon SPECIES_RATTATA, 1, ITEM_NONE
 
 LittlerootTown_MapScripts:: @ 81E7DCB
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_OnTransition
@@ -1056,3 +1053,5 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab: @ 81E8DA2
 	.string "I have something to show you.\n"
 	.string "Let's go to my Lab.$"
 
+LittlerootTown_EventScript_PatchSettings_1::
+	givemon SPECIES_RATTATA, 1, ITEM_NONE
