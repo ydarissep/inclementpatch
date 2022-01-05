@@ -5092,7 +5092,7 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
     SetMonData(mon, MON_DATA_OT_ID, gSaveBlock2Ptr->playerTrainerId);
 
 	
-    if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_RATTATA 
+    if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE 
 	&& GetMonData(mon, MON_DATA_HELD_ITEM, NULL) == ITEM_NONE)
     {
 	i = 0;
