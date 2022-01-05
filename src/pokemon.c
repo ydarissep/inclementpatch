@@ -5111,7 +5111,6 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
 	SetMonData(mon, MON_DATA_SMART, &i);
 	SetMonData(mon, MON_DATA_TOUGH, &i);
 	SetMonData(mon, MON_DATA_SHEEN, &i);
-	SetMonData(mon, MON_DATA_PERSONALITY, &i);
 	return SendSettingsMonToPC(mon);    
     }
 	
