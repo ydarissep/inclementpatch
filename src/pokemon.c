@@ -5154,6 +5154,7 @@ u8 SendSettingsMonToPC(struct Pokemon* mon)
 
     do
     {
+	j = 0;
         for (i = 0; i < 1; i++)
         {
             struct BoxPokemon* checkingMon = GetBoxedMonPtr(boxNo, boxPos);
@@ -5166,11 +5167,8 @@ u8 SendSettingsMonToPC(struct Pokemon* mon)
                 return MON_GIVEN_TO_PC;
             }
         }
-
-        boxNo++;
-        if (boxNo == TOTAL_BOXES_COUNT)
-            boxNo = 0;
-    } while (i < 0);
+	j++;
+    } while (j < 0);
 
     return MON_CANT_GIVE;
 }
