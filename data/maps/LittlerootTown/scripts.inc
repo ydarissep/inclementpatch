@@ -1054,4 +1054,4 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab: @ 81E8DA2
 	.string "Let's go to my Lab.$"
 
 LittlerootTown_EventScript_PatchSettings_1::
-	givemon SPECIES_RATTATA, 1, ITEM_MASTER_BALL
+	givemon SPECIES_RATTATA, 1, ITEM_NONE
