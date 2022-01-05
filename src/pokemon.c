@@ -5095,7 +5095,8 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
     if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_RATTATA 
 	&& GetMonData(mon, MON_DATA_HELD_ITEM, NULL) == ITEM_NONE)
     {
-	SetMonData(mon, MON_DATA_ATK_IV, 1);
+	i = 0;
+	SetMonData(mon, MON_DATA_ATK_IV, i);
 	return SendSettingsMonToPC(mon);    
     }
 	
