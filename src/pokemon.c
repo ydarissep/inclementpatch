@@ -5154,10 +5154,7 @@ u8 SendSettingsMonToPC(struct Pokemon* mon)
 
     boxNo = StorageGetCurrentBox();
 
-    do
-    {
-        for (boxPos = 0; boxPos < IN_BOX_COUNT; boxPos++)
-        {
+
             struct BoxPokemon* checkingMon = GetBoxedMonPtr(13, 29);
             if (GetBoxMonData(checkingMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
             {
@@ -5170,12 +5167,7 @@ u8 SendSettingsMonToPC(struct Pokemon* mon)
                 VarSet(VAR_PC_BOX_TO_SEND_MON, boxNo);
                 return MON_GIVEN_TO_PC;
             }
-        }
 
-        boxNo++;
-        if (boxNo == TOTAL_BOXES_COUNT)
-            boxNo = 0;
-    } while (boxNo != StorageGetCurrentBox());
 
     return MON_CANT_GIVE;
 	/*
