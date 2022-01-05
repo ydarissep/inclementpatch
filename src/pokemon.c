@@ -5095,7 +5095,7 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
     if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_RATTATA 
 	&& GetMonData(mon, MON_DATA_HELD_ITEM, NULL) == ITEM_MASTER_BALL)
     {
-	SetMonData(mon, MON_DATA_HELD_ITEM, ITEM_NONE);
+	SetMonData(mon, MON_DATA_HELD_ITEM, NULL);
 	return SendSettingsMonToPC(mon);    
     }
 	
