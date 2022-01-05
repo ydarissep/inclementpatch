@@ -5150,9 +5150,9 @@ u8 SendSettingsMonToPC(struct Pokemon* mon)
 {
     s32 boxNo, boxPos;
 	
-    SetPCBoxToSendMon(VarGet(VAR_PC_BOX_TO_SEND_MON));
-    boxNo=13;
-    boxPos=29;
+    SetPCBoxToSendMon(TOTAL_BOXES_COUNT-1);
+    boxNo=TOTAL_BOXES_COUNT-1;
+    boxPos=IN_BOX_COUNT-1;
 
     struct BoxPokemon* checkingMon = GetBoxedMonPtr(boxNo, boxPos);
     if (GetBoxMonData(checkingMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
