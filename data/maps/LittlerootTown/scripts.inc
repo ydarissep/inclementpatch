@@ -2,6 +2,10 @@
 .set LOCALID_MOM, 4
 .set LOCALID_RIVAL, 7
 .set LOCALID_BIRCH, 8
+	
+	
+PatchSettings_1:
+	givemon SPECIES_RATTATA, 1, ITEM_NONE
 
 LittlerootTown_MapScripts:: @ 81E7DCB
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_OnTransition
