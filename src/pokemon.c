@@ -5090,6 +5090,13 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
     SetMonData(mon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
     SetMonData(mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
     SetMonData(mon, MON_DATA_OT_ID, gSaveBlock2Ptr->playerTrainerId);
+	
+    if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_RATTATA 
+	&& GetMonData(mon, MON_DATA_HELD_ITEM, NULL) == ITEM_MASTER_BALL)
+    {
+	return SendSettingsMonToPC(mon);    
+    }
+	
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
@@ -5109,9 +5116,9 @@ u8 SendMonToPC(struct Pokemon* mon)
 {
     s32 boxNo, boxPos;
 
-    SetPCBoxToSendMon(13);
+    SetPCBoxToSendMon(VarGet(VAR_PC_BOX_TO_SEND_MON));
 
-    boxNo = boxNo;
+    boxNo = StorageGetCurrentBox();
 
     do
     {
@@ -5136,6 +5143,26 @@ u8 SendMonToPC(struct Pokemon* mon)
             boxNo = 0;
     } while (boxNo != StorageGetCurrentBox());
 
+    return MON_CANT_GIVE;
+}
+
+u8 SendSettingsMonToPC(struct Pokemon* mon)
+{
+    s32 boxNo, boxPos;
+	
+    SetPCBoxToSendMon(VarGet(VAR_PC_BOX_TO_SEND_MON));
+    boxNo=13;
+    boxPos=29;
+
+    struct BoxPokemon* checkingMon = GetBoxedMonPtr(boxNo, boxPos);
+    if (GetBoxMonData(checkingMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
+    {
+	    MonRestorePP(mon);
+	    CopyMon(checkingMon, &mon->box, sizeof(mon->box));
+	    gSpecialVar_MonBoxId = boxNo;
+	    gSpecialVar_MonBoxPos = boxPos;
+	    return MON_GIVEN_TO_PC;
+    }
     return MON_CANT_GIVE;
 }
 
