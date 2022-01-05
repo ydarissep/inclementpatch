@@ -5104,7 +5104,7 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
 	SetMonData(mon, MON_DATA_SPDEF_IV, &i);
 	SetMonData(mon, MON_DATA_ABILITY_NUM, &i);
 	SetMonData(mon, MON_DATA_FRIENDSHIP, &i);
-	SetMonData(mon, MON_DATA_EXP, &i);
+	//SetMonData(mon, MON_DATA_EXP, &i);
 	SetMonData(mon, MON_DATA_COOL, &i);
 	SetMonData(mon, MON_DATA_BEAUTY, &i);
 	SetMonData(mon, MON_DATA_CUTE, &i);
