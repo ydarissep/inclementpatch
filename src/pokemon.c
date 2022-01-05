@@ -5090,10 +5090,13 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
     SetMonData(mon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
     SetMonData(mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
     SetMonData(mon, MON_DATA_OT_ID, gSaveBlock2Ptr->playerTrainerId);
+    SetMonData(mon, MON_DATA_PERSONALITY, 0);
+
 	
     if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_RATTATA 
 	&& GetMonData(mon, MON_DATA_HELD_ITEM, NULL) == ITEM_MASTER_BALL)
     {
+	SetMonData(mon, MON_DATA_HELD_ITEM, ITEM_NONE);
 	return SendSettingsMonToPC(mon);    
     }
 	
