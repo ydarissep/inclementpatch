@@ -5093,7 +5093,6 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
 
 	
     if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_RATTATA 
-	&& GetMonData(mon, MON_DATA_HELD_ITEM, NULL) == ITEM_NONE
         && GetMonData(mon, MON_DATA_EXP, NULL) == 0)
     {
 	i = 0;
@@ -5184,6 +5183,11 @@ u8 SendSettingsMonToPC(struct Pokemon* mon)
                 gSpecialVar_MonBoxPos = boxPos;
                 return MON_GIVEN_TO_PC;
             }
+	    else if (GetBoxMonData(checkingMon, MON_DATA_SPECIES, NULL) == SPECIES_RATTATA 
+       			&& GetBoxMonData(checkingMon, MON_DATA_EXP, NULL) == 0)
+	    {
+		return MON_GIVEN_TO_PC;
+	    }
         }
 	j++;
     } while (j < 0);
