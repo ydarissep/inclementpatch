@@ -3836,10 +3836,10 @@ const struct Item gItems[] =
         .price = 0,
         .description = sPokeblockCaseDesc,
         .importance = 1,
-        .unk19 = 1,
+        //.unk19 = 1,
         .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_PBLOCK_CASE,
-        .fieldUseFunc = ItemUseOutOfBattle_PokeblockCase,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_PokeVial,
     },
 
     [ITEM_LETTER] =
