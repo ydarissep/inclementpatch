@@ -9,6 +9,7 @@
 #include "bike.h"
 #include "coins.h"
 #include "data.h"
+#include "daycare.h"
 #include "event_data.h"
 #include "event_object_lock.h"
 #include "event_object_movement.h"
@@ -32,6 +33,7 @@
 #include "pokeblock.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
+#include "random.h"
 #include "script.h"
 #include "script_pokemon_util.h"
 #include "sound.h"
@@ -616,7 +618,6 @@ static void Task_StandingOnHiddenItem(u8 taskId)
 
 void ItemUseOutOfBattle_PokeblockCase(u8 taskId)
 {
-    
     static const u16 egglocke[][1] = {
         {SPECIES_BULBASAUR},
         {SPECIES_CHARMANDER},
