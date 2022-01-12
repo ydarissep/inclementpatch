@@ -616,23 +616,6 @@ static void Task_StandingOnHiddenItem(u8 taskId)
 
 void ItemUseOutOfBattle_PokeblockCase(u8 taskId)
 {
-    if (VarGet(VAR_POKE_VIAL_CHARGES) == 0)
-    {
-        if (!gTasks[taskId].tUsingRegisteredKeyItem)
-        {
-            DisplayItemMessage(taskId, 1, gText_PokeVialEmpty, CloseItemMessage);
-        }
-        else
-        {
-            DisplayItemMessageOnField(taskId, gText_PokeVialEmpty, Task_CloseCantUseKeyItemMessage);
-        }
-    }
-    else
-    {
-        sItemUseOnFieldCB = ItemUseOnFieldCB_PokeblockCase;
-        SetUpItemUseOnFieldCallback(taskId);
-    }
-    
     
     static const u16 egglocke[][1] = {
         {SPECIES_BULBASAUR},
@@ -1050,6 +1033,26 @@ void ItemUseOutOfBattle_PokeblockCase(u8 taskId)
 
 
     GiveMonToPlayer(&mon);
+    
+    
+    
+    if (VarGet(VAR_POKE_VIAL_CHARGES) == 0)
+    {
+        if (!gTasks[taskId].tUsingRegisteredKeyItem)
+        {
+            DisplayItemMessage(taskId, 1, gText_PokeVialEmpty, CloseItemMessage);
+        }
+        else
+        {
+            DisplayItemMessageOnField(taskId, gText_PokeVialEmpty, Task_CloseCantUseKeyItemMessage);
+        }
+    }
+    else
+    {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_PokeblockCase;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    
     
     /*
     if (MenuHelpers_LinkSomething() == TRUE) // link func
