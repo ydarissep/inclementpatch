@@ -1054,8 +1054,5 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab: @ 81E8DA2
 	.string "Let's go to my Lab.$"
 
 LittlerootTown_EventScript_PatchSettings_1::
-	givemon SPECIES_TYPE_NULL,0, ITEM_NONE
-	givemon SPECIES_SILVALLY,0, ITEM_NONE
-	givemon SPECIES_SILVALLY_GHOST,0, ITEM_NONE
-	givemon SPECIES_ARCEUS_FIRE,0, ITEM_NONE
+	givemon SPECIES_TOXEL,0, ITEM_NONE
 
