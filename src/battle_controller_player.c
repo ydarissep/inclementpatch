@@ -279,7 +279,7 @@ static void CompleteOnBankSpritePosX_0(void)
 
 static void HandleInputChooseAction(void)
 {
-    if (gSpecialVar_0x8005 != 0)
+    if (gSpecialVar_0x8005 != 1)
     {
     u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
 
