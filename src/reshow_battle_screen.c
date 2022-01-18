@@ -1,6 +1,7 @@
 #include "global.h"
 #include "reshow_battle_screen.h"
 #include "battle.h"
+#include "event_data.h"
 #include "palette.h"
 #include "pokemon.h"
 #include "main.h"
