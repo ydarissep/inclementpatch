@@ -168,7 +168,6 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
     }
     gSpecialVar_0x8005 = 0;
     gBattleScripting.reshowMainState++;
-    PlayerHandleChooseAction();
 }
 
 static void sub_80A95F4(void)
