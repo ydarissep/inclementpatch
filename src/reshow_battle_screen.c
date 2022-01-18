@@ -165,7 +165,7 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
         sub_805EF14();
         break;
     }
-
+    ReshowBattleScreenAfterMenu = 0;
     gBattleScripting.reshowMainState++;
 }
 
