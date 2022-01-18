@@ -286,8 +286,7 @@ static void HandleInputChooseAction(void)
         {
             PlayerHandleChooseAction();
             gSpecialVar_0x8005 = 2;
-            DoBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX, 7, 1);
-            DoBounceEffect(gActiveBattler, BOUNCE_MON, 7, 1);
+            AnimateSprites();
         /*
         search for animatesprites in CB2main2 or battlemain2
         */
