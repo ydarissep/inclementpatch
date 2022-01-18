@@ -26,6 +26,7 @@
 #include "recorded_battle.h"
 #include "reshow_battle_screen.h"
 #include "sound.h"
+#include "sprite.h"
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
