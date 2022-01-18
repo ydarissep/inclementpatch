@@ -285,6 +285,9 @@ static void HandleInputChooseAction(void)
         {
             PlayerHandleChooseAction();
             gSpecialVar_0x8005 = 2;
+        /*
+        search for animatesprites in CB2main2 or battlemain2
+        */
         }
     if (gSpecialVar_0x8005 != 1)
     {
