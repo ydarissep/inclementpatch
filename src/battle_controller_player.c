@@ -279,6 +279,8 @@ static void CompleteOnBankSpritePosX_0(void)
 
 static void HandleInputChooseAction(void)
 {
+    if (gSpecialVar_0x8005 != 0)
+    {
     u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
 
     DoBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX, 7, 1);
@@ -313,7 +315,7 @@ static void HandleInputChooseAction(void)
     }
    else if (JOY_NEW(L_BUTTON))
     {
-        gBattlerControllerFuncs[gActiveBattler] = CompleteWhenChoseItem;
+        gSpecialVar_0x8005 = 1;
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         FreeAllWindowBuffers();
         ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, CB2_SetUpReshowBattleScreenAfterMenu);
@@ -396,6 +398,7 @@ static void HandleInputChooseAction(void)
         PlayerBufferExecCompleted();
     }
     #endif
+    }
 }
 
 static void UnusedEndBounceEffect(void)
