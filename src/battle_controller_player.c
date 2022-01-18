@@ -317,7 +317,7 @@ static void HandleInputChooseAction(void)
     }
    else if (JOY_NEW(L_BUTTON))
     {
-        gSpecialVar_0x8005 = 1;
+        //gSpecialVar_0x8005 = 1;
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         FreeAllWindowBuffers();
         ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, MainCB2);
