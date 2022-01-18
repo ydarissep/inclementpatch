@@ -282,17 +282,14 @@ static void CompleteOnBankSpritePosX_0(void)
 
 static void HandleInputChooseAction(void)
 {
-    u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
     if (gSpecialVar_0x8005 == 0)
         {
             PlayerHandleChooseAction();
             gSpecialVar_0x8005 = 2;
-            DoBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX, 7, 1);
-            DoBounceEffect(gActiveBattler, BOUNCE_MON, 7, 1);
         }
     if (gSpecialVar_0x8005 != 1)
     {
-
+        u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
         DoBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX, 7, 1);
         DoBounceEffect(gActiveBattler, BOUNCE_MON, 7, 1);
 
