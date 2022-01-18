@@ -7,7 +7,7 @@
 #include "battle_interface.h"
 #include "battle_message.h"
 #include "battle_setup.h"
-#include "battle_debug.h"
+#include "battle_main.h"
 #include "battle_tv.h"
 #include "bg.h"
 #include "data.h"
@@ -320,7 +320,7 @@ static void HandleInputChooseAction(void)
         //gSpecialVar_0x8005 = 1;
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         FreeAllWindowBuffers();
-        ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, MainCB2);
+        ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, BattleMainCB2);
     }
     else if (JOY_NEW(DPAD_LEFT))
     {
