@@ -310,17 +310,13 @@ static void HandleInputChooseAction(void)
         }
     PlayerBufferExecCompleted();
     }
-    /*
-    else if (JOY_NEW(R_BUTTON))
+   else if (JOY_NEW(L_BUTTON))
     {
+        gBattlerControllerFuncs[gActiveBattler] = CompleteWhenChoseItem;
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
-        gBattlerInMenuId = gActiveBattler;
-        DestroyTask(gBattleControllerData[gActiveBattler]);
         FreeAllWindowBuffers();
-        OpenEnemySummaryScreenMenuInBattle();
-        gBattlerControllerFuncs[gActiveBattler] = ReshowBattleScreenAfterMenu;
+        ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, CB2_SetUpReshowBattleScreenAfterMenu);
     }
-    */
     else if (JOY_NEW(DPAD_LEFT))
     {
         if (gActionSelectionCursor[gActiveBattler] & 1) // if is B_ACTION_USE_ITEM or B_ACTION_RUN
