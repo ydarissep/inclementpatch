@@ -6412,7 +6412,7 @@ void UpdateEnemyPartyOrder(void)
 
     memcpy(partyBuffer, gEnemyParty, sizeof(gEnemyParty));
     for (i = 0; i < PARTY_SIZE; i++)
-        memcpy(&gEnemyParty[GetPartyIdFromBattlePartyId(i)], &partyBuffer[i], sizeof(struct Pokemon));
+        memcpy(&gEnemyParty[GetPartyIdFromBattleSlot(i)], &partyBuffer[i], sizeof(struct Pokemon));
     Free(partyBuffer);
 }
 
