@@ -6405,7 +6405,7 @@ static void UpdatePartyToBattleOrder(void)
     Free(partyBuffer);
 }
 
-static void UpdateEnemyPartyOrder(void)
+void UpdateEnemyPartyOrder(void)
 {
     struct Pokemon *partyBuffer = Alloc(sizeof(gEnemyParty));
     u8 i;
