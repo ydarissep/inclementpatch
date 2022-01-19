@@ -449,17 +449,17 @@ void RecordLastUsedMoveByTarget(void)
 bool32 IsBattlerAIControlled(u32 battlerId)
 {
     switch (GetBattlerPosition(battlerId))
-    {
-    case B_POSITION_PLAYER_LEFT:
-    default:
-        return TRUE;
-    case B_POSITION_OPPONENT_LEFT:
-        return TRUE;
-    case B_POSITION_PLAYER_RIGHT:
-        return TRUE;
-    case B_POSITION_OPPONENT_RIGHT:
-        return TRUE;
-    }
+	{
+	    case B_POSITION_PLAYER_LEFT:
+	    default:
+		return FALSE;
+	    case B_POSITION_OPPONENT_LEFT:
+		return TRUE;
+	    case B_POSITION_PLAYER_RIGHT:
+		return ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) != 0);
+	    case B_POSITION_OPPONENT_RIGHT:
+		return TRUE;
+	}
 }
 
 void ClearBattlerMoveHistory(u8 battlerId)
