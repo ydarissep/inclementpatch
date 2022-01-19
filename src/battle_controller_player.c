@@ -322,6 +322,7 @@ static void HandleInputChooseAction(void)
         }
        else if (JOY_NEW(L_BUTTON))
         {
+            UpdateEnemyPartyOrder();
             gSpecialVar_0x8005 = 199;
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
             FreeAllWindowBuffers();
