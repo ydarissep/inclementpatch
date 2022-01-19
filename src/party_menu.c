@@ -6405,6 +6405,17 @@ static void UpdatePartyToBattleOrder(void)
     Free(partyBuffer);
 }
 
+static void UpdateEnemyPartyOrder(void)
+{
+    struct Pokemon *partyBuffer = Alloc(sizeof(gEnemyParty));
+    u8 i;
+
+    memcpy(partyBuffer, gEnemyParty, sizeof(gEnemyParty));
+    for (i = 0; i < PARTY_SIZE; i++)
+        memcpy(&gEnemyParty[GetPartyIdFromBattlePartyId(i)], &partyBuffer[i], sizeof(struct Pokemon));
+    Free(partyBuffer);
+}
+
 static void UpdatePartyToFieldOrder(void)
 {
     struct Pokemon *partyBuffer = Alloc(sizeof(gPlayerParty));
