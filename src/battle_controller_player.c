@@ -285,7 +285,7 @@ static void HandleInputChooseAction(void)
     if (gSpecialVar_0x8005 == 198)
         {
             PlayerHandleChooseAction();
-            gSpecialVar_0x8005 = 197;
+            gSpecialVar_0x8005 = _("test");
         }
     if (gSpecialVar_0x8005 != 199)
     {
