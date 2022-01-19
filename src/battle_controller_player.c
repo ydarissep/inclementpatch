@@ -322,11 +322,10 @@ static void HandleInputChooseAction(void)
         }
        else if (JOY_NEW(L_BUTTON))
         {
-            UpdateEnemyPartyOrder();
             gSpecialVar_0x8005 = 199;
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
             FreeAllWindowBuffers();
-            ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, 0, CalculateEnemyPartyCount() - 1, CB2_SetUpReshowBattleScreenAfterMenu);
+            ShowPokemonSummaryScreen(SUMMARY_MODE_LOCK_MOVES, gEnemyParty, gBattlerPartyIndexes[1], CalculateEnemyPartyCount() - 1, CB2_SetUpReshowBattleScreenAfterMenu);
         }
         else if (JOY_NEW(DPAD_LEFT))
         {
