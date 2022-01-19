@@ -69,7 +69,7 @@ void CB2_ChooseMonToGiveItem(void);
 void ChooseMonToGiveMailFromMailbox(void);
 void InitChooseHalfPartyForBattle(u8 unused);
 void ClearSelectedPartyOrder(void);
-static void UpdateEnemyPartyOrder(void);
+void UpdateEnemyPartyOrder(void);
 void ChooseMonForTradingBoard(u8 menuType, MainCallback callback);
 void ChooseMonForMoveTutor(void);
 void ChooseMonForWirelessMinigame(void);
