@@ -307,7 +307,7 @@ static const struct TrainerMonItemCustomMoves sParty_BrendanRoute103Treecko[] = 
     }
 };
 
-static const struct TrainerMonItemCustomMoves sParty_BrendanRoute103Torchic[] = {
+static struct TrainerMonItemCustomMoves sParty_BrendanRoute103Torchic[] = {
     {
     .lvl = 0,
     .species = SPECIES_MUDKIP,
@@ -807,7 +807,7 @@ static const struct TrainerMonItemCustomMoves sParty_MayRoute103Treecko[] = { //
     }
 };
 
-static const struct TrainerMonItemCustomMoves sParty_MayRoute103Torchic[] = { // May Route 103
+static struct TrainerMonItemCustomMoves sParty_MayRoute103Torchic[] = { // May Route 103
     {
     .lvl = 0,
     .species = SPECIES_MUDKIP,
