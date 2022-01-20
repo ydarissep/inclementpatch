@@ -456,7 +456,7 @@ u8 GetPocketByItemId(u16 itemId)
 void ClearItemSlots(struct ItemSlot *itemSlots, u8 itemCount)
 {
     u16 i;
-
+    /*
     for (i = 0; i < itemCount; i++)
     {
         if (GetPCItemQuantity(&itemSlots[i].quantity) <= 10)
@@ -465,6 +465,7 @@ void ClearItemSlots(struct ItemSlot *itemSlots, u8 itemCount)
             SetBagItemQuantity(&itemSlots[i].quantity, 0);
         }
     }
+    */
 }
 
 static s32 FindFreePCItemSlot(void)
