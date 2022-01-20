@@ -97,32 +97,32 @@ Route103_EventScript_RivalBrendanRematch:: @ 81EC434
 	end
 
 Route103_EventScript_StartMayBattleTreecko:: @ 81EC48E
-	trainerbattle_no_intro special test, Route103_Text_MayDefeated
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TREECKO, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartMayBattleTorchic:: @ 81EC49E
-	trainerbattle_no_intro special test, Route103_Text_MayDefeated
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TORCHIC, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartMayBattleMudkip:: @ 81EC4AE
-	trainerbattle_no_intro special test, Route103_Text_MayDefeated
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_MUDKIP, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_StartBrendanBattleTreecko:: @ 81EC4BE
-	trainerbattle_no_intro special test, Route103_Text_BrendanDefeated
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TREECKO, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_StartBrendanBattleTorchic:: @ 81EC4CE
-	trainerbattle_no_intro special test, Route103_Text_BrendanDefeated
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TORCHIC, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
 Route103_EventScript_StartBrendanBattleMudkip:: @ 81EC4DE
-	trainerbattle_no_intro special test, Route103_Text_BrendanDefeated
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_MUDKIP, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
