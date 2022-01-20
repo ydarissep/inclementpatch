@@ -68,6 +68,7 @@
 #include "constants/weather.h"
 #include "constants/metatile_labels.h"
 #include "palette.h"
+#include "trainer_parties.h"
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -131,6 +132,7 @@ static u8 DidPlayerGetFirstFans(void);
 static void SetInitialFansOfPlayer(void);
 static u16 PlayerGainRandomTrainerFan(void);
 static void BufferFanClubTrainerName_(struct LinkBattleRecords *linkRecords, u8 a, u8 b);
+static void test (void);
 
 void Special_ShowDiploma(void)
 {
@@ -6154,10 +6156,9 @@ u16 GetMysteryGiftSpecies (void)
 #undef MYSTERY_GIFT_REQ_FLAG
 #undef MYSTERY_GIFT_ITEM
 
-static struct TrainerMonItemCustomMoves test[] = {
-    {
-    .lvl = 0,
-    .species = SPECIES_RATTATA,
-	.moves = MOVE_TACKLE, MOVE_GROWL, MOVE_NONE, MOVE_NONE
-    }
-};
+static void test (void)
+{
+	sParty_MayRoute103Torchic[0].species = SPECIES_RATTATA;
+	sParty_BrendanRoute103Torchic[0].species = SPECIES_RATTATA;
+	
+}
