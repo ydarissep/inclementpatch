@@ -102,7 +102,6 @@ Route103_EventScript_StartMayBattleTreecko:: @ 81EC48E
 	end
 
 Route103_EventScript_StartMayBattleTorchic:: @ 81EC49E
-	special test
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TORCHIC, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
@@ -118,7 +117,6 @@ Route103_EventScript_StartBrendanBattleTreecko:: @ 81EC4BE
 	end
 
 Route103_EventScript_StartBrendanBattleTorchic:: @ 81EC4CE
-	special test
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TORCHIC, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
