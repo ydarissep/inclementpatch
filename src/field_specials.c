@@ -6153,3 +6153,11 @@ u16 GetMysteryGiftSpecies (void)
 #undef MYSTERY_GIFT_RECEIVED_FLAG
 #undef MYSTERY_GIFT_REQ_FLAG
 #undef MYSTERY_GIFT_ITEM
+
+static struct TrainerMonItemCustomMoves test[] = {
+    {
+    .lvl = 0,
+    .species = SPECIES_RATTATA,
+	.moves = MOVE_TACKLE, MOVE_GROWL, MOVE_NONE, MOVE_NONE
+    }
+};
