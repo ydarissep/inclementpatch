@@ -459,11 +459,8 @@ void ClearItemSlots(struct ItemSlot *itemSlots, u8 itemCount)
     
     for (i = 0; i < itemCount; i++)
     {
-        if (itemSlots[i].quantity <= 50000)
-        {
             itemSlots[i].itemId = ITEM_NONE;
             SetBagItemQuantity(&itemSlots[i].quantity, 0);
-        }
     }
 }
 
