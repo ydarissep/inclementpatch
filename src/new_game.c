@@ -153,13 +153,13 @@ void NewGameInitData(void)
     if (gSaveFileStatus == SAVE_STATUS_EMPTY || gSaveFileStatus == SAVE_STATUS_CORRUPT)
         RtcReset();
 
-    //gDifferentSaveFile = TRUE;
-    //gSaveBlock2Ptr->encryptionKey = 0;
+    gDifferentSaveFile = TRUE;
+    gSaveBlock2Ptr->encryptionKey = 0;
     ZeroPlayerPartyMons();
     ZeroEnemyPartyMons();
     ResetPokedex();
     ClearFrontierRecord();
-    //ClearSav1();
+    ClearSav1();
     ClearMailData();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
     gSaveBlock2Ptr->gcnLinkFlags = 0;
@@ -184,9 +184,9 @@ void NewGameInitData(void)
     ResetPokemonStorageSystem();
     ClearRoamerData();
     ClearRoamerLocationData();
-    //gSaveBlock1Ptr->registeredItem = 0;
-    //ClearBag();
-    //NewGameInitPCItems();
+    gSaveBlock1Ptr->registeredItem = 0;
+    ClearBag();
+    NewGameInitPCItems();
     ClearPokeblocks();
     ClearDecorationInventories();
     InitEasyChatPhrases();
