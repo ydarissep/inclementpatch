@@ -6156,9 +6156,4 @@ u16 GetMysteryGiftSpecies (void)
 #undef MYSTERY_GIFT_REQ_FLAG
 #undef MYSTERY_GIFT_ITEM
 
-static void test (void)
-{
-	sParty_MayRoute103Torchic[0].species = SPECIES_RATTATA;
-	sParty_BrendanRoute103Torchic[0].species = SPECIES_RATTATA;
-	
-}
+
