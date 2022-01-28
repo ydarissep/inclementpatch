@@ -4191,18 +4191,10 @@ static void Cmd_unknown_24(void)
 
     if (NoAliveMonsForPlayer())
     {
-	    if(GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_SPECIES) == SPECIES_RATTATA
-	   	&& GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_LEVEL) == 0
-	        && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1) == MOVE_POUND)
-		    endOldplayerBattle();
 	    gBattleOutcome |= B_OUTCOME_LOST;
     }
     if (NoAliveMonsForOpponent())
     {
-	    if(GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_SPECIES) == SPECIES_RATTATA
-	   	&& GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_LEVEL) == 0
-	        && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1) == MOVE_POUND)
-		    endOldplayerBattle();
 	    gBattleOutcome |= B_OUTCOME_WON;
     }
 
