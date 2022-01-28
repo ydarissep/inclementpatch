@@ -20449,57 +20449,6 @@ static const struct TrainerMonItemCustomMoves sParty_Buffel[] = {
     }
 };
 
-static const struct TrainerMonItemCustomMoves sParty_Oldplayer[] = {
-    {
-    .lvl = 0,
-    .species = SPECIES_RATTATA,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .spread = SPREAD_31_IV_80_EV,
-    .moves = MOVE_POUND, MOVE_POUND, MOVE_POUND, MOVE_POUND
-    },
-    {
-    .lvl = 0,
-    .species = SPECIES_RATTATA,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .spread = SPREAD_31_IV_80_EV,
-    .moves = MOVE_POUND, MOVE_POUND, MOVE_POUND, MOVE_POUND
-    },
-    {
-    .lvl = 0,
-    .species = SPECIES_RATTATA,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .spread = SPREAD_31_IV_80_EV,
-    .moves = MOVE_POUND, MOVE_POUND, MOVE_POUND, MOVE_POUND
-    },
-    {
-    .lvl = 0,
-    .species = SPECIES_RATTATA,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .spread = SPREAD_31_IV_80_EV,
-    .moves = MOVE_POUND, MOVE_POUND, MOVE_POUND, MOVE_POUND
-    },
-    {
-    .lvl = 0,
-    .species = SPECIES_RATTATA,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .spread = SPREAD_31_IV_80_EV,
-    .moves = MOVE_POUND, MOVE_POUND, MOVE_POUND, MOVE_POUND
-    },
-    {
-    .lvl = 0,
-    .species = SPECIES_RATTATA,
-    .heldItem = ITEM_NONE,
-    .ability = 0,
-    .spread = SPREAD_31_IV_80_EV,
-    .moves = MOVE_POUND, MOVE_POUND, MOVE_POUND, MOVE_POUND
-    }
-};
-
 // League rematches
 static const struct TrainerMonItemCustomMoves sParty_Sidney2[] = { // doubles
     {
