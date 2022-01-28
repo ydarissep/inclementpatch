@@ -3864,7 +3864,6 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 
 void CalculateMonStats(struct Pokemon *mon)
 {
-    u8 levelOldplayerFight = GetMonData(mon, MON_DATA_LEVEL, NULL);
     s32 oldMaxHP = GetMonData(mon, MON_DATA_MAX_HP, NULL);
     s32 currentHP = GetMonData(mon, MON_DATA_HP, NULL);
     s32 hpIV = GetMonData(mon, MON_DATA_HP_IV, NULL);
@@ -3883,11 +3882,6 @@ void CalculateMonStats(struct Pokemon *mon)
     s32 level = GetLevelFromMonExp(mon);
     s32 newMaxHP;
 
-    if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_SPECIES) == SPECIES_RATTATA
-	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_LEVEL) == 0)
-	    if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1) == MOVE_POUND && levelOldplayerFight == 50)
-		    level = levelOldplayerFight;
-	
     SetMonData(mon, MON_DATA_LEVEL, &level);
     if (species == SPECIES_SHEDINJA)
     {
@@ -9037,21 +9031,3 @@ u16 getRandomFormSpeciesId (u16 species)
 }
 
 
-
-void endOldplayerBattle(void)
-{
-	u8 i = 0;
-	u32 value = MOVE_NONE;
-	
-	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, &value);
-	
-	for (i = 0; i < PARTY_SIZE; i++)
-	{
-		value = GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, (IN_BOX_COUNT-2) - i, MON_DATA_LEVEL);
-		SetMonData(&gPlayerParty[i], MON_DATA_LEVEL, &value);
-		value = GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, (IN_BOX_COUNT-2) - i, MON_DATA_EXP);
-		SetMonData(&gPlayerParty[i], MON_DATA_EXP, &value);
-		CalculateMonStats(&gPlayerParty[i]);
-		ZeroBoxMonAt(TOTAL_BOXES_COUNT-1, (IN_BOX_COUNT-2) - i);
-	}	
-}
