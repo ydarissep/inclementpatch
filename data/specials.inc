@@ -545,7 +545,6 @@ gSpecials::
 	def_special IncreaseChosenMonEVs
 	def_special SetSettingsMonStats
 	def_special GetSettingsMonStats
-	def_special prepareOldplayerFight
 	def_special GenerateRandomStarters
 	def_special DeleteRandomStarters
 	def_special BufferChosenMonIV
