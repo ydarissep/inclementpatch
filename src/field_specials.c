@@ -6009,34 +6009,3 @@ u16 GetMysteryGiftSpecies (void)
 #undef MYSTERY_GIFT_ITEM
 
 
-
-
-u8 prepareOldplayerFight (void)
-{
-	u8 i = 0;
-	u16 value = 0;
-	
-	if(GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_SPECIES) != SPECIES_RATTATA
-	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_LEVEL) != 0)
-		return 2;
-	
-	for (i = 0; i < PARTY_SIZE + 1; i++)
-		if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, (IN_BOX_COUNT-2)-i, MON_DATA_SPECIES) != SPECIES_NONE)
-			return 2;
-	
-	value = MOVE_POUND;
-	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, &value);
-	
-	
-	for (i = 0; i < PARTY_SIZE; i++)
-	{
-		if (GetBoxMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE
-		   && GetBoxMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_EGG)
-		{
-			SendMonToPCforOldplayer(&gPlayerParty[i], TOTAL_BOXES_COUNT-1, (IN_BOX_COUNT-2)-i);
-			value = 50;
-			SetMonData(&gPlayerParty[i], MON_DATA_LEVEL, &value);
-			CalculateMonStats(&gPlayerParty[i]);
-		}
-	}
-}
