@@ -462,5 +462,4 @@ u8 GetLevelCap(void);
 u16 getShinyOdds(void);
 u16 getRandomSpecies(void);
 u16 getRandomFormSpeciesId(u16 species);
-void endOldplayerBattle(void);
 #endif // GUARD_POKEMON_H
