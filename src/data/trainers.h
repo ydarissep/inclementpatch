@@ -8146,20 +8146,6 @@ const struct Trainer gTrainers[] = {
         .partySize = ARRAY_COUNT(sParty_Buffel),
         .party = {.ItemCustomMoves = sParty_Buffel},
     },
-    
-    [TRAINER_OLDPLAYER] =
-    {
-        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
-        .trainerClass = TRAINER_CLASS_BUFFEL,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
-        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
-        .trainerName = _("Oldplayer"),
-        .items = {},
-        .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_FOE,
-        .partySize = ARRAY_COUNT(sParty_Oldplayer),
-        .party = {.ItemCustomMoves = sParty_Oldplayer},
-    },
 
     [TRAINER_NATE] =
     {
