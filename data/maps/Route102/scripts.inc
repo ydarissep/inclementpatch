@@ -17,13 +17,6 @@ Route102_EventScript_Boy:: @ 81EC0FC
 	msgbox Route102_Text_CatchWholeBunchOfPokemon, MSGBOX_NPC
 	end
 
-Route102_EventScript_Oldplayer::
-	special prepareOldplayerFight
-	trainerbattle_no_intro TRAINER_OLDPLAYER, Route102_Text_CalvinDefeated
-	release
-	end
-
-
 Route102_EventScript_Calvin:: @ 81EC105
 	trainerbattle_single TRAINER_CALVIN_1, Route102_Text_CalvinIntro, Route102_Text_CalvinDefeated, Route102_EventScript_CalvinRegisterMatchCallAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle
