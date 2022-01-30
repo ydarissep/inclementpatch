@@ -288,9 +288,9 @@ Route118_EventScript_DontLikeKarp::
 	end
 
 Route118_EventScript_CheckParty::
-	specialvar VAR_RESULT, CheckMagikarpBattle
-	compare VAR_RESULT, FALSE
-	goto_if_eq Route118_EventScript_NeedMoreKarp
+	@specialvar VAR_RESULT, CheckMagikarpBattle
+	@compare VAR_RESULT, FALSE
+	@goto_if_eq Route118_EventScript_NeedMoreKarp
 	msgbox Route118_Text_KarpFiteStart, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_MAGIKARP_GUY, Route118_Text_MagikarpDefeat
 	msgbox Route118_Text_TakeGyaradosite, MSGBOX_DEFAULT
