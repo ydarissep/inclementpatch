@@ -8956,30 +8956,30 @@ u16 getRandomSpecies(void)
             
             
         
-        Rand = Random(num);
+        Rand = Random() % num;
         if (Rand < numObt)
         {
-            randSpecies = Random(numObt);
+            randSpecies = Random() % numObt;
             species = Obt[randSpecies][0];
         }
         else if (Rand < (numObt + numNonObt) && NonObtEnabled == 1) // Unobtainable enbaled
         {
-            randSpecies = Random(numNonObt);
+            randSpecies = Random() % numNonObt;
             species = NonObt[randSpecies][0];
         }
         else if (Rand < (numObt + numNonObt + numNonObtLegends) && NonObtLegendsEnabled == 1) // Unobtainable&Legendary enbaled
         {
-            randSpecies = Random(numNonObtLegends);
+            randSpecies = Random() % numNonObtLegends;
             species = NonObtLegends[randSpecies][0];
         }
         else if (ObtLegendsEnabled == 1)
         {
-            randSpecies = Random(numObtLegends);
+            randSpecies = Random() % numObtLegends;
             species = ObtLegends[randSpecies][0];
         }
         else
         {
-            randSpecies = Random(numObt);
+            randSpecies = Random() % numObt;
             species = Obt[randSpecies][0];
         }
         
@@ -8988,12 +8988,12 @@ u16 getRandomSpecies(void)
         {
             if (species == SPECIES_MEOWTH && NonObtEnabled != 1) // SPECIES_MEOWTH_GALARIAN exception
             {
-                if (Random(2) == 1)
+                if (Random() % 2 == 1)
                     species =  SPECIES_MEOWTH_ALOLAN;
             }
             else if (species == SPECIES_NECROZMA) // SPECIES_NECROZMA_ULTRA exception
             {
-                Rand = Random(3);
+                Rand = Random() % 3;
                 if (Rand == 1)
                     species = SPECIES_NECROZMA_DUSK_MANE;
                 else if (Rand == 2)
