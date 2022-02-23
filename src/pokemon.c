@@ -8955,7 +8955,6 @@ u16 getRandomSpecies(void)
             altForms = 1;
             
             
-        SeedRngWithRtc();
         Rand = Random() % num;
         if (Rand < numObt)
         {
