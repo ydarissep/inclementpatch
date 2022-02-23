@@ -70,6 +70,7 @@ void ClearPokemonCrySongs(void);
 void RestoreSerialTimer3IntrHandlers(void);
 void StartTimer1(void);
 void SeedRngAndSetTrainerId(void);
+void SeedRngWithRtc(void);
 u16 GetGeneratedTrainerIdLower(void);
 void sub_819789C(void);
 
