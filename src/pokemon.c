@@ -8956,7 +8956,7 @@ u16 getRandomSpecies(void)
             
             
         
-        Rand = Random() % num;
+        Rand = rand() % num;
         if (Rand < numObt)
         {
             randSpecies = Random() % numObt;
