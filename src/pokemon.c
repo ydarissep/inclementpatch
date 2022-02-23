@@ -9024,7 +9024,7 @@ u16 getRandomFormSpeciesId (u16 species)
 	for (countAltForms = 0; gFormSpeciesIdTables[species][countAltForms] != FORM_SPECIES_END; countAltForms++)
 	{
 	}
-		rand = Random(countAltForms);
+		rand = Random() % countAltForms;
 		species = gFormSpeciesIdTables[species][rand];
 	
 	return species;
