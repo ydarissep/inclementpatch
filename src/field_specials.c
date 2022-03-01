@@ -5368,11 +5368,17 @@ void GetSettingsMonStats (void)
 
 void DeleteRandomStarters (void)
 {
-    ResetPokemonStorageSystem(); // Delete the 3 random starters
+	/*
+	ResetPokemonStorageSystem(); // Delete the 3 random starters
+	*/
+	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, MOVE_NONE);
+	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE2, MOVE_NONE);
+	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE3, MOVE_NONE);	
 }
 
 void GenerateRandomStarters (void)
 {
+	/*
     struct Pokemon mon;
 	
     u8 boxPosition = 0;
@@ -5381,6 +5387,10 @@ void GenerateRandomStarters (void)
         CreateMon(&mon, getRandomSpecies(), 0, USE_RANDOM_IVS, 0, 0, OT_ID_PLAYER_ID, 0);
         SendMonToPC(&mon);
     }	
+    */
+	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, getRandomSpecies());
+	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE2, getRandomSpecies());
+	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE3, getRandomSpecies());
 }
 
 
