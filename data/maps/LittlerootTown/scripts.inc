@@ -393,7 +393,6 @@ LittlerootTown_Movement_TwinReturnRight: @ 81E8118
 
 LittlerootTown_EventScript_GoSaveBirchTrigger:: @ 81E811F
 	lockall
-	special GenerateRandomStarters
 	applymovement LOCALID_TWIN, Common_Movement_WalkInPlaceFastestRight
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
