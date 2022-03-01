@@ -5371,10 +5371,12 @@ void DeleteRandomStarters (void)
 	/*
 	ResetPokemonStorageSystem(); // Delete the 3 random starters
 	*/
+	/*
 	u16 value = 0;
 	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, &value);
 	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE2, &value);
 	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE3, &value);	
+	*/
 }
 
 void GenerateRandomStarters (void)
