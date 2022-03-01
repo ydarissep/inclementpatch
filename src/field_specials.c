@@ -5395,7 +5395,8 @@ void GenerateRandomStarters (void)
 	u8 i = 0;
 	for (i = 0; i < 3; i++)
 	{
-		value = getRandomSpecies();
+		//value = getRandomSpecies();
+		value = 900;
 		if (i == 0)
 			SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, &value);
 		else if (i == 1)
