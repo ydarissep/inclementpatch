@@ -5368,43 +5368,26 @@ void GetSettingsMonStats (void)
 
 void DeleteRandomStarters (void)
 {
-	/*
-	ResetPokemonStorageSystem(); // Delete the 3 random starters
-	*/
-	/*
-	u16 value = 0;
-	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, &value);
-	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE2, &value);
-	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE3, &value);	
-	*/
+	u8 i = 0;
+	for (i = 0; i < 3; i++)
+	{
+		ZeroBoxMonAt(TOTAL_BOXES_COUNT-1, (IN_BOX_COUNT-1-3) + i); //delete the three random starters in the last box and 3 spot before the last spot (where the level O Rattata is)
+	}
 }
 
 void GenerateRandomStarters (void)
 {
-	/*
     struct Pokemon mon;
 	
-    u8 boxPosition = 0;
-    for (boxPosition = 0; boxPosition < 3; boxPosition++) // Generate 3 random Pokémon for the Random starters option
+    u8 i = 0;
+	
+    DeleteRandomStarters();
+	
+    for (i = 0; i < 3; i++) // Generate 3 random Pokémon for the Random starters option (last box, 3 spot before the last spot (where the level 0 Rattata is)
     {
         CreateMon(&mon, getRandomSpecies(), 0, USE_RANDOM_IVS, 0, 0, OT_ID_PLAYER_ID, 0);
-        SendMonToPC(&mon);
+        SendMonToPCAt(&mon, TOTAL_BOXES_COUNT-1, (IN_BOX_COUNT-1-3) + i);
     }	
-    */
-	u16 value = 0;
-	u8 i = 0;
-	for (i = 0; i < 3; i++)
-	{
-		//value = getRandomSpecies();
-		value = 900;
-		if (i == 0)
-			SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, &value);
-		else if (i == 1)
-			SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE2, &value);
-		else
-			SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE3, &value);
-			
-	}
 }
 
 
