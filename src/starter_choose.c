@@ -430,11 +430,11 @@ u16 GetStarterPokemon(u16 chosenStarterId)
         return GetBoxMonDataAt(0, chosenStarterId, MON_DATA_SPECIES);
         */
         if(chosenStarterId == 0)
-            GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1);
+            return GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1);
         else if(chosenStarterId == 1)
-            GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE2);
+            return GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE2);
         else
-            GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE3);
+            return GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE3);
     }
 }
 
