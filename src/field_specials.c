@@ -5371,9 +5371,10 @@ void DeleteRandomStarters (void)
 	/*
 	ResetPokemonStorageSystem(); // Delete the 3 random starters
 	*/
-	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, MOVE_NONE);
-	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE2, MOVE_NONE);
-	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE3, MOVE_NONE);	
+	u16 value = 0;
+	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, &value);
+	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE2, &value);
+	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE3, &value);	
 }
 
 void GenerateRandomStarters (void)
@@ -5388,9 +5389,19 @@ void GenerateRandomStarters (void)
         SendMonToPC(&mon);
     }	
     */
-	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, getRandomSpecies());
-	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE2, getRandomSpecies());
-	SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE3, getRandomSpecies());
+	u16 value = 0;
+	u8 i = 0;
+	for (i = 0; i < 3; i++)
+	{
+		value = getRandomSpecies();
+		if (i == 0)
+			SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE1, &value);
+		else if (i == 1)
+			SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE2, &value);
+		else
+			SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_MOVE3, &value);
+			
+	}
 }
 
 
