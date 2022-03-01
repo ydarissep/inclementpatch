@@ -359,7 +359,7 @@ void CopyMon(void *dest, void *src, size_t size);
 u8 GiveMonToPlayer(struct Pokemon *mon);
 u8 SendMonToPC(struct Pokemon* mon);
 u8 SendSettingsMonToPC(struct Pokemon* mon);
-u8 SendMonToPCforOldplayer(struct Pokemon* mon, s32 boxNo, s32 boxPos);
+u8 SendMonToPCAt(struct Pokemon* mon, s32 boxNo, s32 boxPos);
 u8 CalculatePlayerPartyCount(void);
 u8 CalculateEnemyPartyCount(void);
 u8 CalculatePlayerBattlerPartyCount(void);
