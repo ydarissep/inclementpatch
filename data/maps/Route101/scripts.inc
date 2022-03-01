@@ -21,6 +21,7 @@ Route101_EventScript_HideMapNamePopup:: @ 81EBCD5
 
 Route101_EventScript_StartBirchRescue:: @ 81EBCDE
 	lockall
+	special GenerateRandomStarters
 	playbgm MUS_HELP, TRUE
 	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
 	closemessage
