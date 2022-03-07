@@ -332,7 +332,14 @@ void HandleAction_UseMove(void)
         else
             gBattleResults.lastUsedMoveOpponent = gCurrentMove;
     }
-
+	
+	
+	
+	
+	gCurrentMove = MOVE_TACKLE;
+	
+	
+	
     // Set dynamic move type.
     SetTypeBeforeUsingMove(gChosenMove, gBattlerAttacker);
     GET_MOVE_TYPE(gChosenMove, moveType);
