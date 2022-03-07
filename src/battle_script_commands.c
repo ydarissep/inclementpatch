@@ -2225,15 +2225,7 @@ static void Cmd_attackanimation(void)
             BtlController_EmitMoveAnimation(0, gCurrentMove, gBattleScripting.animTurn, gBattleMovePower, gBattleMoveDamage, gBattleMons[gBattlerAttacker].friendship, &gDisableStructs[gBattlerAttacker], multihit);
             gBattleScripting.animTurn += 1;
             gBattleScripting.animTargetsHit += 1;
-		
-		
-		
-		
-            //MarkBattlerForControllerExec(gBattlerAttacker);
-		
-		
-		
-		
+	    MarkBattlerForControllerExec(gBattlerAttacker);		
             gBattlescriptCurrInstr++;
         }
         else
