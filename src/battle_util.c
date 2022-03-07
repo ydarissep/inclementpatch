@@ -4322,21 +4322,6 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-		    gCurrentMove = MOVE_POUND;
-		    gBattlerTarget = *(gBattleStruct->moveTarget + gBattlerAttacker);
-			if (!IsBattlerAlive(gBattlerTarget))
-			{
-			    if (GetBattlerSide(gBattlerAttacker) != GetBattlerSide(gBattlerTarget))
-			    {
-				gBattlerTarget = GetBattlerAtPosition(GetBattlerPosition(gBattlerTarget) ^ BIT_FLANK);
-			    }
-			    else
-			    {
-				gBattlerTarget = GetBattlerAtPosition(GetBattlerPosition(gBattlerAttacker) ^ BIT_SIDE);
-				if (!IsBattlerAlive(gBattlerTarget))
-				    gBattlerTarget = GetBattlerAtPosition(GetBattlerPosition(gBattlerTarget) ^ BIT_FLANK);
-			    }
-			}
 		    HandleAction_UseMove();
                 //BattleScriptPushCursorAndCallback(BattleScript_FriskActivates); // Try activate
                 effect++;
