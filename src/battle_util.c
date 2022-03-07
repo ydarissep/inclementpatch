@@ -4323,7 +4323,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             {
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
 		    HandleAction_UseMove();
-                //BattleScriptPushCursorAndCallback(BattleScript_FriskActivates); // Try activate
+                BattleScriptPushCursorAndCallback(BattleScript_FriskActivates); // Try activate
                 effect++;
             }
             return effect; // Note: It returns effect as to not record the ability if Frisk does not activate.
