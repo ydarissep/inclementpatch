@@ -7798,6 +7798,7 @@ static void Cmd_various(void)
             gBattlescriptCurrInstr += 7;
         return;
     case VARIOUS_TRY_FRISK:
+		    /*
         while (gBattleStruct->friskedBattler < gBattlersCount)
         {
             gBattlerTarget = gBattleStruct->friskedBattler++;
@@ -7823,6 +7824,7 @@ static void Cmd_various(void)
         }
         gBattleStruct->friskedBattler = 0;
         gBattleStruct->friskedAbility = FALSE;
+	*/
         break;
     case VARIOUS_POISON_TYPE_IMMUNITY:
         if (!CanPoisonType(gActiveBattler, GetBattlerForBattleScript(gBattlescriptCurrInstr[3])))
