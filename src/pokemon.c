@@ -8643,7 +8643,6 @@ u16 getRandomSpecies(void)
             {SPECIES_FINNEON},
             {SPECIES_MANTYKE},
             {SPECIES_SNOVER},
-            {SPECIES_FROSLASS},
             {SPECIES_ROTOM},
             {SPECIES_SNIVY},
             {SPECIES_TEPIG},
