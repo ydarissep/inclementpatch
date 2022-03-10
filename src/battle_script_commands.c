@@ -7825,6 +7825,9 @@ static void Cmd_various(void)
         gBattleStruct->friskedBattler = 0;
         gBattleStruct->friskedAbility = FALSE;
 	*/
+		    gBattleStruct->friskedAbility = TRUE;
+                    gBattlescriptCurrInstr = BattleScript_FriskMsgWithPopup;
+		    return;
         break;
     case VARIOUS_POISON_TYPE_IMMUNITY:
         if (!CanPoisonType(gActiveBattler, GetBattlerForBattleScript(gBattlescriptCurrInstr[3])))
