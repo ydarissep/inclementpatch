@@ -7798,7 +7798,6 @@ static void Cmd_various(void)
             gBattlescriptCurrInstr += 7;
         return;
     case VARIOUS_TRY_FRISK:
-		    /*
         while (gBattleStruct->friskedBattler < gBattlersCount)
         {
             gBattlerTarget = gBattleStruct->friskedBattler++;
@@ -7810,7 +7809,18 @@ static void Cmd_various(void)
                 RecordItemEffectBattle(gBattlerTarget, GetBattlerHoldEffect(gBattlerTarget, FALSE));
                 BattleScriptPushCursor();
                 // If Frisk identifies two mons' items, show the pop-up only once.
+		    /*
                 if (gBattleStruct->friskedAbility)
+                {
+                    gBattlescriptCurrInstr = BattleScript_FriskMsg;
+                }
+                else
+                {
+                    gBattleStruct->friskedAbility = TRUE;
+                    gBattlescriptCurrInstr = BattleScript_FriskMsgWithPopup;
+                }
+		*/
+		if (random() % 2 == 0)
                 {
                     gBattlescriptCurrInstr = BattleScript_FriskMsg;
                 }
@@ -7824,9 +7834,6 @@ static void Cmd_various(void)
         }
         gBattleStruct->friskedBattler = 0;
         gBattleStruct->friskedAbility = FALSE;
-	*/
-		    gBattleStruct->friskedAbility = TRUE;
-		    return;
         break;
     case VARIOUS_POISON_TYPE_IMMUNITY:
         if (!CanPoisonType(gActiveBattler, GetBattlerForBattleScript(gBattlescriptCurrInstr[3])))
