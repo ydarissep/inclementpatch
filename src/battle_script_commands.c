@@ -7798,9 +7798,6 @@ static void Cmd_various(void)
             gBattlescriptCurrInstr += 7;
         return;
     case VARIOUS_TRY_FRISK:
-		    gBattlescriptCurrInstr = BattleScript_FriskMsg; //test
-		    return;
-		    break;
         while (gBattleStruct->friskedBattler < gBattlersCount)
         {
             gBattlerTarget = gBattleStruct->friskedBattler++;
