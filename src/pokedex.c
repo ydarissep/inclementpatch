@@ -9,6 +9,7 @@
 #include "daycare.h"
 #include "decompress.h"
 #include "event_data.h"
+#include "field_specials.h"
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "international_string_util.h"
@@ -6506,7 +6507,7 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
 
     u8 level = 0;
     u8 numBadge = 0;
-    u8 badgeName[];
+    u8 badgeName[10];
 
     u16 species = NationalPokedexNumToSpecies(sPokedexListItem->dexNum);
 
