@@ -6560,29 +6560,29 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
         switch (numBadge)
         {
             case 1:
-                PrintInfoScreenTextSmall(gText_dexStone, moves_x + 103, moves_y + 19);
+                PrintInfoScreenTextSmall(gText_dexStone, moves_x + 108, moves_y + 14);
                 break;
             case 2:
-                PrintInfoScreenTextSmall(gText_dexKnuckle, moves_x + 103, moves_y + 19);
+                PrintInfoScreenTextSmall(gText_dexKnuckle, moves_x + 108, moves_y + 14);
                 break;
             case 3:
-                PrintInfoScreenTextSmall(gText_dexDynamo, moves_x + 103, moves_y + 19);
+                PrintInfoScreenTextSmall(gText_dexDynamo, moves_x + 108, moves_y + 14);
                 break;
             case 4:
-                PrintInfoScreenTextSmall(gText_dexHeat, moves_x + 103, moves_y + 19);
+                PrintInfoScreenTextSmall(gText_dexHeat, moves_x + 108, moves_y + 14);
                 break;
             case 5:
-                PrintInfoScreenTextSmall(gText_dexBalance, moves_x + 103, moves_y + 19);
+                PrintInfoScreenTextSmall(gText_dexBalance, moves_x + 108, moves_y + 14);
                 break;
             case 6:
-                PrintInfoScreenTextSmall(gText_dexFeather, moves_x + 103, moves_y + 19);
+                PrintInfoScreenTextSmall(gText_dexFeather, moves_x + 108, moves_y + 14);
                 break;
             case 7:
-                PrintInfoScreenTextSmall(gText_dexMind, moves_x + 103, moves_y + 19);
+                PrintInfoScreenTextSmall(gText_dexMind, moves_x + 108, moves_y + 14);
                 break;
                 /*
             case 8:
-                PrintInfoScreenTextSmall(gText_dexRain, moves_x + 103, moves_y + 19);
+                PrintInfoScreenTextSmall(gText_dexRain, moves_x + 108, moves_y + 14);
                 break;
                 */
             default:
