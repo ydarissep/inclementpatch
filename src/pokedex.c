@@ -6557,38 +6557,30 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
     {
         move = sStatsMovesTutor[sPokedexView->moveSelected - numEggMoves - numLevelUpMoves - numTMHMMoves];
         numBadge = GetBadgeNameFromMoveID(move);
-        switch (numBadge)
-        {
-            case 1:
-                PrintInfoScreenTextSmall(gText_dexStone, moves_x + 101, moves_y + 16);
-                break;
-            case 2:
-                PrintInfoScreenTextSmall(gText_dexKnuckle, moves_x + 101, moves_y + 16);
-                break;
-            case 3:
-                PrintInfoScreenTextSmall(gText_dexDynamo, moves_x + 101, moves_y + 16);
-                break;
-            case 4:
-                PrintInfoScreenTextSmall(gText_dexHeat, moves_x + 101, moves_y + 16);
-                break;
-            case 5:
-                PrintInfoScreenTextSmall(gText_dexBalance, moves_x + 101, moves_y + 16);
-                break;
-            case 6:
-                PrintInfoScreenTextSmall(gText_dexFeather, moves_x + 101, moves_y + 16);
-                break;
-            case 7:
-                PrintInfoScreenTextSmall(gText_dexMind, moves_x + 101, moves_y + 16);
-                break;
-                /*
-            case 8:
-                PrintInfoScreenTextSmall(gText_dexRain, moves_x + 101, moves_y + 16);
-                break;
-                */
-            default:
-                PrintInfoScreenTextSmall(gText_ThreeDashes, moves_x + 113, moves_y + 9);
-                break;
-        }
+        
+        if (numBadge != 0)
+            PrintInfoScreenTextSmall(gText_dexBadge, moves_x + 110, moves_y + 9);
+        if (numBadge == 1)
+            PrintInfoScreenTextSmall(gText_dexStone, moves_x + 106, moves_y + 16);
+        else if (numBadge == 2)
+            PrintInfoScreenTextSmall(gText_dexKnuckle, moves_x + 101, moves_y + 16);
+        else if (numBadge == 3)
+            PrintInfoScreenTextSmall(gText_dexDynamo, moves_x + 103, moves_y + 16);
+        else if (numBadge == 4)
+            PrintInfoScreenTextSmall(gText_dexHeat, moves_x + 108, moves_y + 16);
+        else if (numBadge == 5)
+            PrintInfoScreenTextSmall(gText_dexBalance, moves_x + 101, moves_y + 16);
+        else if (numBadge == 6)
+            PrintInfoScreenTextSmall(gText_dexFeather, moves_x + 101, moves_y + 16);
+        else if (numBadge == 7)
+            PrintInfoScreenTextSmall(gText_dexMind, moves_x + 108, moves_y + 16);
+        /*
+        else if (numBadge == 8)
+            PrintInfoScreenTextSmall(gText_dexRain, moves_x + 101, moves_y + 16);
+        */
+        else
+            PrintInfoScreenTextSmall(gText_ThreeDashes, moves_x + 113, moves_y + 9);
+        
         StringCopy(gStringVar3, gMoveNamesLong[move]);
         StringCopy(gStringVar4, gMoveDescriptionPointers[(move - 1)]);
         item = ITEM_TEACHY_TV;
