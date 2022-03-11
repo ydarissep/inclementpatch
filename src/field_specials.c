@@ -3674,7 +3674,7 @@ static const u16 sPokemonCenter_TutorMoves7[] =
 u8 GetBadgeNameFromMoveID (u16 moveID)
 {
 	u8 i = 0;
-	u8 badgeName[10] = _(""); // Why 10? good question 
+	u8 badgeName[10] = _("Special"); // Why 10? good question 
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves1); i++)
 	{
 		if (moveID == sPokemonCenter_TutorMoves1[i])
@@ -3741,7 +3741,6 @@ u8 GetBadgeNameFromMoveID (u16 moveID)
 		}
 	}
 	*/
-	badgeName = _("Special");
 	return badgeName;
 }
 
