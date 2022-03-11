@@ -5622,6 +5622,11 @@ static const struct LevelUpMove sMightyenaLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sZigzagoonLevelUpLearnset[] = {
+	LEVEL_UP_MOVE( 1, MOVE_METRONOME),
+	LEVEL_UP_MOVE( 1, MOVE_METRONOME),
+	LEVEL_UP_MOVE( 1, MOVE_METRONOME),
+	LEVEL_UP_MOVE( 1, MOVE_METRONOME),
+	/*
 	LEVEL_UP_MOVE( 1, MOVE_GROWL),
 	LEVEL_UP_MOVE( 1, MOVE_TACKLE),
 	LEVEL_UP_MOVE( 3, MOVE_SAND_ATTACK),
@@ -5639,6 +5644,7 @@ static const struct LevelUpMove sZigzagoonLevelUpLearnset[] = {
 	LEVEL_UP_MOVE(30, MOVE_FLAIL),
 	LEVEL_UP_MOVE(33, MOVE_BELLY_DRUM),
 	LEVEL_UP_MOVE(36, MOVE_DOUBLE_EDGE),
+	*/
 	LEVEL_UP_END
 };
 
