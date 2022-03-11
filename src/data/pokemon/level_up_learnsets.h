@@ -5623,9 +5623,9 @@ static const struct LevelUpMove sMightyenaLevelUpLearnset[] = {
 
 static const struct LevelUpMove sZigzagoonLevelUpLearnset[] = {
 	LEVEL_UP_MOVE( 1, MOVE_METRONOME),
-	LEVEL_UP_MOVE( 1, MOVE_METRONOME),
-	LEVEL_UP_MOVE( 1, MOVE_METRONOME),
-	LEVEL_UP_MOVE( 1, MOVE_METRONOME),
+	LEVEL_UP_MOVE( 2, MOVE_METRONOME),
+	LEVEL_UP_MOVE( 3, MOVE_METRONOME),
+	LEVEL_UP_MOVE( 4, MOVE_METRONOME),
 	/*
 	LEVEL_UP_MOVE( 1, MOVE_GROWL),
 	LEVEL_UP_MOVE( 1, MOVE_TACKLE),
