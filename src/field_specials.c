@@ -3674,74 +3674,49 @@ static const u16 sPokemonCenter_TutorMoves7[] =
 u8 GetBadgeNameFromMoveID (u16 moveID)
 {
 	u8 i = 0;
-	u8 badgeName[10] = _("Special"); // Why 10? good question 
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves1); i++)
 	{
 		if (moveID == sPokemonCenter_TutorMoves1[i])
-		{
-			badgeName = _("Stone");
-			return badgeName;
-		}
+			return 1;
 	}	
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves2); i++)
 	{
 		if (moveID == sPokemonCenter_TutorMoves2[i])
-		{
-			badgeName = _("Knuckle");
-			return badgeName;
-		}
+			return 2;
 	}	
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves3); i++)
 	{
 		if (moveID == sPokemonCenter_TutorMoves3[i])
-		{
-			badgeName = _("Dynamo");
-			return badgeName;
-		}
+			return 3;
 	}	
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves4); i++)
 	{
 		if (moveID == sPokemonCenter_TutorMoves4[i])
-		{
-			badgeName = _("Heat");
-			return badgeName;
-		}
+			return 4;
 	}	
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves5); i++)
 	{
 		if (moveID == sPokemonCenter_TutorMoves5[i])
-		{
-			badgeName = _("Balance");
-			return badgeName;
-		}
+			return 5;
 	}	
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves6); i++)
 	{
 		if (moveID == sPokemonCenter_TutorMoves6[i])
-		{
-			badgeName = _("Feather");
-			return badgeName;
-		}
+			return 6;
 	}	
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves7); i++)
 	{
 		if (moveID == sPokemonCenter_TutorMoves7[i])
-		{
-			badgeName = _("Mind");
-			return badgeName;
-		}
+			return 7;
 	}	
 	/*
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves8); i++)
 	{
 		if (moveID == sPokemonCenter_TutorMoves8[i])
-		{
-			badgeName = _("Rain");
-			return badgeName;
-		}
+			return 8;
 	}
 	*/
-	return badgeName;
+	return 0;
 }
 
 void BufferBattleFrontierTutorMoveName(void)
