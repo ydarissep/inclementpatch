@@ -6507,7 +6507,6 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
 
     u8 level = 0;
     u8 numBadge = 0;
-    u8 badgeName[10];
 
     u16 species = NationalPokedexNumToSpecies(sPokedexListItem->dexNum);
 
@@ -6561,23 +6560,29 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
         switch (numBadge)
         {
             case 1:
-                badgeName[] = _("Stone");
-                PrintInfoScreenTextSmall(badgeName, moves_x + 113, moves_y + 9);
+                PrintInfoScreenTextSmall(gText_Stone, moves_x + 113, moves_y + 9);
                 break;
             case 2:
+                PrintInfoScreenTextSmall(gText_Knuckle, moves_x + 113, moves_y + 9);
                 break;
             case 3:
+                PrintInfoScreenTextSmall(gText_Dynamo, moves_x + 113, moves_y + 9);
                 break;
             case 4:
+                PrintInfoScreenTextSmall(gText_Heat, moves_x + 113, moves_y + 9);
                 break;
             case 5:
+                PrintInfoScreenTextSmall(gText_Balance, moves_x + 113, moves_y + 9);
                 break;
             case 6:
+                PrintInfoScreenTextSmall(gText_Feather, moves_x + 113, moves_y + 9);
                 break;
             case 7:
+                PrintInfoScreenTextSmall(gText_Mind, moves_x + 113, moves_y + 9);
                 break;
                 /*
             case 8:
+                PrintInfoScreenTextSmall(gText_Rain, moves_x + 113, moves_y + 9);
                 break;
                 */
             default:
