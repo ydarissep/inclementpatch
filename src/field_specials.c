@@ -3687,49 +3687,41 @@ u8 GetBadgeNameFromMoveID (u16 moveID)
 	//u8 rain[10] = _("Rain");
 	
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves1); i++)
-	{
 		if (moveID == sPokemonCenter_TutorMoves1[i])
 			return _("Stone");
 			//return &stone;
-	}	
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves2); i++)
-	{
 		if (moveID == sPokemonCenter_TutorMoves2[i])
-			return &knuckle;
-	}	
+			return _("Knuckle");
+			//return &knuckle;
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves3); i++)
-	{
 		if (moveID == sPokemonCenter_TutorMoves3[i])
-			return &dynamo;
-	}	
+			return _("Dynamo");
+			//return &dynamo;
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves4); i++)
-	{
 		if (moveID == sPokemonCenter_TutorMoves4[i])
-			return &heat;
-	}	
+			return _("Heat");
+			//return &heat;
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves5); i++)
-	{
 		if (moveID == sPokemonCenter_TutorMoves5[i])
-			return &balance;
-	}	
+			return _("Balance");
+			//return &balance;	
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves6); i++)
-	{
 		if (moveID == sPokemonCenter_TutorMoves6[i])
-			return &feather;
-	}	
+			return _("Feather");
+			//return &feather;
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves7); i++)
-	{
 		if (moveID == sPokemonCenter_TutorMoves7[i])
-			return &mind;
-	}	
+			return _("Mind");
+			//return &mind;
 	/*
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves8); i++)
-	{
 		if (moveID == sPokemonCenter_TutorMoves8[i])
-			return &rain;
-	}
+			return _("Rain");
+			//return &rain;
 	*/
-	return &special;
+	//return &special;
+	return _("Special");
 }
 
 void BufferBattleFrontierTutorMoveName(void)
