@@ -6559,7 +6559,7 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
         numBadge = GetBadgeNameFromMoveID(move);
         
         if (numBadge != 0)
-            PrintInfoScreenTextSmall(gText_dexBadge, moves_x + 110, moves_y + 9);
+            PrintInfoScreenTextSmall(gText_dexBadge, moves_x + 107, moves_y + 7);
         if (numBadge == 1)
             PrintInfoScreenTextSmall(gText_dexStone, moves_x + 106, moves_y + 16);
         else if (numBadge == 2)
