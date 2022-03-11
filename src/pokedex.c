@@ -6560,29 +6560,29 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
         switch (numBadge)
         {
             case 1:
-                PrintInfoScreenTextSmall(gText_dexStone, moves_x + 108, moves_y + 14);
+                PrintInfoScreenTextSmall(gText_dexStone, moves_x + 110, moves_y + 16);
                 break;
             case 2:
-                PrintInfoScreenTextSmall(gText_dexKnuckle, moves_x + 108, moves_y + 14);
+                PrintInfoScreenTextSmall(gText_dexKnuckle, moves_x + 110, moves_y + 16);
                 break;
             case 3:
-                PrintInfoScreenTextSmall(gText_dexDynamo, moves_x + 108, moves_y + 14);
+                PrintInfoScreenTextSmall(gText_dexDynamo, moves_x + 110, moves_y + 16);
                 break;
             case 4:
-                PrintInfoScreenTextSmall(gText_dexHeat, moves_x + 108, moves_y + 14);
+                PrintInfoScreenTextSmall(gText_dexHeat, moves_x + 110, moves_y + 16);
                 break;
             case 5:
-                PrintInfoScreenTextSmall(gText_dexBalance, moves_x + 108, moves_y + 14);
+                PrintInfoScreenTextSmall(gText_dexBalance, moves_x + 110, moves_y + 16);
                 break;
             case 6:
-                PrintInfoScreenTextSmall(gText_dexFeather, moves_x + 108, moves_y + 14);
+                PrintInfoScreenTextSmall(gText_dexFeather, moves_x + 110, moves_y + 16);
                 break;
             case 7:
-                PrintInfoScreenTextSmall(gText_dexMind, moves_x + 108, moves_y + 14);
+                PrintInfoScreenTextSmall(gText_dexMind, moves_x + 110, moves_y + 16);
                 break;
                 /*
             case 8:
-                PrintInfoScreenTextSmall(gText_dexRain, moves_x + 108, moves_y + 14);
+                PrintInfoScreenTextSmall(gText_dexRain, moves_x + 110, moves_y + 16);
                 break;
                 */
             default:
@@ -6611,9 +6611,18 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
 
     //Egg/TM/Level/Tutor Item Icon
     gTasks[taskId].data[3] = AddItemIconSprite(ITEM_TAG, ITEM_TAG, item);
-    gSprites[gTasks[taskId].data[3]].x = 203;
-    gSprites[gTasks[taskId].data[3]].y = 39;
-    gSprites[gTasks[taskId].data[3]].oam.priority = 0;
+    if (item == ITEM_TEACHY_TV)
+    {
+        gSprites[gTasks[taskId].data[3]].x = 208;
+        gSprites[gTasks[taskId].data[3]].y = 41;
+        gSprites[gTasks[taskId].data[3]].oam.priority = 0;
+    }
+    else
+    {
+        gSprites[gTasks[taskId].data[3]].x = 203;
+        gSprites[gTasks[taskId].data[3]].y = 39;
+        gSprites[gTasks[taskId].data[3]].oam.priority = 0;
+    }
 
     //Moves selected from move max
     ConvertIntToDecimalStringN(gStringVar1, (selected+1), STR_CONV_MODE_RIGHT_ALIGN, 3);
