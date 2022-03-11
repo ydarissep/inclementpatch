@@ -6560,29 +6560,29 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
         switch (numBadge)
         {
             case 1:
-                PrintInfoScreenTextSmall(gText_dexStone, moves_x + 106, moves_y + 12);
+                PrintInfoScreenTextSmall(gText_dexStone, moves_x + 104, moves_y + 15);
                 break;
             case 2:
-                PrintInfoScreenTextSmall(gText_dexKnuckle, moves_x + 106, moves_y + 12);
+                PrintInfoScreenTextSmall(gText_dexKnuckle, moves_x + 104, moves_y + 15);
                 break;
             case 3:
-                PrintInfoScreenTextSmall(gText_dexDynamo, moves_x + 106, moves_y + 12);
+                PrintInfoScreenTextSmall(gText_dexDynamo, moves_x + 104, moves_y + 15);
                 break;
             case 4:
-                PrintInfoScreenTextSmall(gText_dexHeat, moves_x + 106, moves_y + 12);
+                PrintInfoScreenTextSmall(gText_dexHeat, moves_x + 104, moves_y + 15);
                 break;
             case 5:
-                PrintInfoScreenTextSmall(gText_dexBalance, moves_x + 106, moves_y + 12);
+                PrintInfoScreenTextSmall(gText_dexBalance, moves_x + 104, moves_y + 15);
                 break;
             case 6:
-                PrintInfoScreenTextSmall(gText_dexFeather, moves_x + 106, moves_y + 12);
+                PrintInfoScreenTextSmall(gText_dexFeather, moves_x + 104, moves_y + 15);
                 break;
             case 7:
-                PrintInfoScreenTextSmall(gText_dexMind, moves_x + 106, moves_y + 12);
+                PrintInfoScreenTextSmall(gText_dexMind, moves_x + 104, moves_y + 15);
                 break;
                 /*
             case 8:
-                PrintInfoScreenTextSmall(gText_dexRain, moves_x + 106, moves_y + 12);
+                PrintInfoScreenTextSmall(gText_dexRain, moves_x + 104, moves_y + 15);
                 break;
                 */
             default:
@@ -6613,8 +6613,8 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
     gTasks[taskId].data[3] = AddItemIconSprite(ITEM_TAG, ITEM_TAG, item);
     if (item == ITEM_TEACHY_TV)
     {
-        gSprites[gTasks[taskId].data[3]].x = 198;
-        gSprites[gTasks[taskId].data[3]].y = 37;
+        gSprites[gTasks[taskId].data[3]].x = 201;
+        gSprites[gTasks[taskId].data[3]].y = 38;
         gSprites[gTasks[taskId].data[3]].oam.priority = 0;
     }
     else
