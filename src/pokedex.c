@@ -6505,6 +6505,8 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
     u8 moves_y = 19;
 
     u8 level = 0;
+    u8 numBadge = 0;
+    u8 badgeName[];
 
     u16 species = NationalPokedexNumToSpecies(sPokedexListItem->dexNum);
 
@@ -6554,9 +6556,35 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
     else if (selected < (numEggMoves + numLevelUpMoves + numTMHMMoves + numTutorMoves))
     {
         move = sStatsMovesTutor[sPokedexView->moveSelected - numEggMoves - numLevelUpMoves - numTMHMMoves];
+        numBadge = GetBadgeNameFromMoveID(move);
+        switch (numBadge)
+        {
+            case 1:
+                badgeName = _("Stone");
+                PrintInfoScreenTextSmall(badgeName, moves_x + 113, moves_y + 9);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+                /*
+            case 8:
+                break;
+                */
+            default:
+                PrintInfoScreenTextSmall(gText_ThreeDashes, moves_x + 113, moves_y + 9);
+                break;
+        }
         StringCopy(gStringVar3, gMoveNamesLong[move]);
         StringCopy(gStringVar4, gMoveDescriptionPointers[(move - 1)]);
-        PrintInfoScreenTextSmall(gText_ThreeDashes, moves_x + 113, moves_y + 9);
         item = ITEM_TEACHY_TV;
     }
     else
