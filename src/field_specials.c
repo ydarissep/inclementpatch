@@ -3671,7 +3671,7 @@ static const u16 sPokemonCenter_TutorMoves7[] =
 	MOVE_QUIVER_DANCE
 };
 
-s16 GetBadgeNameFromMoveID (moveID)
+s16 GetBadgeNameFromMoveID (u16 moveID)
 {
 	u8 i = 0;
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves1); i++)
