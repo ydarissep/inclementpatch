@@ -3716,6 +3716,7 @@ s16 GetBadgeNameFromMoveID (u16 moveID)
 			return "Rain";
 	}
 	*/
+	return "Special";
 }
 
 void BufferBattleFrontierTutorMoveName(void)
