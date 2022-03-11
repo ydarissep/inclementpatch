@@ -6561,7 +6561,7 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
         switch (numBadge)
         {
             case 1:
-                badgeName = _("Stone");
+                badgeName[] = _("Stone");
                 PrintInfoScreenTextSmall(badgeName, moves_x + 113, moves_y + 9);
                 break;
             case 2:
