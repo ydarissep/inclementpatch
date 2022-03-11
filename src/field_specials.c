@@ -3689,7 +3689,8 @@ u8 GetBadgeNameFromMoveID (u16 moveID)
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves1); i++)
 	{
 		if (moveID == sPokemonCenter_TutorMoves1[i])
-			return &stone;
+			return _("Stone");
+			//return &stone;
 	}	
 	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves2); i++)
 	{
