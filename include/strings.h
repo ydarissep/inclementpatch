@@ -476,7 +476,7 @@ extern const u8 gText_dexBalance[];
 extern const u8 gText_dexFeather[];
 extern const u8 gText_dexMind[];
 //extern const u8 gText_dexRain[];
-extern const u8 gText_dexBadge[];
+extern const u8 gText_dexTutor[];
 extern const u8 *const gPocketNamesStringsTable[];
 
 // party menu text
