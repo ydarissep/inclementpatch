@@ -468,14 +468,14 @@ extern const u8 gText_CantStoreImportantItems[];
 extern const u8 gText_DepositedVar2Var1s[];
 extern const u8 gText_NoRoomForItems[];
 extern const u8 gText_ThreeDashes[];
-extern const u8 gText_Stone[];
-extern const u8 gText_Knuckle[];
-extern const u8 gText_Dynamo[];
-extern const u8 gText_Heat[];
-extern const u8 gText_Balance[];
-extern const u8 gText_Feather[];
-extern const u8 gText_Mind[];
-//extern const u8 gText_Rain[];
+extern const u8 gText_dexStone[];
+extern const u8 gText_dexKnuckle[];
+extern const u8 gText_dexDynamo[];
+extern const u8 gText_dexHeat[];
+extern const u8 gText_dexBalance[];
+extern const u8 gText_dexFeather[];
+extern const u8 gText_dexMind[];
+//extern const u8 gText_dexRain[];
 extern const u8 *const gPocketNamesStringsTable[];
 
 // party menu text
