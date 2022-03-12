@@ -6581,7 +6581,7 @@ static void PrintStatsScreen_MoveNameAndInfo(u8 taskId)
             PrintInfoScreenTextSmall(gText_dexMind, moves_x + 108, moves_y + 16);
         /*
         else if (numBadge == 8)
-            PrintInfoScreenTextSmall(gText_dexRain, moves_x + 101, moves_y + 16);
+            PrintInfoScreenTextSmall(gText_dexRain, moves_x + 108, moves_y + 16);
         */
         else
             PrintInfoScreenTextSmall(gText_ThreeDashes, moves_x + 113, moves_y + 9);
