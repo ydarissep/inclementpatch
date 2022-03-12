@@ -3668,6 +3668,39 @@ static const u16 sPokemonCenter_TutorMoves7[] =
 	MOVE_QUIVER_DANCE
 };
 
+u8 GetBadgeNameFromMoveID (u16 moveID)
+{
+	u8 i = 0;
+		
+	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves1); i++)
+		if (moveID == sPokemonCenter_TutorMoves1[i])
+			return 1;
+	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves2); i++)
+		if (moveID == sPokemonCenter_TutorMoves2[i])
+			return 2;
+	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves3); i++)
+		if (moveID == sPokemonCenter_TutorMoves3[i])
+			return 3;
+	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves4); i++)
+		if (moveID == sPokemonCenter_TutorMoves4[i])
+			return 4;
+	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves5); i++)
+		if (moveID == sPokemonCenter_TutorMoves5[i])
+			return 5;	
+	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves6); i++)
+		if (moveID == sPokemonCenter_TutorMoves6[i])
+			return 6;
+	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves7); i++)
+		if (moveID == sPokemonCenter_TutorMoves7[i])
+			return 7;
+	/*
+	for (i = 0; i < ARRAY_COUNT(sPokemonCenter_TutorMoves8); i++)
+		if (moveID == sPokemonCenter_TutorMoves8[i])
+			return 8;
+	*/
+	return 0;
+}
+
 void BufferBattleFrontierTutorMoveName(void)
 {
     switch (gSpecialVar_0x8005)
