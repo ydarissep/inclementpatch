@@ -1056,6 +1056,11 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
 {
     u32 BST = GetTotalBaseStat(species);
     u16 maxBST = 400;
+    u8 i = 0;
+    static u16 test[][1] =
+    {
+        
+    };
     
     if (FlagGet(FLAG_BADGE01_GET))
         maxBST += 25;
@@ -1076,10 +1081,6 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     if (FlagGet(FLAG_SYS_GAME_CLEAR))
         maxBST += 60000;
     
-    static u16 test[][1] =
-    {
-        
-    };
     for (i = 0; i < 10; i++)
         test[0] = 2;
     test[0] = 1;
