@@ -14,6 +14,7 @@
 #include "tv.h"
 #include "link.h"
 #include "script.h"
+#include "battle_ai_util.h"
 #include "battle_debug.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
@@ -1053,8 +1054,9 @@ void HoneyWildEncounter(void)
 
 static u16 GetRandomWildEncounterWithBST (u16 species)
 {
-    u32 BST = GetTotalBaseStat (species);
+    u32 BST = GetTotalBaseStat(species);
     u16 maxBST = 400;
+    u
     
     if (FlagGet(FLAG_BADGE01_GET))
         maxBST += 25;
@@ -1075,5 +1077,9 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     if (FlagGet(FLAG_SYS_GAME_CLEAR))
         maxBST += 60000;
     
-    
+    static u16 test[][1] =
+    {
+        
+    };
+    for (i = 0
 }
