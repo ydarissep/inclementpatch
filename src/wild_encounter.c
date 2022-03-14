@@ -1057,7 +1057,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     u32 BST = GetTotalBaseStat(species);
     u16 maxBST = 400;
     u8 i = 0;
-    static u16 test[FORMS_START][1] =
+    static u16 test[1][1] =
     {
         [0] = {1},
     };
