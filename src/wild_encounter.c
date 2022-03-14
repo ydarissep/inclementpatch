@@ -1050,3 +1050,30 @@ void HoneyWildEncounter(void)
     TryGenerateWildMon(wildPokemonInfo, WILD_AREA_HONEY, 0);
     BattleSetup_StartWildBattle();
 }
+
+static u16 GetRandomWildEncounterWithBST (u16 species)
+{
+    u32 BST = GetTotalBaseStat (species);
+    u16 maxBST = 400;
+    
+    if (FlagGet(FLAG_BADGE01_GET))
+        maxBST += 25;
+    if (FlagGet(FLAG_BADGE02_GET))
+        maxBST += 25;
+    if (FlagGet(FLAG_BADGE03_GET))
+        maxBST += 25;
+    if (FlagGet(FLAG_BADGE04_GET))
+        maxBST += 25;
+    if (FlagGet(FLAG_BADGE05_GET))
+        maxBST += 25;
+    if (FlagGet(FLAG_BADGE06_GET))
+        maxBST += 25;
+    if (FlagGet(FLAG_BADGE07_GET))
+        maxBST += 25;
+    if (FlagGet(FLAG_BADGE08_GET))
+        maxBST += 25;
+    if (FlagGet(FLAG_SYS_GAME_CLEAR))
+        maxBST += 60000;
+    
+    
+}
