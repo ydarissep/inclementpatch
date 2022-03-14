@@ -1082,5 +1082,5 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
         maxBST += 60000;
     
     for (i = 0; i < 10; i++)
-        test[0][0] = 1;
+        test[i][0] = 1;
 }
