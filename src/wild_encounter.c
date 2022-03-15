@@ -1851,7 +1851,7 @@ static const u16 possibleWildEncounter[][1] = //used by GetRandomWildEncounterWi
 
 static u16 GetRandomWildEncounterWithBST (u16 species)
 {
-    u32 BST = GetTotalBaseStat(species);
+    u16 BST = GetTotalBaseStat(species);
     u16 maxBST = 400; 
     u16 rand = 0;
     u16 i = 0;
@@ -1906,6 +1906,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     // or speciesBST-increment/speciesBST and share one type with species if speciesBST is above maxBST
     for (i = 0; i < ARRAY_COUNT(possibleWildEncounter); i++)
     {
+        /*
         if (keepType) // Go to the next loop iteration if there's no type in common and keepType is == TRUE
         {
             if (!(gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type1
@@ -1914,11 +1915,26 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
             || gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2))
                 continue;
         }
+        */
         // if possibleWildEncounter[i][0] is between desired BST range add it to speciesInBSTRange
         if (GetTotalBaseStat(possibleWildEncounter[i][0]) >= minTargetBST && GetTotalBaseStat(possibleWildEncounter[i][0]) <= maxTargetBST) 
         {
-            speciesInBSTRange[j][0] = possibleWildEncounter[i][0];
-            j++;
+            if (keepType)
+            {
+                if ((gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type1)
+                || (gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type2)
+                || (gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type1)
+                || (gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2))
+                {
+                    speciesInBSTRange[j][0] = possibleWildEncounter[i][0];
+                    j++;
+                }
+            }
+            else
+            {
+                speciesInBSTRange[j][0] = possibleWildEncounter[i][0];
+                j++;
+            }
         }
     }
     
