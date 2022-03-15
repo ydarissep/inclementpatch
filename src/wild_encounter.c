@@ -1924,7 +1924,6 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
         // if possibleWildEncounter[i][0] is between desired BST range add it to speciesInBSTRange
         if (GetTotalBaseStat(possibleWildEncounter[i][0]) >= minTargetBST && GetTotalBaseStat(possibleWildEncounter[i][0]) <= maxTargetBST) 
         {
-                return possibleWildEncounter[i][0];
                 speciesInBSTRange[j][0] = possibleWildEncounter[i][0];
                 j++;
         }
@@ -1934,6 +1933,6 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
         
     // Choose and return random species
     rand = Random() % j; 
-    return speciesInBSTRange[rand][0];
+    return speciesInBSTRange[j-1][0];
 }
 
