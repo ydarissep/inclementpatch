@@ -356,7 +356,7 @@ static void CreateWildMon(u16 species, u8 level)
     ZeroEnemyPartyMons();
     checkCuteCharm = TRUE;
     
-    species = SPECIES_RATTATA;
+    species = GetRandomWildEncounterWithBST(species);
 
     switch (gBaseStats[species].genderRatio)
     {
