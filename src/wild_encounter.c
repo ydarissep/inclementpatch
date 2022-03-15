@@ -36,6 +36,7 @@ static void ApplyCleanseTagEncounterRateMod(u32 *encRate);
 static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, u8 type, u16 ability, u8 *monIndex);
 static bool8 IsAbilityAllowingEncounter(u8 level);
 static u8 GetMedianLevelOfPlayerParty(void);
+static u16 GetRandomWildEncounterWithBST(u16 species);
 
 // EWRAM vars
 EWRAM_DATA static u8 sWildEncountersDisabled = 0;
