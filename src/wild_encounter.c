@@ -1852,43 +1852,45 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
 {
     u32 BST = GetTotalBaseStat(species);
     u16 maxBST = 400; 
+    u16 rand = 0;
     u16 i = 0;
     u16 j = 0;
     u16 speciesBST = GetTotalBaseStat(species);
     u16 minTargetBST, maxTargetBST = 0;
     bool8 keepType = FALSE;
+    u8 increment = 25;
     
     u16 speciesInBSTRange[][1] ={ 
     };
     
-    // Check player's progression to update maxBST (400 + 25 for each badge) // no limit after E4
+    // Check player's progression to update maxBST (400 + increment for each badge) // no limit after E4
     if (FlagGet(FLAG_BADGE01_GET))
-        maxBST += 25;
+        maxBST += increment;
     if (FlagGet(FLAG_BADGE02_GET))
-        maxBST += 25;
+        maxBST += increment;
     if (FlagGet(FLAG_BADGE03_GET))
-        maxBST += 25;
+        maxBST += increment;
     if (FlagGet(FLAG_BADGE04_GET))
-        maxBST += 25;
+        maxBST += increment;
     if (FlagGet(FLAG_BADGE05_GET))
-        maxBST += 25;
+        maxBST += increment;
     if (FlagGet(FLAG_BADGE06_GET))
-        maxBST += 25;
+        maxBST += increment;
     if (FlagGet(FLAG_BADGE07_GET))
-        maxBST += 25;
+        maxBST += increment;
     if (FlagGet(FLAG_BADGE08_GET))
-        maxBST += 25;
+        maxBST += increment;
     if (FlagGet(FLAG_SYS_GAME_CLEAR))
         maxBST += 5000;
     
     
     // set minTargetBST and maxTargetBST
-    if (speciesBST - 25 >= 6) //theorically useless
-        minTargetBST = speciesBST - 25;
+    if (speciesBST - increment >= 6) // theorically useless
+        minTargetBST = speciesBST - increment;
     else
         return SPECIES_RATTATA; // cope
     
-    if (speciesBST + 25 > maxBST)
+    if (speciesBST + increment > maxBST)
         if (speciesBST > maxBST) 
         {
             keepType = TRUE; // Will force random encounters to share at least one type with species
@@ -1897,30 +1899,35 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
         else
             maxTargetBST = maxBST;
     else
-        maxTargetBST = speciesBST + 25;
+        maxTargetBST = speciesBST + increment;
     
     if (speciesBST > maxBST)
     
-    // Dynamically updated allowedWildEncounter to contain all Pokemon within the speciesBST +/- 25 (up to maxBST) 
-    // or speciesBST-25/speciesBST and share one type with species if speciesBST is above maxBST
+    // Dynamically updated allowedWildEncounter to contain all Pokemon within the speciesBST +/- increment (up to maxBST) 
+    // or speciesBST-increment/speciesBST and share one type with species if speciesBST is above maxBST
     for (i = 0; i < ARRAY_COUNT(possibleWildEncounter); i++)
     {
-        if (keepType)
+        if (keepType) // Go to the next loop iteration if there's no type in common and keepType is == TRUE
         {
-            if (gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type1)
-                continue;
-            else if (gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type2)
-                continue;
-            else if (gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type1)
-                continue;
-            else if (gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2)
+            if (!(gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type1
+            || gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type2
+            || gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type1
+            || gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2))
                 continue;
         }
-        if (GetTotalBaseStat(possibleWildEncounter[i][0]) >= minTargetBST && GetTotalBaseStat(possibleWildEncounter[i][0]) <= maxTargetBST)
+        // if possibleWildEncounter[i][0] is between desired BST range add it to speciesInBSTRange
+        if (GetTotalBaseStat(possibleWildEncounter[i][0]) >= minTargetBST && GetTotalBaseStat(possibleWildEncounter[i][0]) <= maxTargetBST) 
         {
             speciesInBSTRange[j][0] = possibleWildEncounter[i][0];
             j++;
         }
     }
+    
+    if (ARRAY_COUNT(speciesInBSTRange) == 0) //theorically useless
+        return SPECIES_RATTATA; // cope
+        
+    // Choose and return random species
+    rand = Random() % ARRAY_COUNT(speciesInBSTRange); 
+    return speciesInBSTRange[rand][0];
 }
 
