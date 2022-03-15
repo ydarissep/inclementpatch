@@ -1918,9 +1918,17 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
                 continue;            
         }
         */
-        if(!((gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type1 || gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type2)
-        && (gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type1 || gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2)))
+        
+        //if we do not share both types go to next loop iteration
+        if (gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type1)
+            if (!gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2)
+                continue;
+        else if (gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type2)
+            if (!gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type1)
+                continue;
+        else
             continue;
+        
         // if possibleWildEncounter[i][0] is between desired BST range add it to speciesInBSTRange
         if (GetTotalBaseStat(possibleWildEncounter[i][0]) >= minTargetBST && GetTotalBaseStat(possibleWildEncounter[i][0]) <= maxTargetBST) 
         {
