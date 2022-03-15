@@ -1924,13 +1924,11 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
         }
     }
     
-    /*
-    if (ARRAY_COUNT(speciesInBSTRange) == 0) //theorically useless
+    if (j == 0) //theorically useless
         return SPECIES_RATTATA; // cope
-    */
         
     // Choose and return random species
-    rand = Random() % ARRAY_COUNT(speciesInBSTRange); 
+    rand = Random() % j; 
     return speciesInBSTRange[rand][0];
 }
 
