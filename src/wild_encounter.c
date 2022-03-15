@@ -1857,7 +1857,8 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     u16 i = 0;
     u16 j = 0;
     u16 speciesBST = GetTotalBaseStat(species);
-    u16 minTargetBST, maxTargetBST = 0;
+    u16 minTargetBST = 0;
+    u16 maxTargetBST = 0;
     bool8 keepType = FALSE;
     u8 increment = 25;
     
