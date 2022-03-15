@@ -1072,7 +1072,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     bool8 keepType = FALSE;
     u8 increment = 25;
     
-    u16 speciesInBSTRange[][1] ={ 
+    u16 speciesInBSTRange[1000][1] ={ 
     };
     
     
