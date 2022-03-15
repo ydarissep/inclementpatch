@@ -1908,6 +1908,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     // or speciesBST-increment/speciesBST and share one type with species if speciesBST is above maxBST
     for (i = 0; i < ARRAY_COUNT(possibleWildEncounter); i++)
     {
+        /*
         if (keepType) // Go to the next loop iteration if there's no type in common and keepType is == TRUE
         {
             if (!(gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type1
@@ -1916,6 +1917,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
             || gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2))
                 continue;
         }
+        */
         // if possibleWildEncounter[i][0] is between desired BST range add it to speciesInBSTRange
         if (GetTotalBaseStat(possibleWildEncounter[i][0]) >= minTargetBST && GetTotalBaseStat(possibleWildEncounter[i][0]) <= maxTargetBST) 
         {
