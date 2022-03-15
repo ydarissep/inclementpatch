@@ -1931,6 +1931,6 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     rand = Random() % j; 
     */
     //return speciesInBSTRange[rand][0];
-    return possibleWildEncounter[j][0];
+    return possibleWildEncounter[j-2][0];
 }
 
