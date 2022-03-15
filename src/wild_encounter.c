@@ -1852,7 +1852,7 @@ static const u16 possibleWildEncounter[][1] = //used by GetRandomWildEncounterWi
 static u16 GetRandomWildEncounterWithBST (u16 species)
 {
     u16 BST = GetTotalBaseStat(species);
-    u16 maxBST = 400; 
+    u16 maxBST = 300; 
     u16 rand = 0;
     u16 i = 0;
     u16 j = 0;
@@ -1860,13 +1860,13 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     u16 minTargetBST = 0;
     u16 maxTargetBST = 0;
     bool8 keepType = FALSE;
-    u8 increment = 25;
+    u8 increment = 38;
     
     u16 speciesInBSTRange[ARRAY_COUNT(possibleWildEncounter)][1] ={ 
     };
         
     
-    // Check player's progression to update maxBST (400 + increment for each badge) // no limit after E4
+    // Check player's progression to update maxBST (300 + increment for each badge) // no limit after E4
     if (FlagGet(FLAG_BADGE01_GET))
         maxBST += increment;
     if (FlagGet(FLAG_BADGE02_GET))
