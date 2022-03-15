@@ -1899,7 +1899,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     else
         maxTargetBST = speciesBST + 25;
     
-    if (speciestBST > maxBST)
+    if (speciesBST > maxBST)
     
     // Dynamically updated allowedWildEncounter to contain all Pokemon within the speciesBST +/- 25 (up to maxBST) 
     // or speciesBST-25/speciesBST and share one type with species if speciesBST is above maxBST
