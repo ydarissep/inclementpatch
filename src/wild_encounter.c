@@ -1927,13 +1927,13 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
                 || (gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2))
                 {
                     speciesInBSTRange[j][0] = possibleWildEncounter[i][0];
-                    j += 1;
+                    j++;
                 }
             }
             else
             {
                 speciesInBSTRange[j][0] = possibleWildEncounter[i][0];
-                j += 1;
+                j++;
             }
         }
     }
@@ -1943,6 +1943,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
         
     // Choose and return random species
     rand = Random() % j; 
-    return speciesInBSTRange[rand][0];
+    //return speciesInBSTRange[rand][0];
+    return possibleWildEncounter[i-2][0];
 }
 
