@@ -15,6 +15,7 @@
 #include "link.h"
 #include "script.h"
 #include "battle_ai_util.h"
+#include "battle_util.h"
 #include "battle_debug.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
@@ -1853,8 +1854,11 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     u16 maxBST = 400; 
     u16 i = 0;
     u16 j = 0;
+    u16 speciesBST = GetTotalBaseStat(species);
+    u16 minTargetBST, maxTargetBST = 0;
+    bool8 keepType = FALSE;
     
-    u16 speciesInRange[][1] ={ 
+    u16 speciesInBSTRange[][1] ={ 
     };
     
     // Check player's progression to update maxBST (400 + 25 for each badge) // no limit after E4
@@ -1878,14 +1882,43 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
         maxBST += 5000;
     
     
+    // set minTargetBST and maxTargetBST
+    if (speciesBST - 25 >= 6) //theorically useless
+        minTargetBST = speciesBST - 25;
+    else
+        return SPECIES_RATTATA; // cope
     
-    // Dynamically updated allowedWildEncounter to contain all Pokemon within the species BST +/- 25 (up to maxBST) 
-    // or BST - 25 and one type in common with species if species BST is above maxBST
+    if (speciesBST + 25 > maxBST)
+        if (speciesBST > maxBST) 
+        {
+            keepType = TRUE; // Will force random encounters to share at least one type with species
+            maxTargetBST = speciesBST;
+        }
+        else
+            maxTargetBST = maxBST;
+    else
+        maxTargetBST = speciesBST + 25;
+    
+    if (speciestBST > maxBST)
+    
+    // Dynamically updated allowedWildEncounter to contain all Pokemon within the speciesBST +/- 25 (up to maxBST) 
+    // or speciesBST-25/speciesBST and share one type with species if speciesBST is above maxBST
     for (i = 0; i < ARRAY_COUNT(possibleWildEncounter); i++)
     {
-        if (GetTotalBaseStat(possibleWildEncounter[i][0])
+        if (keepType)
         {
-            speciesInRange[j][0] = possibleWildEncounter[i][0];
+            if (gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type1)
+                continue;
+            else if (gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type2)
+                continue;
+            else if (gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type1)
+                continue;
+            else if (gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2)
+                continue;
+        }
+        if (GetTotalBaseStat(possibleWildEncounter[i][0]) >= minTargetBST && GetTotalBaseStat(possibleWildEncounter[i][0]) <= maxTargetBST)
+        {
+            speciesInBSTRange[j][0] = possibleWildEncounter[i][0];
             j++;
         }
     }
