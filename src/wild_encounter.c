@@ -1860,13 +1860,13 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     u16 minTargetBST = 0;
     u16 maxTargetBST = 0;
     bool8 keepType = FALSE;
-    u8 increment = 38;
+    u8 increment = 20;
     
     u16 speciesInBSTRange[ARRAY_COUNT(possibleWildEncounter)][1] ={ 
     };
         
     
-    // Check player's progression to update maxBST (300 + increment for each badge) // no limit after E4
+    // Check player's progression to update maxBST (400 + increment for each badge) // no limit after E4
     if (FlagGet(FLAG_BADGE01_GET))
         maxBST += increment;
     if (FlagGet(FLAG_BADGE02_GET))
