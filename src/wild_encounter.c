@@ -1889,7 +1889,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     if (speciesBST - increment >= 6) // theorically useless
         minTargetBST = speciesBST - increment;
     else
-        return SPECIES_RATTATA; // cope
+        return species; // cope
     
     if (speciesBST + increment > maxBST)
         if (speciesBST > maxBST) 
@@ -1902,13 +1902,10 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     else
         maxTargetBST = speciesBST + increment;
     
-    if (speciesBST > maxBST)
-    
     // Dynamically updated allowedWildEncounter to contain all Pokemon within the speciesBST +/- increment (up to maxBST) 
     // or speciesBST-increment/speciesBST and share one type with species if speciesBST is above maxBST
     for (i = 0; i < ARRAY_COUNT(possibleWildEncounter); i++)
     {
-        /*
         if (keepType) // Go to the next loop iteration if there's no type in common and keepType is == TRUE
         {
             if (!(gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type1
@@ -1917,7 +1914,6 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
             || gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2))
                 continue;
         }
-        */
         // if possibleWildEncounter[i][0] is between desired BST range add it to speciesInBSTRange
         if (GetTotalBaseStat(possibleWildEncounter[i][0]) >= minTargetBST && GetTotalBaseStat(possibleWildEncounter[i][0]) <= maxTargetBST) 
         {
@@ -1926,8 +1922,8 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
         }
     }
     
-    if (j == 0) //theorically useless
-        return SPECIES_RATTATA; // cope
+    if (j <= 1) //theorically useless
+        return species; // cope
         
     // Choose and return random species
     rand = Random() % j; 
