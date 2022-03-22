@@ -37,6 +37,7 @@ static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildM
 static bool8 IsAbilityAllowingEncounter(u8 level);
 static u8 GetMedianLevelOfPlayerParty(void);
 static u16 GetRandomWildEncounterWithBST(u16 species);
+static u16 getSpeciesFinalEvo(u16 species);
 
 // EWRAM vars
 EWRAM_DATA static u8 sWildEncountersDisabled = 0;
@@ -1935,6 +1936,20 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
         
     // Choose and return random species
     rand = Random() % j; 
-    return speciesInBSTRange[rand][0];
+    species = speciesInBSTRange[rand][0];
+    species = getSpeciesFinalEvo(species);
+    return species;
 }
 
+static u16 getSpeciesFinalEvo(u16 species)
+{
+    u8 i = 0;
+    for (i = 0; i < 3; i++)
+    {
+        if(gEvolutionTable[species][0].method != 0 && gEvolutionTable[species][0].method != EVO_MEGA_EVOLUTION)
+        {
+            species = gEvolutionTable[species][0].targetSpecies;
+        }
+    }
+    return species;
+}
