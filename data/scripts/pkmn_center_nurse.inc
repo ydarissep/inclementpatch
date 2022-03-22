@@ -320,6 +320,10 @@ Give_Thief_Items_After_Wattson:
 	checkitem ITEM_MAGNET, 10
 	compare VAR_RESULT, TRUE
 	call_if_ne ADDITEM_MAGNET
+	setvar VAR_0x8006, 0
+    	special GetSettingsMonStats
+    	compare VAR_0x8005, 1
+    	call_if_eq ADDITEM_ITEM_BOTTLE_CAP	
 	return
 
 
@@ -566,4 +570,8 @@ ADDITEM_DRAGON_FANG:
 
 ADDITEM_PP_MAX:
 	additem ITEM_PP_MAX, 50
+	return
+	
+ADDITEM_ITEM_BOTTLE_CAP:
+	additem ITEM_BOTTLE_CAP, 50
 	return
