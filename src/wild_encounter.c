@@ -1853,15 +1853,19 @@ static const u16 possibleWildEncounter[][1] = //used by GetRandomWildEncounterWi
 static u16 GetRandomWildEncounterWithBST (u16 species)
 {
     u16 BST = GetTotalBaseStat(species);
-    u16 maxBST = 300; 
+    u16 maxBST = 400; 
     u16 rand = 0;
     u16 i = 0;
     u16 j = 0;
     u16 speciesBST = GetTotalBaseStat(species);
+    u16 targetSpeciesBST = 0;
+    u16 targetSpecies = 0;
+    u16 targetSpeciesFinalEvoBST = 0;
     u16 minTargetBST = 0;
     u16 maxTargetBST = 0;
+    u16 maxEvoBST = 500;
     bool8 keepType = FALSE;
-    u8 increment = 20;
+    u8 increment = 25;
     
     u16 speciesInBSTRange[ARRAY_COUNT(possibleWildEncounter)][1] ={ 
     };
@@ -1869,13 +1873,25 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     
     // Check player's progression to update maxBST (400 + increment for each badge) // no limit after E4
     if (FlagGet(FLAG_BADGE01_GET))
+    {
         maxBST += increment;
+        maxEvoBST += increment;
+    }
     if (FlagGet(FLAG_BADGE02_GET))
+    {
         maxBST += increment;
+        maxEvoBST += increment;
+    }
     if (FlagGet(FLAG_BADGE03_GET))
+    {
         maxBST += increment;
+        maxEvoBST += increment;
+    }
     if (FlagGet(FLAG_BADGE04_GET))
+    {
         maxBST += increment;
+        maxEvoBST += increment;
+    }
     if (FlagGet(FLAG_BADGE05_GET))
         maxBST += increment;
     if (FlagGet(FLAG_BADGE06_GET))
@@ -1885,7 +1901,10 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     if (FlagGet(FLAG_BADGE08_GET))
         maxBST += increment;
     if (FlagGet(FLAG_SYS_GAME_CLEAR))
+    {
         maxBST += 5000;
+        maxEvoBST += 5000;
+    }
     
     
     // set minTargetBST and maxTargetBST
@@ -1905,30 +1924,57 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     else
         maxTargetBST = speciesBST + increment;
     
+    if (speciesBST < 250) // increase early game variety and reduce chance to abuse Cosmog and Feebas
+        speciesBST = 250;
+    
     // Dynamically updated allowedWildEncounter to contain all Pokemon within the speciesBST +/- increment (up to maxBST) 
     // or speciesBST-increment/speciesBST and share one type with species if speciesBST is above maxBST
     for (i = 0; i < ARRAY_COUNT(possibleWildEncounter); i++)
     {
+        targetSpecies = possibleWildEncounter[i][0];
+        targetSpeciesBST = GetTotalBaseStat(targetSpecies);
+        targetSpeciesFinalEvoBST = GetTotalBaseStat(getSpeciesFinalEvo(targetSpecies))
+        
+        if (targetSpeciesBST < 250) // increase early game variety and reduce chance to abuse Cosmog and Feebas
+            targetSpeciesBST = 250;
+        
+        if (species = targetSpecies)
+        {
+            speciesInBSTRange[j][0] = targetSpecies;
+            j++;
+            continue;
+        }
         if (keepType) // Go to the next loop iteration if there's no type in common and keepType is TRUE
         {
-            if (!(gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type1
-            || gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type2
-            || gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type1
-            || gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2))
+            if (!(gBaseStats[species].type1 == gBaseStats[targetSpecies].type1
+            || gBaseStats[species].type1 == gBaseStats[targetSpecies].type2
+            || gBaseStats[species].type2 == gBaseStats[targetSpecies].type1
+            || gBaseStats[species].type2 == gBaseStats[targetSpecies].type2))
                 continue;            
         }
         /*
         //if we do not share both types go to next loop iteration
-        if (!(gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type1 && gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type2)
-        && !(gBaseStats[species].type1 == gBaseStats[possibleWildEncounter[i][0]].type2 && gBaseStats[species].type2 == gBaseStats[possibleWildEncounter[i][0]].type1))
+        if (!(gBaseStats[species].type1 == gBaseStats[targetSpecies].type1 && gBaseStats[species].type2 == gBaseStats[targetSpecies].type2)
+        && !(gBaseStats[species].type1 == gBaseStats[targetSpecies].type2 && gBaseStats[species].type2 == gBaseStats[targetSpecies].type1))
             continue;
         */
         
         // if possibleWildEncounter[i][0] is between desired BST range add it to speciesInBSTRange
-        if (GetTotalBaseStat(possibleWildEncounter[i][0]) >= minTargetBST && GetTotalBaseStat(possibleWildEncounter[i][0]) <= maxTargetBST) 
+        if (targetSpeciesBST >= minTargetBST && targetSpeciesBST <= maxTargetBST) 
         {
-                speciesInBSTRange[j][0] = possibleWildEncounter[i][0];
+            if (targetSpeciesFinalEvoBST <= maxEvoBST)
+            {
+                speciesInBSTRange[j][0] = targetSpecies;
                 j++;
+            }
+            else
+            {
+                if (random() % ((targetSpeciesFinalEvoBST - maxEvoBST) + maxBST/10) < maxBST/10)
+                {
+                    speciesInBSTRange[j][0] = targetSpecies;
+                    j++;
+                }
+            }
         }
     }
     if (j <= 1) //theorically useless
@@ -1936,15 +1982,13 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
         
     // Choose and return random species
     rand = Random() % j; 
-    species = speciesInBSTRange[rand][0];
-    species = getSpeciesFinalEvo(species);
-    return species;
+    return speciesInBSTRange[rand][0];
 }
 
 static u16 getSpeciesFinalEvo(u16 species)
 {
     u8 i = 0;
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < 5; i++)
     {
         if(gEvolutionTable[species][0].method != 0 && gEvolutionTable[species][0].method != EVO_MEGA_EVOLUTION)
         {
