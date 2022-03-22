@@ -355,7 +355,12 @@ static void CreateWildMon(u16 species, u8 level)
 
     ZeroEnemyPartyMons();
     checkCuteCharm = TRUE;
-
+    
+    
+    if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ABILITY_NUM) == 1)
+        species = GetRandomWildEncounterWithBST(species);
+    
+    
     switch (gBaseStats[species].genderRatio)
     {
     case MON_MALE:
