@@ -323,7 +323,7 @@ Give_Thief_Items_After_Wattson:
 	setvar VAR_0x8006, 0
     	special GetSettingsMonStats
     	compare VAR_0x8005, 1
-    	call_if_eq ADDITEM_ITEM_BOTTLE_CAP	
+    	call_if_eq Give_Bottle_Cap	
 	return
 
 
@@ -346,6 +346,12 @@ Give_Thief_Items_After_Winoma:
 	checkitem ITEM_PP_MAX, 50
 	compare VAR_RESULT, TRUE
 	call_if_ne ADDITEM_PP_MAX
+	return
+
+Give_Bottle_Cap:
+	checkitem ITEM_BOTTLE_CAP, 50
+	compare VAR_RESULT, TRUE
+	call_if_ne ADDITEM_BOTTLE_CAP
 	return
 
 ADDITEM_POKEBLOCK_CASE:
