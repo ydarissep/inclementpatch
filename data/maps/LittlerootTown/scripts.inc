@@ -1945,8 +1945,8 @@ LittlerootTown_EventScript_DisableAltForms::
 		
 LittlerootTown_Text_ChangeRandomizer:
 	.string "Enable randomized wild encounters?\n"
-	.string "This is not affected by previous settings.\n
-	.string "This is not a chaos randomizer and should\n
+	.string "This is not affected by previous settings.\p"
+	.string "This is not a chaos randomizer and should\n"
 	.string "hopefully keep some kind a balance.$"
 		
 LittlerootTown_Text_ChangeRandomizerEnabled:
