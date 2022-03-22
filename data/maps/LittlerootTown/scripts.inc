@@ -1656,6 +1656,7 @@ LittlerootTown_EventScript_PatchSettings_Random::
 	call LittlerootTown_EventScript_PatchSettings_Legends
 	@call LittlerootTown_EventScript_PatchSettings_Unobtainable
 	call LittlerootTown_EventScript_PatchSettings_AltForms
+	call LittlerootTown_EventScript_PatchSettings_Randomizer
 	releaseall
 	end
 
@@ -1931,6 +1932,68 @@ LittlerootTown_EventScript_EnableAltForms::
 		
 LittlerootTown_EventScript_DisableAltForms::
 	setvar VAR_0x8006, 11
+	setvar VAR_0x8007, 0
+	special SetSettingsMonStats
+	return	
+		
+		
+		
+		
+		
+		
+		
+		
+LittlerootTown_Text_ChangeRandomizer:
+	.string "Enable randomized wild encounters?\n"
+	.string "This is not affected by previous settings.\n
+	.string "This is not a chaos randomizer and should\n
+	.string "hopefully keep some kind a balance.$"
+		
+LittlerootTown_Text_ChangeRandomizerEnabled:
+	.string "Wild encounters are randomized.\n"
+	.string "Would you like to change this settings?$"
+
+LittlerootTown_Text_ChangeRandomizerDisabled:
+	.string "Wild encounters are not randomized.\n"
+	.string "Would you like to change this settings?$"
+		
+LittlerootTown_EventScript_PatchSettings_Randomizer::
+	setvar VAR_0x8006, 12
+	special GetSettingsMonStats
+	compare VAR_0x8005, 1
+	call_if_eq LittlerootTown_EventScript_ChangeRandomizerEnabled
+	compare VAR_0x8005, 1
+	call_if_ne LittlerootTown_EventScript_ChangeRandomizerDisabled
+	return	
+	
+LittlerootTown_EventScript_ChangeRandomizerEnabled::
+	msgbox LittlerootTown_Text_ChangeRandomizerEnabled, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq LittlerootTown_EventScript_ChangeRandomizer
+	return
+
+LittlerootTown_EventScript_ChangeRandomizerDisabled::
+	msgbox LittlerootTown_Text_ChangeRandomizerDisabled, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq LittlerootTown_EventScript_ChangeRandomizer
+	return
+
+LittlerootTown_EventScript_ChangeRandomizer::
+	msgbox LittlerootTown_Text_ChangeRandomizer, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	call_if_eq LittlerootTown_EventScript_EnableRandomizer
+	compare VAR_RESULT, YES
+	call_if_ne LittlerootTown_EventScript_DisableRandomizer
+	return
+
+LittlerootTown_EventScript_EnableRandomizer::
+	setvar VAR_0x8006, 12
+	setvar VAR_0x8007, 1
+	special SetSettingsMonStats
+	return
+		
+LittlerootTown_EventScript_DisableRandomizer::
+	setvar VAR_0x8006, 12
 	setvar VAR_0x8007, 0
 	special SetSettingsMonStats
 	return	
