@@ -1968,7 +1968,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
                 speciesInBSTRange[j][0] = targetSpecies;
                 j++;
             }
-            else
+            else // reduce the chance to get a stronger pokemon early game
             {
                 if (Random() % ((targetSpeciesFinalEvoBST - maxEvoBST) + maxBST/10) < maxBST/10)
                 {
