@@ -1933,7 +1933,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     {
         targetSpecies = possibleWildEncounter[i][0];
         targetSpeciesBST = GetTotalBaseStat(targetSpecies);
-        targetSpeciesFinalEvoBST = GetTotalBaseStat(getSpeciesFinalEvo(targetSpecies))
+        targetSpeciesFinalEvoBST = GetTotalBaseStat(getSpeciesFinalEvo(targetSpecies));
         
         if (targetSpeciesBST < 250) // increase early game variety and reduce chance to abuse Cosmog and Feebas
             targetSpeciesBST = 250;
