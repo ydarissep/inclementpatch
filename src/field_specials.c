@@ -5258,7 +5258,7 @@ void SetSettingsMonStats (void)
 	SetMonData(mon, MON_DATA_SMART, &i); // Random starters
 	SetMonData(mon, MON_DATA_TOUGH, &i); // Unobtainable
 	SetMonData(mon, MON_DATA_SHEEN, &i); // Alt Forms
-	SetMonData(mon, MON_DATA_ABILITY_NUM, &i);
+	SetMonData(mon, MON_DATA_ABILITY_NUM, &i); // Randomizer
 	SetMonData(mon, MON_DATA_FRIENDSHIP, &i); // Summary screen
 	*/
 	
@@ -5361,6 +5361,8 @@ void SetSettingsMonStats (void)
 			break;
 		case 11: SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_SHEEN, &value); // Alt Forms
 			break;
+		case 12: SetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ABILITY_NUM, &value); // Randomizer
+			break;
 	}
 	
 	
@@ -5395,6 +5397,8 @@ void GetSettingsMonStats (void)
 		case 10: gSpecialVar_0x8005 = GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_TOUGH); // Unobtainable
 			break;
 		case 11: gSpecialVar_0x8005 = GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_SHEEN); // Alt Forms
+			break;
+		case 12: gSpecialVar_0x8005 = GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ABILITY_NUM); // Randomizer
 			break;
 	}
 }
