@@ -14,6 +14,8 @@
 #include "tv.h"
 #include "link.h"
 #include "script.h"
+#include "battle_ai_util.h"
+#include "battle_util.h"
 #include "battle_debug.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
