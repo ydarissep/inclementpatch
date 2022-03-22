@@ -1907,6 +1907,9 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
     }
     
     
+    if (speciesBST < 250) // increase early game variety and reduce chance to abuse Cosmog and Feebas
+        speciesBST = 250;
+    
     // set minTargetBST and maxTargetBST
     if (speciesBST - increment >= 6) // theorically useless
         minTargetBST = speciesBST - increment;
@@ -1923,9 +1926,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
             maxTargetBST = maxBST;
     else
         maxTargetBST = speciesBST + increment;
-    
-    if (speciesBST < 250) // increase early game variety and reduce chance to abuse Cosmog and Feebas
-        speciesBST = 250;
+   
     
     // Dynamically updated allowedWildEncounter to contain all Pokemon within the speciesBST +/- increment (up to maxBST) 
     // or speciesBST-increment/speciesBST and share one type with species if speciesBST is above maxBST
