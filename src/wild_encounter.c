@@ -1938,7 +1938,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
         if (targetSpeciesBST < 250) // increase early game variety and reduce chance to abuse Cosmog and Feebas
             targetSpeciesBST = 250;
         
-        if (species = targetSpecies)
+        if (species == targetSpecies)
         {
             speciesInBSTRange[j][0] = targetSpecies;
             j++;
