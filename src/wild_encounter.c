@@ -1969,7 +1969,7 @@ static u16 GetRandomWildEncounterWithBST (u16 species)
             }
             else
             {
-                if (random() % ((targetSpeciesFinalEvoBST - maxEvoBST) + maxBST/10) < maxBST/10)
+                if (Random() % ((targetSpeciesFinalEvoBST - maxEvoBST) + maxBST/10) < maxBST/10)
                 {
                     speciesInBSTRange[j][0] = targetSpecies;
                     j++;
