@@ -4945,7 +4945,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
 	if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
 	{
-		if(GetBoxMonData(boxMon, MON_DATA_MET_LEVEL, NULL) == 0)
+		if(substruct3->metLevel == 0)
 			SET8(substruct2->hpEV);	
 		else
 			substruct2->hpEV = 0;
@@ -4957,7 +4957,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
 	{
-		if(GetBoxMonData(boxMon, MON_DATA_MET_LEVEL, NULL) == 0)
+		if(substruct3->metLevel == 0)
 			SET8(substruct2->attackEV);
 		else
 			substruct2->attackEV = 0;
@@ -4969,7 +4969,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
 	{
-		if(GetBoxMonData(boxMon, MON_DATA_MET_LEVEL, NULL) == 0)
+		if(substruct3->metLevel == 0)
 			SET8(substruct2->defenseEV);
 		else
 			substruct2->defenseEV = 0;
@@ -4981,7 +4981,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
 	{
-		if(GetBoxMonData(boxMon, MON_DATA_MET_LEVEL, NULL) == 0)
+		if(substruct3->metLevel == 0)
 			SET8(substruct2->speedEV);
 		else
 			substruct2->speedEV = 0;
@@ -4992,20 +4992,24 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
     case MON_DATA_SPATK_EV:
         if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
-		if(GetBoxMonData(boxMon, MON_DATA_MET_LEVEL, NULL) == 0)
+	{
+		if(substruct3->metLevel == 0)
 			SET8(substruct2->spAttackEV);
 		else
 			substruct2->spAttackEV = 0;
+	}
 	else
 		SET8(substruct2->spAttackEV);
         break;
     case MON_DATA_SPDEF_EV:
         if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
-		if(GetBoxMonData(boxMon, MON_DATA_MET_LEVEL, NULL) == 0)
+	{
+		if(substruct3->metLevel == 0)
 			SET8(substruct2->spDefenseEV);
 		else
 			substruct2->spDefenseEV = 0;
+	}
 	else
 		SET8(substruct2->spDefenseEV);
         break;
