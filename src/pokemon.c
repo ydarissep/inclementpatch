@@ -5179,6 +5179,7 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
 	SetMonData(mon, MON_DATA_SMART, &i);
 	SetMonData(mon, MON_DATA_TOUGH, &i);
 	SetMonData(mon, MON_DATA_SHEEN, &i);
+	SetMonData(mon, MON_DATA_MET_LEVEL, &i); // used as exception to allow EVs in no EVs mode
 	return SendSettingsMonToPC(mon);    
     }
 	
