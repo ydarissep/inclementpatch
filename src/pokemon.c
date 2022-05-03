@@ -4945,7 +4945,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
 	if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
 	{
-		if(substruct3->metLevel == 0)
+		if(substruct3->metLevel == 0 && substruct3->eventLegal == FALSE)
 			SET8(substruct2->hpEV);	
 		else
 			substruct2->hpEV = 0;
@@ -4957,7 +4957,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
 	{
-		if(substruct3->metLevel == 0)
+		if(substruct3->metLevel == 0 && substruct3->eventLegal == FALSE)
 			SET8(substruct2->attackEV);
 		else
 			substruct2->attackEV = 0;
@@ -4969,7 +4969,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
 	{
-		if(substruct3->metLevel == 0)
+		if(substruct3->metLevel == 0 && substruct3->eventLegal == FALSE)
 			SET8(substruct2->defenseEV);
 		else
 			substruct2->defenseEV = 0;
@@ -4981,7 +4981,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
 	{
-		if(substruct3->metLevel == 0)
+		if(substruct3->metLevel == 0 && substruct3->eventLegal == FALSE)
 			SET8(substruct2->speedEV);
 		else
 			substruct2->speedEV = 0;
@@ -4993,7 +4993,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
 	{
-		if(substruct3->metLevel == 0)
+		if(substruct3->metLevel == 0 && substruct3->eventLegal == FALSE)
 			SET8(substruct2->spAttackEV);
 		else
 			substruct2->spAttackEV = 0;
@@ -5005,7 +5005,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         if (GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_ATK_IV) == 1
 	   && GetBoxMonDataAt(TOTAL_BOXES_COUNT-1, IN_BOX_COUNT-1, MON_DATA_EXP) == 0)
 	{
-		if(substruct3->metLevel == 0)
+		if(substruct3->metLevel == 0 && substruct3->eventLegal == FALSE)
 			SET8(substruct2->spDefenseEV);
 		else
 			substruct2->spDefenseEV = 0;
@@ -5163,6 +5163,8 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
         && GetMonData(mon, MON_DATA_EXP, NULL) == 0)
     {
 	u8 nickname[POKEMON_NAME_LENGTH + 1] = _("DontMoveMe");
+	bool8 isEventLegal = FALSE;
+	SetMonData(mon, MON_DATA_EVENT_LEGAL, &isEventLegal);
 	SetMonData(mon, MON_DATA_NICKNAME, nickname);
 	i = 0;
 	SetMonData(mon, MON_DATA_HP_IV, &i);
