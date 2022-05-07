@@ -5276,7 +5276,7 @@ void SetSettingsMonStats (void)
 				{
 					for (j = 0; j < IN_BOX_COUNT; j++)
 					{
-						if (i!=TOTAL_BOXES_COUNT-1 || j!=IN_BOX_COUNT-1)
+						if (GetBoxmonDataAt(i, j, MON_DATA_EXP) != 0)
 						{
 							SetBoxMonDataAt(i, j, MON_DATA_HP_IV, &value);
 							SetBoxMonDataAt(i, j, MON_DATA_ATK_IV, &value);
@@ -5285,13 +5285,13 @@ void SetSettingsMonStats (void)
 							SetBoxMonDataAt(i, j, MON_DATA_SPDEF_IV, &value);
 							SetBoxMonDataAt(i, j, MON_DATA_SPEED_IV, &value);
 						}
-
 					}
 				}
 				for (i = 0; i < PARTY_SIZE; i++)
 				{
 					if (GetBoxMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE
-					   && GetBoxMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_EGG)
+					   && GetBoxMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_EGG
+					   && GetBoxmonData(&gPlayerParty[i], MON_DATA_EXP) != 0)
 					{
 						SetMonData(&gPlayerParty[i], MON_DATA_HP_IV, &value);
 						SetMonData(&gPlayerParty[i], MON_DATA_ATK_IV, &value);
@@ -5313,7 +5313,7 @@ void SetSettingsMonStats (void)
 				{
 					for (j = 0; j < IN_BOX_COUNT; j++)
 					{
-						if (i!=TOTAL_BOXES_COUNT-1 || j!=IN_BOX_COUNT-1)
+						if (GetBoxmonDataAt(i, j, MON_DATA_EXP) != 0)
 						{
 							SetBoxMonDataAt(i, j, MON_DATA_HP_EV, &value);
 							SetBoxMonDataAt(i, j, MON_DATA_ATK_EV, &value);
@@ -5322,13 +5322,13 @@ void SetSettingsMonStats (void)
 							SetBoxMonDataAt(i, j, MON_DATA_SPDEF_EV, &value);
 							SetBoxMonDataAt(i, j, MON_DATA_SPEED_EV, &value);
 						}
-
 					}
 				}
 				for (i = 0; i < PARTY_SIZE; i++)
 				{
 					if (GetBoxMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE
-					   && GetBoxMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_EGG)
+					   && GetBoxMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_EGG
+					   && GetBoxmonData(&gPlayerParty[i], MON_DATA_EXP) != 0)
 					{
 						SetMonData(&gPlayerParty[i], MON_DATA_HP_EV, &value);
 						SetMonData(&gPlayerParty[i], MON_DATA_ATK_EV, &value);
