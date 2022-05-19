@@ -2636,11 +2636,12 @@ static void Task_OnSelectedMon(u8 taskId)
             }
             break;
         case MENU_PLACE:
-            PlaySE(SE_SELECT);
-            ClearBottomWindow();
-            SetPokeStorageTask(Task_PlaceMon);
+            //PlaySE(SE_SELECT);
+            //ClearBottomWindow();
+            //SetPokeStorageTask(Task_PlaceMon);
             break;
         case MENU_SHIFT:
+                /*
             if (!CanShiftMon())
             {
                 sStorage->state = 3;
@@ -2651,11 +2652,14 @@ static void Task_OnSelectedMon(u8 taskId)
                 ClearBottomWindow();
                 SetPokeStorageTask(Task_ShiftMon);
             }
+            */
             break;
         case MENU_WITHDRAW:
+                /*
             PlaySE(SE_SELECT);
             ClearBottomWindow();
             SetPokeStorageTask(Task_WithdrawMon);
+            */
             break;
         case MENU_STORE:
             if (IsRemovingLastPartyMon())
@@ -2701,8 +2705,8 @@ static void Task_OnSelectedMon(u8 taskId)
             SetPokeStorageTask(Task_ShowMarkMenu);
             break;
         case MENU_TAKE:
-            PlaySE(SE_SELECT);
-            SetPokeStorageTask(Task_TakeItemForMoving);
+            //PlaySE(SE_SELECT);
+            //SetPokeStorageTask(Task_TakeItemForMoving);
             break;
         case MENU_GIVE:
             PlaySE(SE_SELECT);
@@ -2712,8 +2716,10 @@ static void Task_OnSelectedMon(u8 taskId)
             SetPokeStorageTask(Task_ItemToBag);
             break;
         case MENU_SWITCH:
+                /*
             PlaySE(SE_SELECT);
             SetPokeStorageTask(Task_SwitchSelectedItem);
+            */
             break;
         case MENU_GIVE_2:
             PlaySE(SE_SELECT);
