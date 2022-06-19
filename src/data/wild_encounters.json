@@ -50,62 +50,62 @@
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_ZIGZAGOON"
+                "species": "SPECIES_MILOTIC_MEGA"
               },
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_POOCHYENA"
+                "species": "SPECIES_MILOTIC_MEGA"
               },
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_WURMPLE"
+                "species": "SPECIES_MILOTIC_MEGA"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_WURMPLE"
+                "species": "SPECIES_MILOTIC_MEGA"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_ZORUA"
+                "species": "SPECIES_MILOTIC_MEGA"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_SEWADDLE"
+                "species": "SPECIES_MILOTIC_MEGA"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_LILLIPUP"
+                "species": "SPECIES_MILOTIC_MEGA"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_BONSLY"
+                "species": "SPECIES_MILOTIC_MEGA"
               },
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_LILLIPUP"
+                "species": "SPECIES_MILOTIC_MEGA"
               },
               {
                 "min_level": 2,
                 "max_level": 2,
-                "species": "SPECIES_BONSLY"
+                "species": "SPECIES_MILOTIC_MEGA"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_LILLIPUP"
+                "species": "SPECIES_MILOTIC_MEGA"
               },
               {
                 "min_level": 3,
                 "max_level": 3,
-                "species": "SPECIES_BONSLY"
+                "species": "SPECIES_MILOTIC_MEGA"
               }
             ]
           },
