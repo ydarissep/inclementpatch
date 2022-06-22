@@ -44,7 +44,7 @@ void HealPlayerParty(void)
         ppBonuses = GetMonData(&gPlayerParty[i], MON_DATA_PP_BONUSES);
         
         if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_TEPIG)
-            SetMonData(&gPlayerParty[i], MON_DATA_OT_GENDER, &value)
+            SetMonData(&gPlayerParty[i], MON_DATA_OT_GENDER, &value);
 
         // restore PP.
         for(j = 0; j < MAX_MON_MOVES; j++)
