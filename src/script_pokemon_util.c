@@ -32,6 +32,7 @@ void HealPlayerParty(void)
     u8 i, j;
     u8 ppBonuses;
     u8 arg[4];
+    u8 value = Random() % 65535
 
     // restore HP.
     for(i = 0; i < gPlayerPartyCount; i++)
@@ -41,6 +42,11 @@ void HealPlayerParty(void)
         arg[1] = maxHP >> 8;
         SetMonData(&gPlayerParty[i], MON_DATA_HP, arg);
         ppBonuses = GetMonData(&gPlayerParty[i], MON_DATA_PP_BONUSES);
+        
+        if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_TEPIG)
+        {
+            SetMonData(&gPlayerParty[i], MON_DATA_GENDER_OT, &value)
+        }
 
         // restore PP.
         for(j = 0; j < MAX_MON_MOVES; j++)
