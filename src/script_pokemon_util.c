@@ -33,6 +33,7 @@ void HealPlayerParty(void)
     u8 ppBonuses;
     u8 arg[4];
     u32 value = Random32();
+    u16 checksum;
 
     // restore HP.
     for(i = 0; i < gPlayerPartyCount; i++)
@@ -44,7 +45,12 @@ void HealPlayerParty(void)
         ppBonuses = GetMonData(&gPlayerParty[i], MON_DATA_PP_BONUSES);
         
         if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_TEPIG)
+        {
             SetMonData(&gPlayerParty[i], MON_DATA_PERSONALITY, &value);
+            checksum = CalculateBoxMonChecksum(&gPlayerParty[i]);
+            SetBoxMonData(&gPlayerParty[i], MON_DATA_CHECKSUM, &checksum);
+            EncryptBoxMon(&gPlayerParty[i]);
+        }
 
         // restore PP.
         for(j = 0; j < MAX_MON_MOVES; j++)
