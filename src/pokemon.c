@@ -8304,7 +8304,8 @@ void UpdateBoxMonPersonality(struct BoxPokemon *boxmon, u32 new_pid, u32 new_oti
     struct PokemonSubstruct1 *substruct1_old, *substruct1_new;
     struct PokemonSubstruct2 *substruct2_old, *substruct2_new;
     struct PokemonSubstruct3 *substruct3_old, *substruct3_new;
-    BoxPokemon buffer;
+    //BoxPokemon buffer;
+    boxmon buffer;
 
     substruct0_old = &(GetSubstruct(boxmon, boxmon->personality, 0)->type0);
     substruct1_old = &(GetSubstruct(boxmon, boxmon->personality, 1)->type1);
