@@ -3431,8 +3431,6 @@ void CreateBoxMonShiny(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixe
               | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
               | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
         
-        if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
-        {
             u32 shinyValue;
             u32 rolls = 0;
             do
@@ -3441,7 +3439,6 @@ void CreateBoxMonShiny(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixe
                 shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
                 rolls++;
             } while (shinyValue >= SHINY_ODDS);
-        }
     }
 
     SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
