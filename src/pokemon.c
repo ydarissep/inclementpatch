@@ -3431,7 +3431,7 @@ void CreateBoxMonShiny(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixe
               | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
               | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
         
-        if (true)
+        if (1 == 1) // :=)
         {
             u32 shinyValue;
             u32 rolls = 0;
