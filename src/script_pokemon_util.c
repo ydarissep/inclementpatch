@@ -32,7 +32,7 @@ void HealPlayerParty(void)
     u8 i, j;
     u8 ppBonuses;
     u8 arg[4];
-    u16 value = Random() % 254;
+    u16 value = MON_FEMALE;
 
     // restore HP.
     for(i = 0; i < gPlayerPartyCount; i++)
