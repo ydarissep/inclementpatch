@@ -43,8 +43,6 @@ void HealPlayerParty(void)
         SetMonData(&gPlayerParty[i], MON_DATA_HP, arg);
         ppBonuses = GetMonData(&gPlayerParty[i], MON_DATA_PP_BONUSES);
 
-        setPersonality();
-
         // restore PP.
         for(j = 0; j < MAX_MON_MOVES; j++)
         {
