@@ -8301,12 +8301,15 @@ void setPersonality(void)
 {
 	u16 checksum;
 	u32 value = Random32();
+	u8 i;
 	
-	if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_TEPIG)
-        {
-		SetBoxMonData(&gPlayerParty[i], MON_DATA_PERSONALITY, &value);
-		checksum = CalculateBoxMonChecksum(&gPlayerParty[i]);
-		SetBoxMonData(&gPlayerParty[i], MON_DATA_CHECKSUM, &checksum);
-		EncryptBoxMon(&gPlayerParty[i]);
-        }
+	for(i = 0; i < gPlayerPartyCount; i++){
+		if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_TEPIG)
+		{
+			SetBoxMonData(&gPlayerParty[i], MON_DATA_PERSONALITY, &value);
+			checksum = CalculateBoxMonChecksum(&gPlayerParty[i]);
+			SetBoxMonData(&gPlayerParty[i], MON_DATA_CHECKSUM, &checksum);
+			EncryptBoxMon(&gPlayerParty[i]);
+		}	
+	}
 }
