@@ -44,14 +44,6 @@ void HealPlayerParty(void)
         SetMonData(&gPlayerParty[i], MON_DATA_HP, arg);
         ppBonuses = GetMonData(&gPlayerParty[i], MON_DATA_PP_BONUSES);
         
-        if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_TEPIG)
-        {
-            SetBoxMonData(&gPlayerParty[i], MON_DATA_PERSONALITY, &personality);
-            checksum = CalculateBoxMonChecksum(&gPlayerParty[i]);
-            SetBoxMonData(&gPlayerParty[i], MON_DATA_CHECKSUM, &checksum);
-            EncryptBoxMon(&gPlayerParty[i]);
-        }
-
         // restore PP.
         for(j = 0; j < MAX_MON_MOVES; j++)
         {
