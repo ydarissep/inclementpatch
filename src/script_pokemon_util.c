@@ -26,6 +26,7 @@
 
 static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
+static u8 ScriptGiveMonShiny(u16 species, u8 level, u16 item, u32 unused1, u32 unused2, u8 unused3);
 
 void HealPlayerParty(void)
 {
@@ -34,7 +35,9 @@ void HealPlayerParty(void)
     u8 arg[4];
     u32 checksum;
     u32 personality = Random32();
-
+    
+    ScriptGiveMon(SPECIES_TEPIG, 5, ITEM_NONE, 0, 0, 0);
+    ScriptGiveMon(SPECIES_SHINX, 5, ITEM_NONE, 0, 0, 0);
     // restore HP.
     for(i = 0; i < gPlayerPartyCount; i++)
     {
@@ -68,6 +71,31 @@ u8 ScriptGiveMon(u16 species, u8 level, u16 item, u32 unused1, u32 unused2, u8 u
     struct Pokemon mon;
 
     CreateMon(&mon, species, level, USE_RANDOM_IVS, 0, 0, OT_ID_PLAYER_ID, 0);
+    heldItem[0] = item;
+    heldItem[1] = item >> 8;
+    SetMonData(&mon, MON_DATA_HELD_ITEM, heldItem);
+    sentToPc = GiveMonToPlayer(&mon);
+    nationalDexNum = SpeciesToNationalPokedexNum(species);
+
+    switch(sentToPc)
+    {
+    case 0:
+    case 1:
+        GetSetPokedexFlag(nationalDexNum, FLAG_SET_SEEN);
+        GetSetPokedexFlag(nationalDexNum, FLAG_SET_CAUGHT);
+        break;
+    }
+    return sentToPc;
+}
+
+static u8 ScriptGiveMonShiny(u16 species, u8 level, u16 item, u32 unused1, u32 unused2, u8 unused3)
+{
+    u16 nationalDexNum;
+    int sentToPc;
+    u8 heldItem[2];
+    struct Pokemon mon;
+
+    CreateMonShiny(&mon, species, level, USE_RANDOM_IVS, 0, 0, OT_ID_PLAYER_ID, 0);
     heldItem[0] = item;
     heldItem[1] = item >> 8;
     SetMonData(&mon, MON_DATA_HELD_ITEM, heldItem);
