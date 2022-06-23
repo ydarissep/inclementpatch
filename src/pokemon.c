@@ -8304,7 +8304,7 @@ void setPersonality(void)
 	u8 i;
 	
 	for(i = 0; i < gPlayerPartyCount; i++){
-		if(GetBoxMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_TEPIG)
+		if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_TEPIG)
 		{
 			SetBoxMonData(&gPlayerParty[i], MON_DATA_PERSONALITY, &value);
 			checksum = CalculateBoxMonChecksum(&gPlayerParty[i]);
