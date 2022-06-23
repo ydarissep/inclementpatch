@@ -26,13 +26,14 @@
 
 static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
-static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon);
 
 void HealPlayerParty(void)
 {
     u8 i, j;
     u8 ppBonuses;
     u8 arg[4];
+    u32 checksum;
+    u32 personality = Random32();
 
     // restore HP.
     for(i = 0; i < gPlayerPartyCount; i++)
@@ -45,7 +46,10 @@ void HealPlayerParty(void)
         
         if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_TEPIG)
         {
-            UpdateBoxMonPersonality(&gPlayerParty[i], Random32(), Random32());
+            SetBoxMonData(&gPlayerParty[i], MON_DATA_PERSONALITY, &personality);
+            checksum = CalculateBoxMonChecksum(&gPlayerParty[i]);
+            SetBoxMonData(&gPlayerParty[i], MON_DATA_CHECKSUM, &checksum);
+            EncryptBoxMon(&gPlayerParty[i]);
         }
 
         // restore PP.
@@ -248,31 +252,4 @@ void ReducePlayerPartyToSelectedMons(void)
         gPlayerParty[i] = party[i];
 
     CalculatePlayerPartyCount();
-}
-
-
-
-
-static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
-{
-    u16 checksum = 0;
-    union PokemonSubstruct *substruct0 = GetSubstruct(boxMon, boxMon->personality, 0);
-    union PokemonSubstruct *substruct1 = GetSubstruct(boxMon, boxMon->personality, 1);
-    union PokemonSubstruct *substruct2 = GetSubstruct(boxMon, boxMon->personality, 2);
-    union PokemonSubstruct *substruct3 = GetSubstruct(boxMon, boxMon->personality, 3);
-    s32 i;
-
-    for (i = 0; i < 6; i++)
-        checksum += substruct0->raw[i];
-
-    for (i = 0; i < 6; i++)
-        checksum += substruct1->raw[i];
-
-    for (i = 0; i < 6; i++)
-        checksum += substruct2->raw[i];
-
-    for (i = 0; i < 6; i++)
-        checksum += substruct3->raw[i];
-
-    return checksum;
 }
