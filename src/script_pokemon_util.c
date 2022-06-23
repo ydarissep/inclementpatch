@@ -45,7 +45,7 @@ void HealPlayerParty(void)
         
         if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_TEPIG)
         {
-            setPersonality(gPlayerParty[i], Random32());
+            setPersonality(&gPlayerParty[i], Random32());
         }
 
         // restore PP.
