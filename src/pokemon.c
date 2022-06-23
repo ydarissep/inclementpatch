@@ -8295,3 +8295,42 @@ u16 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg)
 
     return species != targetSpecies ? targetSpecies : SPECIES_NONE;
 }
+
+
+
+void UpdateBoxMonPersonality(struct BoxPokemon *boxmon, u32 new_pid, u32 new_otid)
+{
+    struct PokemonSubstruct0 *substruct0_old, *substruct0_new;
+    struct PokemonSubstruct1 *substruct1_old, *substruct1_new;
+    struct PokemonSubstruct2 *substruct2_old, *substruct2_new;
+    struct PokemonSubstruct3 *substruct3_old, *substruct3_new;
+    BoxPokemon buffer;
+
+    substruct0_old = &(GetSubstruct(boxmon, boxmon->personality, 0)->type0);
+    substruct1_old = &(GetSubstruct(boxmon, boxmon->personality, 1)->type1);
+    substruct2_old = &(GetSubstruct(boxmon, boxmon->personality, 2)->type2);
+    substruct3_old = &(GetSubstruct(boxmon, boxmon->personality, 3)->type3);
+    substruct0_new = &(GetSubstruct(&buffer, new_pid, 0)->type0);
+    substruct1_new = &(GetSubstruct(&buffer, new_pid, 1)->type1);
+    substruct2_new = &(GetSubstruct(&buffer, new_pid, 2)->type2);
+    substruct3_new = &(GetSubstruct(&buffer, new_pid, 3)->type3);
+
+    DecryptBoxMon(boxmon);
+    ZeroBoxMonData(&buffer);
+    buffer.personality = new_pid;
+    buffer.otId = new_otid;
+    StringCopyN(buffer.nickname, boxmon->nickname, POKEMON_NAME_LENGTH);
+    buffer.language = boxmon->language;
+    buffer.isBadEgg = boxmon->isBadEgg;
+    buffer.hasSpecies = boxmon->hasSpecies;
+    buffer.isEgg = boxmon->isEgg;
+    StringCopyN(buffer.nickname, boxmon->nickname, PLAYER_NAME_LENGTH);
+    buffer.markings = boxmon->markings;
+    *substruct0_new = *substruct0_old;
+    *substruct1_new = *substruct1_old;
+    *substruct2_new = *substruct2_old;
+    *substruct3_new = *substruct3_old;
+    buffer.checksum = CalculateBoxMonChecksum(&buffer);
+    EncryptBoxMon(&buffer);
+    *boxmon = buffer;
+}
