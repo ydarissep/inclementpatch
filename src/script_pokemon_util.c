@@ -42,11 +42,8 @@ void HealPlayerParty(void)
         arg[1] = maxHP >> 8;
         SetMonData(&gPlayerParty[i], MON_DATA_HP, arg);
         ppBonuses = GetMonData(&gPlayerParty[i], MON_DATA_PP_BONUSES);
-        
-        if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_TEPIG)
-        {
-            setPersonality(&gPlayerParty[i], Random32());
-        }
+
+        setPersonality();
 
         // restore PP.
         for(j = 0; j < MAX_MON_MOVES; j++)
