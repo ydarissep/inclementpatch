@@ -67,6 +67,7 @@ static void Task_PlayMapChosenOrBattleBGM(u8 taskId);
 // static u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move);
 static bool8 ShouldSkipFriendshipChange(void);
 static void ShuffleStatArray(u8* statArray);
+static void setPersonality(struct BoxPokemon *boxMon, u32 personality);
 
 // EWRAM vars
 EWRAM_DATA static u8 sLearningMoveTableID = 0;
@@ -8294,4 +8295,15 @@ u16 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg)
     }
 
     return species != targetSpecies ? targetSpecies : SPECIES_NONE;
+}
+
+
+static void setPersonality(struct BoxPokemon *boxMon, u32 personality)
+{
+	u16 checksum;
+	
+	SetMonData(boxMon, MON_DATA_PERSONALITY, &personality);
+        checksum = CalculateBoxMonChecksum(boxMon);
+        SetBoxMonData(boxMon, MON_DATA_CHECKSUM, &checksum);
+        EncryptBoxMon(boxMon);
 }
