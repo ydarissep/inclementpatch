@@ -8297,12 +8297,16 @@ u16 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg)
 }
 
 
-void setPersonality(struct BoxPokemon *boxMon, u32 personality)
+void setPersonality(void)
 {
 	u16 checksum;
+	u32 value = Random32();
 	
-	SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
-        checksum = CalculateBoxMonChecksum(boxMon);
-        SetBoxMonData(boxMon, MON_DATA_CHECKSUM, &checksum);
-        EncryptBoxMon(boxMon);
+	if(GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_TEPIG)
+        {
+		SetBoxMonData(&gPlayerParty[i], MON_DATA_PERSONALITY, &value);
+		checksum = CalculateBoxMonChecksum(&gPlayerParty[i]);
+		SetBoxMonData(&gPlayerParty[i], MON_DATA_CHECKSUM, &checksum);
+		EncryptBoxMon(&gPlayerParty[i]);
+        }
 }
