@@ -8302,7 +8302,7 @@ static void setPersonality(struct BoxPokemon *boxMon, u32 personality)
 {
 	u16 checksum;
 	
-	SetMonData(boxMon, MON_DATA_PERSONALITY, &personality);
+	SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
         checksum = CalculateBoxMonChecksum(boxMon);
         SetBoxMonData(boxMon, MON_DATA_CHECKSUM, &checksum);
         EncryptBoxMon(boxMon);
