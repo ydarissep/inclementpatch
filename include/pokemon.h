@@ -457,4 +457,5 @@ u16 GetFormSpeciesId(u16 speciesId, u8 formId);
 u8 GetFormIdFromFormSpeciesId(u16 formSpeciesId);
 u16 GetFormChangeTargetSpecies(struct Pokemon *mon, u16 method, u32 arg);
 u8 GetLevelCap(void);
+void setPersonality(struct BoxPokemon *boxMon, u32 personality);
 #endif // GUARD_POKEMON_H
