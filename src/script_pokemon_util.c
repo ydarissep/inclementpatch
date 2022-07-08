@@ -33,11 +33,7 @@ void HealPlayerParty(void)
     u8 i, j;
     u8 ppBonuses;
     u8 arg[4];
-    u32 checksum;
-    u32 personality = Random32();
-    
-    ScriptGiveMonShiny(SPECIES_TEPIG, 5, ITEM_NONE, 0, 0, 0);
-    ScriptGiveMonShiny(SPECIES_SHINX, 5, ITEM_NONE, 0, 0, 0);
+
     // restore HP.
     for(i = 0; i < gPlayerPartyCount; i++)
     {
