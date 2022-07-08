@@ -3311,6 +3311,24 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
             } while (shinyValue >= getShinyOdds() && rolls < I_SHINY_CHARM_REROLLS);
         }
     }
+    if((HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality)) < getShinyOdds()) //Fix Shiny when switching to base IE
+    {
+        value = gSaveBlock2Ptr->playerTrainerId[0]
+              | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
+              | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
+              | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
+        
+        if (1 == 1) // :=)
+        {
+            u32 shinyValue;
+            do
+            {
+                personality = Random32();
+                shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
+                rolls++;
+            } while (shinyValue >= SHINY_ODDS);
+        }
+    }
 
     SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
     SetBoxMonData(boxMon, MON_DATA_OT_ID, &value);
