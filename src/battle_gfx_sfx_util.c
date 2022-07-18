@@ -615,6 +615,7 @@ static void BattleLoadMonSpriteGfx(struct Pokemon *mon, u32 battlerId, bool32 op
     {
         paletteOffset = 0x100 + battlerId * 16;
         LZDecompressWram(lzPaletteData, gBattleStruct->castformPalette[0]);
+        HueShiftMonPalette((u16*) gBattleStruct->castformPalette[0], currentPersonality);
         LoadPalette(gBattleStruct->castformPalette[gBattleMonForms[battlerId]], paletteOffset, 0x20);
     }
 
