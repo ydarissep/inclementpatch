@@ -952,6 +952,7 @@ LittlerootTown_EventScript_GiveRunningShoes:: @ 81E8693
 	msgbox LittlerootTown_Text_WearTheseRunningShoes, MSGBOX_DEFAULT
 	giveitem ITEM_OLD_ROD
 	giveitem ITEM_POKEBLOCK_CASE
+	givemon SPECIES_PICHU, 5, ITEM_NONE
 	setflag FLAG_RECEIVED_OLD_ROD
 	setflag FLAG_RECEIVED_POKEBLOCK_CASE
 	msgbox LittlerootTown_Text_ComeHomeIfAnythingHappens, MSGBOX_DEFAULT
@@ -1107,7 +1108,8 @@ LittlerootTown_Text_WearTheseRunningShoes: @ 81E87F0
 	.string "You look good together with Pokémon!\p"
 	.string "Here, honey! If you're going out on an\n"
 	.string "adventure, take Dad's old stuff.\p"
-	.string "He never uses it anyway!$"
+	.string "He never uses it anyway!\n"
+	.string "Here is a Pokémon for you too.$"
 
 LittlerootTown_Text_ComeHomeIfAnythingHappens: @ 81E8A03
 	.string "… … … … … … … …\n"
