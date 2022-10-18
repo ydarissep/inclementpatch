@@ -3296,7 +3296,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         } while (shinyValue < SHINY_ODDS);
 	for(i = 0; i < ARRAY_COUNT(shinyTrainersArray); i++)
 	{
-		if(gTrainerBattleOpponent_A == shinyTrainersArray[i])
+		if(gTrainerBattleOpponent_A == shinyTrainersArray[i][0])
 		{
 		    do
 		    {
