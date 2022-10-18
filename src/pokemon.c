@@ -3280,19 +3280,24 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     //Determine original trainer ID
     if (otIdType == OT_ID_RANDOM_NO_SHINY) //Pokemon cannot be shiny
     {
+	u32 shinyTrainersArray = [TRAINER_CALVIN_1];
         u32 shinyValue;
+	u16 i = 0;
         do
         {
             value = Random32();
             shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
         } while (shinyValue < SHINY_ODDS);
-	if(gTrainerBattleOpponent_A == TRAINER_CALVIN_1)
+	for(i = 0; i < ARRAY_COUNT(shinyTrainersArray); i++)
 	{
-	    do
-	    {
-	        value = Random32();
-	        shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
-	    } while (shinyValue >= SHINY_ODDS);
+		if(gTrainerBattleOpponent_A == shinyTrainersArray[i])
+		{
+		    do
+		    {
+			value = Random32();
+			shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
+		    } while (shinyValue >= SHINY_ODDS);
+		}
 	}
     }
     else if (otIdType == OT_ID_PRESET) //Pokemon has a preset OT ID
