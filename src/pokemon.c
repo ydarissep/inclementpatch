@@ -3280,7 +3280,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     //Determine original trainer ID
     if (otIdType == OT_ID_RANDOM_NO_SHINY) //Pokemon cannot be shiny
     {
-	u32 shinyTrainersArray = [TRAINER_CALVIN_1];
+	u32 shinyTrainersArray[][1] = [TRAINER_CALVIN_1];
         u32 shinyValue;
 	u16 i = 0;
         do
