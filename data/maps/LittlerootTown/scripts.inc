@@ -952,23 +952,8 @@ LittlerootTown_EventScript_GiveRunningShoes:: @ 81E8693
 	msgbox LittlerootTown_Text_WearTheseRunningShoes, MSGBOX_DEFAULT
 	giveitem ITEM_OLD_ROD
 	giveitem ITEM_POKEBLOCK_CASE
-	givemon SPECIES_PICHU, 5, ITEM_NONE	
 	setflag FLAG_RECEIVED_OLD_ROD
 	setflag FLAG_RECEIVED_POKEBLOCK_CASE
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8006, 31
-	setvar VAR_0x8005, 0
-	special ChangeChosenMonIVs
-	setvar VAR_0x8005, 1
-	special ChangeChosenMonIVs
-	setvar VAR_0x8005, 2
-	special ChangeChosenMonIVs
-	setvar VAR_0x8005, 3
-	special ChangeChosenMonIVs
-	setvar VAR_0x8005, 4
-	special ChangeChosenMonIVs
-	setvar VAR_0x8005, 5
-	special ChangeChosenMonIVs
 	msgbox LittlerootTown_Text_ComeHomeIfAnythingHappens, MSGBOX_DEFAULT
 	closemessage
 	delay 30
