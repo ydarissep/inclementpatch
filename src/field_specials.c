@@ -69,6 +69,9 @@
 #include "constants/metatile_labels.h"
 #include "palette.h"
 
+
+
+
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
 static EWRAM_DATA u32 sBikeCyclingTimer = 0;
